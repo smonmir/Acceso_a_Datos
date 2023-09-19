@@ -1,0 +1,7 @@
+package POJO;
+
+public class Tripulacion extends Persona{
+	
+	private Zona nivelResponsabilidad;
+
+}

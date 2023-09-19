@@ -1,0 +1,16 @@
+package POJO;
+
+import java.util.Date;
+
+public class Tripulacion extends Persona{
+	
+
+	private NivelResponsabilidad nivelResponsabilidad;
+	
+	public Tripulacion(String dni, String pais, Zona zona, String nombre, boolean minusvalia, Date fechaNacimiento) {
+		super(dni, pais, zona, nombre, minusvalia, fechaNacimiento);
+		this.nivelResponsabilidad = nivelResponsabilidad;
+	}
+
+	
+}

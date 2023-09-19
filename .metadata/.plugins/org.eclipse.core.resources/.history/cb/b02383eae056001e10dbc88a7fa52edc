@@ -1,0 +1,36 @@
+package DAO;
+
+import java.util.TreeMap;
+
+public class DaoPersonas {
+	
+	private static DaoPersonas dao = null;
+	private TreeMap personas;
+	
+	private DaoPersonas() {
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static DaoPersonas getInstance() {
+		if(dao == null) {
+			return new DaoPersonas();
+		}
+		return dao;
+	}
+
+}

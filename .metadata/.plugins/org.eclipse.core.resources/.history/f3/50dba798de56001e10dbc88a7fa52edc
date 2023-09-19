@@ -1,0 +1,7 @@
+package POJO;
+
+public class Pasajero extends Persona{
+	
+	private Integer numHabitacion;
+
+}

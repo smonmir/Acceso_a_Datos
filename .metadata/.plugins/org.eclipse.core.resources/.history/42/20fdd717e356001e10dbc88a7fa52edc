@@ -1,0 +1,42 @@
+package DAO;
+
+import java.util.Date;
+import java.util.TreeMap;
+
+import POJO.Pais;
+import POJO.Pasajero;
+import POJO.Zona;
+
+public class DaoPersonas {
+	
+	private static DaoPersonas dao = null;
+	private TreeMap<Pais, TreeMap<String, Pasajero>> pasajeros;
+	
+	private DaoPersonas() {
+		
+		
+		pasajeros.put(Pais.ALEMANIA, );
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static DaoPersonas getInstance() {
+		if(dao == null) {
+			return new DaoPersonas();
+		}
+		return dao;
+	}
+
+}

@@ -1,0 +1,12 @@
+package POJO;
+
+public class Persona {
+
+	private String dni;
+	private String pais;
+	private Enum zona;
+	private String nombre;
+	private boolean minusvalia;
+	
+	
+}

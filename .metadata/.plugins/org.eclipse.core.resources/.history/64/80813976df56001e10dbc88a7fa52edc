@@ -1,0 +1,15 @@
+package DAO;
+
+public class DaoPersonas {
+	
+	public static DaoPersonas dao = null;
+	
+	
+	
+	
+	
+	public static getInstance() {
+		
+	}
+
+}

@@ -1,0 +1,7 @@
+package POJO;
+
+public enum zona {
+
+	PROA, POPA, BABOR, ESTRIBOR;
+	
+}

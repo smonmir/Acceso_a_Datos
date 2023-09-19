@@ -1,0 +1,12 @@
+package POJO;
+
+import java.util.Date;
+
+public class Tripulacion extends Persona{
+	
+
+	private NivelResponsabilidad nivelResponsabilidad;
+	
+	
+	
+}

@@ -1,0 +1,38 @@
+package DAO;
+
+import java.util.TreeMap;
+
+import POJO.Pasajero;
+
+public class DaoPersonas {
+	
+	private static DaoPersonas dao = null;
+	private TreeMap<Pasajero, Pasajero> pasajeros;
+	
+	private DaoPersonas() {
+		
+		treeMap.put(new Pasajero(), new Pasajero(),);
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static DaoPersonas getInstance() {
+		if(dao == null) {
+			return new DaoPersonas();
+		}
+		return dao;
+	}
+
+}

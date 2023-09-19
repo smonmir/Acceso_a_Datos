@@ -1,0 +1,12 @@
+package POJO;
+
+public enum nivelResponsabilidad {
+	
+	BAJA, MUY_BAJA, MEDIA, ALTA, MUY_ALTA;
+	
+	private String capitan;
+	
+	
+	
+
+}
