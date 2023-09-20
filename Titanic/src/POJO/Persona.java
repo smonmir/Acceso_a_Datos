@@ -1,9 +1,10 @@
 package POJO;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
 
-public class Persona {
+public class Persona implements Comparator<Persona>{
 
 	private String dni;
 	private Pais pais;
@@ -77,7 +78,7 @@ public class Persona {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(dni, fechaNacimiento, minusvalia, nombre, pais, zona);
+		return Objects.hash(dni, pais);
 	}
 
 	@Override
@@ -88,10 +89,8 @@ public class Persona {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Persona other = (Persona) obj;
-		return Objects.equals(dni, other.dni) && Objects.equals(fechaNacimiento, other.fechaNacimiento)
-				&& minusvalia == other.minusvalia && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(pais, other.pais) && zona == other.zona;
+		Persona persona = (Persona) obj;
+		return dni.equals(persona.getDni()) && pais.equals(persona.getPais());
 	}
 
 	@Override
@@ -101,7 +100,15 @@ public class Persona {
 	}
 	
 	
-	
+
+	@Override
+	public int compare(Persona p1, Persona p2) {
+		int i = p1.getPais().compareTo(p2.getPais());
+		if(i==0) {
+			i = p1.getNombre().compareTo(p2.getNombre());
+		}
+		return i;
+	}
 	
 	
 	

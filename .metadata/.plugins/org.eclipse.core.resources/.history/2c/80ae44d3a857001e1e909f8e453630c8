@@ -1,0 +1,21 @@
+package POJO;
+
+public class Bote {
+
+	private static Integer num = 1; 
+	private Integer id;
+	private Integer numPlazas;
+	private Zona zona;
+	public Bote(Integer id, Integer numPlazas, Zona zona) {
+		super();
+		this.id = num++;
+		this.numPlazas = numPlazas;
+		this.zona = zona;
+	}
+	
+	
+	
+	
+	
+	
+}
