@@ -8,8 +8,8 @@ public class Tripulacion extends Persona{
 
 	private NivelResponsabilidad nivelResponsabilidad;
 	
-	public Tripulacion(String dni, Pais pais, Zona zona, String nombre, boolean minusvalia, Date fechaNacimiento, NivelResponsabilidad nivelResponsabilidad) {
-		super(dni, pais, zona, nombre, minusvalia, fechaNacimiento);
+	public Tripulacion(String dni, Pais pais, Zona zona, String nombre, boolean minusvalia, Date fechaNacimiento, TipoPersona tipoPersona, NivelResponsabilidad nivelResponsabilidad) {
+		super(dni, pais, zona, nombre, minusvalia, fechaNacimiento, tipoPersona);
 		this.nivelResponsabilidad = nivelResponsabilidad;
 	}
 	

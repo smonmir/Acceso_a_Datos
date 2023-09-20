@@ -1,8 +1,9 @@
 package POJO;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Bote {
+public class Bote implements Comparator<Bote>{
 
 	private static Integer num = 1; 
 	private Integer id;
@@ -72,6 +73,12 @@ public class Bote {
 	@Override
 	public String toString() {
 		return "Bote [id=" + id + ", numPlazas=" + numPlazas + ", zona=" + zona + "]";
+	}
+
+
+	@Override
+	public int compare(Bote b1, Bote b2) {
+		return b1.getId().compareTo(b2.getId());
 	}
 	
 	

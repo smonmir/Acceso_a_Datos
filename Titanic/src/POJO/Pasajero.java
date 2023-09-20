@@ -9,15 +9,11 @@ public class Pasajero extends Persona implements Comparable{
 	private Integer numHabitacion;
 	
 	
-	public Pasajero(String dni, Pais pais, Zona zona, String nombre, boolean minusvalia, Date fechaNacimiento, Integer numHabitacion) {
-		super(dni, pais, zona, nombre, minusvalia, fechaNacimiento);
+	public Pasajero(String dni, Pais pais, Zona zona, String nombre, boolean minusvalia, Date fechaNacimiento, TipoPersona tipoPersona, Integer numHabitacion) {
+		super(dni, pais, zona, nombre, minusvalia, fechaNacimiento, tipoPersona);
 		this.numHabitacion = numHabitacion;
 	}
 
-	public Pasajero(String dni, Pais pais) {
-		super(dni, pais);
-		this.numHabitacion = numHabitacion;
-	}
 
 	public Integer getNumHabitacion() {
 		return numHabitacion;

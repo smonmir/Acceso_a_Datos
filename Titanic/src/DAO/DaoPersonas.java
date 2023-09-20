@@ -6,6 +6,7 @@ import java.util.TreeMap;
 
 import POJO.Pais;
 import POJO.Pasajero;
+import POJO.TipoPersona;
 import POJO.Zona;
 
 public class DaoPersonas {
@@ -14,37 +15,29 @@ public class DaoPersonas {
 	private TreeMap<Pasajero, Pasajero> pasajeros = new TreeMap<Pasajero, Pasajero>();
 	
 	private DaoPersonas(){
-		/*
-		Pasajero pasajero = new Pasajero("123456789A", Pais.ALEMANIA, Zona.BABOR, "Persona1", false, new Date(2000, 01, 01), 10);
-		pasajeros.put(pasajero, pasajero);
-		
-		pasajero = new Pasajero("123456789B", Pais.FRANCIA, Zona.ESTRIBOR, "Persona2", false, new Date(2001, 01, 01), 9);
-		pasajeros.put(pasajero, pasajero);
-		
-		pasajero = new Pasajero("123456789C", Pais.ESPANA, Zona.POPA, "Persona3", false, new Date(2002, 01, 01), 8);
-		pasajeros.put(pasajero, pasajero);
-		*/
-		
+
 		Pasajero pasajero;
 		
 		for(int i=0; i<10; i++) {
-
-			pasajero = new Pasajero(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), i);
-			
+			pasajero = new Pasajero(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), i);
 			pasajeros.put(pasajero, pasajero);
 		}
 		
 	}
 	
-
-	
 	private static String generarDNI() {
         Random random = new Random();
         String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-        int numeroDNI = random.nextInt(90000000) + 10000000;
-        int indice = numeroDNI % 27;
-        char letraControl = letras.charAt(indice); 
-        return String.format("%d%c", numeroDNI, letraControl);
+        String cadenaNum = "";
+        int aleatorio, letraAleatorio;
+        for(int i=0; i<8; i++) {
+        	aleatorio = random.nextInt(9);
+        	cadenaNum += ""+ aleatorio;
+        }
+        letraAleatorio = random.nextInt(letras.length());
+        cadenaNum += letras.charAt(letraAleatorio);
+        return cadenaNum;
+        
     }
 	
     private static Pais obtenerPaisAleatorio() {
@@ -95,6 +88,13 @@ public class DaoPersonas {
         Date fechaAleatoria = new Date(milisegundosFechaAleatoria);
         
         return fechaAleatoria;
+    }
+    
+    private static TipoPersona obtenerTipoPersonaAleatorio() {
+    	TipoPersona[] tipoPersona = TipoPersona.values();
+        Random random = new Random();
+        int indiceAleatorio = random.nextInt(tipoPersona.length);
+        return tipoPersona[indiceAleatorio];
     }
     
     

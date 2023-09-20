@@ -1,0 +1,14 @@
+package POJO;
+
+public enum Zona {
+
+	PROA, POPA, BABOR, ESTRIBOR;
+	
+	private int escalera1, escalera2, escalera3;
+	
+	
+	Zona (int escalera1, int escalera2, int escalera3) {
+		this.escalera1 = escalera1;
+	}
+	
+}

@@ -1,0 +1,10 @@
+package POJO;
+
+public enum Zona {
+
+	PROA, POPA, BABOR, ESTRIBOR;
+	
+	private int escalera1, escalera2, escalera3;
+	
+	
+}

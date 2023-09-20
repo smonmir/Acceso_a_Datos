@@ -12,8 +12,9 @@ public class Persona implements Comparator<Persona>{
 	private String nombre;
 	private boolean minusvalia;
 	private Date fechaNacimiento;
+	private TipoPersona tipoPersona;
 	
-	public Persona(String dni, Pais pais, POJO.Zona zona, String nombre, boolean minusvalia, Date fechaNacimiento) {
+	public Persona(String dni, Pais pais, POJO.Zona zona, String nombre, boolean minusvalia, Date fechaNacimiento, TipoPersona tipoPersona) {
 		super();
 		this.dni = dni;
 		this.pais = pais;
@@ -21,6 +22,7 @@ public class Persona implements Comparator<Persona>{
 		this.nombre = nombre;
 		this.minusvalia = minusvalia;
 		this.fechaNacimiento = fechaNacimiento;
+		this.tipoPersona = tipoPersona;
 	}
 	
 	public Persona(String dni, Pais pais) {
@@ -75,6 +77,15 @@ public class Persona implements Comparator<Persona>{
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+
+	public TipoPersona getTipoPersona() {
+		return tipoPersona;
+	}
+
+	public void setTipoPersona(TipoPersona tipoPersona) {
+		this.tipoPersona = tipoPersona;
+	}
+	
 
 	@Override
 	public int hashCode() {
