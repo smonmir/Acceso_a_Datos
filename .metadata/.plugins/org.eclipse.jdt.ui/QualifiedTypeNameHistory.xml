@@ -11,4 +11,6 @@
     <fullyQualifiedTypeName name="POJO.NivelResponsabilidad"/>
     <fullyQualifiedTypeName name="java.util.TreeMap"/>
     <fullyQualifiedTypeName name="DAO.DaoPersonas"/>
+    <fullyQualifiedTypeName name="Servicio.Servicio"/>
+    <fullyQualifiedTypeName name="java.lang.Comparable"/>
 </qualifiedTypeNameHistroy>
