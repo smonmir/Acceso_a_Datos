@@ -1,0 +1,11 @@
+package DAO;
+
+
+public class DaoBotes {
+
+	
+	private TreeMap<Bote, Bote> botes;
+	
+	
+	
+}

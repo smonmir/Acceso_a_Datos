@@ -1,0 +1,15 @@
+package Controlador;
+
+public class Controlador {
+	
+	
+	private Servicio servicio;
+	
+	
+	public Controlador() {
+		
+	}
+	
+	
+
+}

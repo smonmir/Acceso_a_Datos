@@ -1,0 +1,12 @@
+package DAO;
+
+import java.util.TreeSet;
+
+public class DaoBotes {
+
+	
+	private TreeMap<Bote, Bote> botes;
+	
+	
+	
+}

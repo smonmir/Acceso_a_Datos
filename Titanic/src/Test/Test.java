@@ -10,7 +10,7 @@ public class Test {
 		
 		Servicio s = new Servicio();
 		
-		
+		s.asignarPersonasBote();
 
 	}
 

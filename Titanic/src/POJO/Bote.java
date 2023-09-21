@@ -3,29 +3,20 @@ package POJO;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Bote implements Comparator<Bote>{
+public class Bote implements Comparable<Bote>{
 
-	private static Integer num = 1; 
-	private Integer id;
+	private static Integer id = 0;
 	private Integer numPlazas;
 	private Zona zona;
 	
 	
-	public Bote(Integer id, Integer numPlazas, Zona zona) {
+	public Bote(Integer numPlazas, Zona zona) {
 		super();
-		this.id = num++;
+		this.id++;
 		this.numPlazas = numPlazas;
 		this.zona = zona;
 	}
-
 	
-	public static Integer getNum() {
-		return num;
-	}
-
-	public static void setNum(Integer num) {
-		Bote.num = num;
-	}
 
 	public Integer getId() {
 		return id;
@@ -77,8 +68,8 @@ public class Bote implements Comparator<Bote>{
 
 
 	@Override
-	public int compare(Bote b1, Bote b2) {
-		return b1.getId().compareTo(b2.getId());
+	public int compareTo(Bote b) {
+		return this.getId().compareTo(b.getId());
 	}
 	
 	

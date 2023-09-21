@@ -1,0 +1,38 @@
+package DAO;
+
+import java.util.Random;
+import java.util.TreeMap;
+
+import POJO.Bote;
+
+public class DaoBotes {
+
+	
+	private TreeMap<Bote, Bote> botes;
+	
+	private DaoBotes() {
+		
+		botes = new TreeMap<Bote, Bote>();
+		
+		Bote bote;
+		
+		bote = new Bote();
+		
+//		botes.put(, );
+		
+		
+	}
+	
+	
+	private Integer numPlazasAleatorio() {
+		
+		Random random = new Random();
+		Integer numAle = random.nextInt(10);
+		
+		
+		return numAle;
+	}
+	
+	
+	
+}

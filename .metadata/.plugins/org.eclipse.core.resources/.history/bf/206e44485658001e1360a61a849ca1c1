@@ -1,0 +1,10 @@
+package DAO;
+
+public class DaoBotes {
+
+	
+	private TreeSet<Bote, Bote> botes;
+	
+	
+	
+}

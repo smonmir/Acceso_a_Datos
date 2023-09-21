@@ -1,6 +1,10 @@
 package DAO;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 
@@ -15,42 +19,66 @@ import POJO.Zona;
 public class DaoPersonas {
 	
 	private static DaoPersonas dao = null;
-	private TreeMap<Persona, Persona> personas = new TreeMap<Persona, Persona>();
+	private HashMap<Persona, Persona> personas;
 	private static boolean existeCapitan = false;
+	private static ArrayList<String> dniUtilizados = new ArrayList<String>();
 	
 	private DaoPersonas(){
+	
+		personas = new HashMap<Persona, Persona>();
 		
 		Pasajero pasajero;
 		Tripulacion tripulante;
 		
-		for(int i=0; i<10; i++) {
-			tripulante = new Tripulacion(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), obtenerNivelResponsabilidadAleatorio());
-			personas.put(tripulante, tripulante);
-			
-			for(int j=0; j<1; j++) {
-				pasajero = new Pasajero(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), i);
-				personas.put(pasajero, pasajero);
-			}
-			
+		
+		for(int i=0; i<5; i++) {
+			String dni = generarDNI();
+			tripulante = new Tripulacion(dni, obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), obtenerNivelResponsabilidadAleatorio());
+			personas.put(tripulante, tripulante);	
+		}
+		
+		
+		
+		for(int j=0; j<10; j++) {
+			pasajero = new Pasajero(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), j);
+			personas.put(pasajero, pasajero);
 		}
 	}
 	
 	
-	public TreeMap<Persona, Persona> getPersonas(){
+	public HashMap<Persona, Persona> getPersonas(){
 		return personas;
 	}
+	
 	
 	private static String generarDNI() {
         Random random = new Random();
         String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
         String cadenaNum = "";
         int aleatorio, letraAleatorio;
-        for(int i=0; i<8; i++) {
-        	aleatorio = random.nextInt(9);
-        	cadenaNum += ""+ aleatorio;
-        }
-        letraAleatorio = random.nextInt(letras.length());
-        cadenaNum += letras.charAt(letraAleatorio);
+        boolean existe;
+
+        do {
+        	existe = false;
+            for(int i=0; i<8; i++) {
+            	aleatorio = random.nextInt(9);
+            	cadenaNum += ""+ aleatorio;
+            }
+            letraAleatorio = random.nextInt(letras.length());
+            cadenaNum += letras.charAt(letraAleatorio);
+            
+            for(int j = 0; j<dniUtilizados.size(); j++) {
+            	if(dniUtilizados.get(j).equalsIgnoreCase(cadenaNum)){
+            		existe = true;
+            		break;
+            	}
+            }
+            if(existe == false) {
+                dniUtilizados.add(cadenaNum);
+            }
+            
+        }while(existe == true);
+        
         return cadenaNum;
         
     }
@@ -132,7 +160,7 @@ public class DaoPersonas {
     
 	public static DaoPersonas getInstance() {
 		if(dao == null) {
-			return new DaoPersonas();
+			return dao = new DaoPersonas();
 		}
 		return dao;
 	}
