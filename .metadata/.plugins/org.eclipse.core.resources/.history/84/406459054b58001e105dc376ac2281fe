@@ -1,0 +1,13 @@
+package Servicio;
+
+public class Servicio {
+
+	
+	private TreeMap<Persona, Persona> personas;
+	
+	public Servicio() {
+		
+	}
+	
+	
+}

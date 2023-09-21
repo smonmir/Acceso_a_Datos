@@ -3,7 +3,7 @@ package POJO;
 import java.util.Date;
 import java.util.Objects;
 
-public class Tripulacion extends Persona{
+public class Tripulacion extends Persona implements Comparable<Persona>{
 	
 
 	private NivelResponsabilidad nivelResponsabilidad;
@@ -53,6 +53,16 @@ public class Tripulacion extends Persona{
 				+ getPais() + ", getZona()=" + getZona() + ", getNombre()=" + getNombre() + ", isMinusvalia()="
 				+ isMinusvalia() + ", getFechaNacimiento()=" + getFechaNacimiento() + ", toString()=" + super.toString()
 				+ ", getClass()=" + getClass() + "]";
+	}
+
+
+	@Override
+	public int compareTo(Persona p) {
+		int i = p.getPais().compareTo(this.getPais());
+		if(i==0) {
+			i = p.getNombre().compareTo(this.getNombre());
+		}
+		return i;
 	}
 	
 	

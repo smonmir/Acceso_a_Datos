@@ -1,0 +1,16 @@
+package Servicio;
+
+
+import POJO.Persona;
+
+public class Servicio {
+
+	
+	private TreeMap<Persona, Persona> personas;
+	
+	public Servicio() {
+		
+	}
+	
+	
+}

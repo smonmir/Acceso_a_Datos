@@ -1,0 +1,10 @@
+package Servicio;
+
+public class Servicio {
+
+	public Servicio() {
+		
+	}
+	
+	
+}

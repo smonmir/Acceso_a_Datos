@@ -6,7 +6,9 @@
     <fullyQualifiedTypeName name="POJO.Pasajero"/>
     <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
-    <fullyQualifiedTypeName name="DAO.DaoPersonas"/>
-    <fullyQualifiedTypeName name="java.util.TreeMap"/>
     <fullyQualifiedTypeName name="POJO.TipoPersona"/>
+    <fullyQualifiedTypeName name="POJO.Tripulacion"/>
+    <fullyQualifiedTypeName name="POJO.NivelResponsabilidad"/>
+    <fullyQualifiedTypeName name="java.util.TreeMap"/>
+    <fullyQualifiedTypeName name="DAO.DaoPersonas"/>
 </qualifiedTypeNameHistroy>

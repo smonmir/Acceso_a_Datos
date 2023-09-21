@@ -3,7 +3,7 @@ package POJO;
 import java.util.Date;
 import java.util.Objects;
 
-public class Pasajero extends Persona implements Comparable{
+public class Pasajero extends Persona implements Comparable<Persona>{
 
 
 	private Integer numHabitacion;
@@ -56,16 +56,13 @@ public class Pasajero extends Persona implements Comparable{
 	}
 
 	@Override
-	public int compareTo(Object o) {
-		Pasajero pasajero = (Pasajero) o;
-		int i = pasajero.getPais().compareTo(this.getPais());
+	public int compareTo(Persona p) {
+		int i = p.getPais().compareTo(this.getPais());
 		if(i==0) {
-			i = pasajero.getNombre().compareTo(this.getNombre());
+			i = p.getNombre().compareTo(this.getNombre());
 		}
 		return i;
 	}
-	
-	
 	
 	
 

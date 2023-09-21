@@ -4,25 +4,40 @@ import java.util.Date;
 import java.util.Random;
 import java.util.TreeMap;
 
+import POJO.NivelResponsabilidad;
 import POJO.Pais;
 import POJO.Pasajero;
+import POJO.Persona;
 import POJO.TipoPersona;
+import POJO.Tripulacion;
 import POJO.Zona;
 
 public class DaoPersonas {
 	
 	private static DaoPersonas dao = null;
-	private TreeMap<Pasajero, Pasajero> pasajeros = new TreeMap<Pasajero, Pasajero>();
+	private TreeMap<Persona, Persona> personas = new TreeMap<Persona, Persona>();
+	private static boolean existeCapitan = false;
 	
 	private DaoPersonas(){
-
+		
 		Pasajero pasajero;
+		Tripulacion tripulante;
 		
 		for(int i=0; i<10; i++) {
-			pasajero = new Pasajero(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), i);
-			pasajeros.put(pasajero, pasajero);
+			tripulante = new Tripulacion(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), obtenerNivelResponsabilidadAleatorio());
+			personas.put(tripulante, tripulante);
+			/*
+			for(int j=0; j<1; j++) {
+				pasajero = new Pasajero(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), i);
+				personas.put(pasajero, pasajero);
+			}
+			*/
 		}
-		
+	}
+	
+	
+	public TreeMap<Persona, Persona> getPersonas(){
+		return personas;
 	}
 	
 	private static String generarDNI() {
@@ -95,6 +110,23 @@ public class DaoPersonas {
         Random random = new Random();
         int indiceAleatorio = random.nextInt(tipoPersona.length);
         return tipoPersona[indiceAleatorio];
+    }
+    
+    private static NivelResponsabilidad obtenerNivelResponsabilidadAleatorio() {
+    	NivelResponsabilidad[] nivelResponsabilidad = NivelResponsabilidad.values();
+        Random random = new Random();
+        int indiceAleatorio;
+        
+        if(existeCapitan != true) {
+        	indiceAleatorio = random.nextInt(nivelResponsabilidad.length);
+        }
+        else {
+        	indiceAleatorio = random.nextInt(nivelResponsabilidad.length-1);
+        }
+        if(indiceAleatorio == nivelResponsabilidad.length-1) {
+        	existeCapitan = true;
+        }
+        return nivelResponsabilidad[indiceAleatorio];
     }
     
     
