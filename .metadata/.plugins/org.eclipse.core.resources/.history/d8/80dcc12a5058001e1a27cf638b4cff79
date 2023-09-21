@@ -26,12 +26,12 @@ public class DaoPersonas {
 		for(int i=0; i<10; i++) {
 			tripulante = new Tripulacion(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), obtenerNivelResponsabilidadAleatorio());
 			personas.put(tripulante, tripulante);
-			
+			/*
 			for(int j=0; j<1; j++) {
 				pasajero = new Pasajero(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), i);
 				personas.put(pasajero, pasajero);
 			}
-			
+			*/
 		}
 	}
 	
