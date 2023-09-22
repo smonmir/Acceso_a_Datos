@@ -32,7 +32,7 @@ public class DaoBotes {
 	
 	private Integer numPlazasAleatorio() {
 		Random random = new Random();
-		Integer numAle = random.nextInt(10);
+		Integer numAle = random.nextInt(10) + 5;
 		return numAle;
 	}
 	

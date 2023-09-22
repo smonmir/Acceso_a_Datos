@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="POJO.Pais"/>
-    <fullyQualifiedTypeName name="POJO.Zona"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="POJO.Pasajero"/>
     <fullyQualifiedTypeName name="java.util.Comparator"/>
@@ -14,9 +13,12 @@
     <fullyQualifiedTypeName name="POJO.Bote"/>
     <fullyQualifiedTypeName name="java.util.TreeMap"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
-    <fullyQualifiedTypeName name="Servicio.Servicio"/>
     <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="Servicio.Servicio"/>
+    <fullyQualifiedTypeName name="POJO.Zona"/>
+    <fullyQualifiedTypeName name="java.util.Timer"/>
+    <fullyQualifiedTypeName name="java.util.TimerTask"/>
 </qualifiedTypeNameHistroy>
