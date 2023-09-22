@@ -152,9 +152,7 @@ public class Servicio {
             Bote bk = pb.getKey();
             HashMap<Persona, Persona> pv = pb.getValue();
             
-            System.out.print(bk.getId() +"-"+ bk.getZona() + "\n" + pv.get(personas) + "-" + pv.get(personas)+ "\n\n");
-            
-            Iterator<Map.Entry<Persona, Persona>> j;
+            System.out.print(bk.getId() +"-"+ bk.getZona() + "\n" + pv.get(i) + "-" + pv.get(i)+ "\n\n");
 		}
 		
 	}

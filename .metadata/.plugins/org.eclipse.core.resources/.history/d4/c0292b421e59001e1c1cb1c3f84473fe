@@ -44,13 +44,12 @@ public class Bote implements Comparable<Bote>{
 	}
 
 	
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, numPlazas, zona);
+		return Objects.hash(id);
 	}
 
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -60,9 +59,8 @@ public class Bote implements Comparable<Bote>{
 		if (getClass() != obj.getClass())
 			return false;
 		Bote other = (Bote) obj;
-		return Objects.equals(id, other.id) && Objects.equals(numPlazas, other.numPlazas) && zona == other.zona;
+		return Objects.equals(id, other.id);
 	}
-
 
 	@Override
 	public String toString() {

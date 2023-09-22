@@ -148,18 +148,152 @@ public class Servicio {
 		//Mostrar BOTE/PERSONA
         Iterator<Map.Entry<Bote, HashMap<Persona, Persona>>> i = personaBote.entrySet().iterator();
 		while(i.hasNext()) {
-            Map.Entry<Bote, HashMap<Persona, Persona>> pb = i.next();
+            Map.Entry<Bote, Persona> pb = i.next();
             Bote bk = pb.getKey();
-            HashMap<Persona, Persona> pv = pb.getValue();
+            Persona pv = pb.getValue();
             
-            System.out.print(bk.getId() +"-"+ bk.getZona() + "\n" + pv.get(personas) + "-" + pv.get(personas)+ "\n\n");
-            
-            Iterator<Map.Entry<Persona, Persona>> j;
+            System.out.print(bk.getId() +"-"+ bk.getZona() + "\n" + pv.getDni() + "-" + pv.getZona()+ "\n\n");
 		}
 		
 	}
 	
-
+	//---------------------------------------------
+	public void asignacionBoteProa() {
+        Iterator<Map.Entry<Bote, Bote>> iteratorBote = botes.entrySet().iterator();
+		while(iteratorBote.hasNext()) {
+            Map.Entry<Bote, Bote> boteEntry = iteratorBote.next();
+            Bote boteKey = boteEntry.getKey();
+            Bote boteValue = boteEntry.getValue();
+            
+            Integer plazasLibres = 0;
+            
+            Iterator<Map.Entry<Persona, Persona>> iteratorPersona = personas.entrySet().iterator();
+    		while(iteratorPersona.hasNext()) {
+                Map.Entry<Persona, Persona> personaEntry = iteratorPersona.next();
+                Persona personaKey = personaEntry.getKey();
+                Persona personaValue = personaEntry.getValue();
+                
+                if(boteKey.getZona() == Zona.PROA && personaValue.getZona() == Zona.PROA && boteKey.getNumPlazas() != plazasLibres) {
+                	personaBote.put(boteKey, personaValue);
+                	plazasLibres++;
+                }
+    		}
+		}
+		
+		/*
+        Iterator<Map.Entry<Bote, Persona>> i = personaBote.entrySet().iterator();
+		while(i.hasNext()) {
+            Map.Entry<Bote, Persona> pb = i.next();
+            Bote bk = pb.getKey();
+            Persona pv = pb.getValue();
+            
+            System.out.print(bk.getId() +"-"+ bk.getZona() + "\n" + pv.getDni() + "-" + pv.getZona()+ "\n");
+		}
+		*/
+	}
+	
+	public void asignacionBoteEstribor() {
+        Iterator<Map.Entry<Bote, Bote>> iteratorBote = botes.entrySet().iterator();
+		while(iteratorBote.hasNext()) {
+            Map.Entry<Bote, Bote> boteEntry = iteratorBote.next();
+            Bote boteKey = boteEntry.getKey();
+            Bote boteValue = boteEntry.getValue();
+            
+            Integer plazasLibres = 0;
+            
+            Iterator<Map.Entry<Persona, Persona>> iteratorPersona = personas.entrySet().iterator();
+    		while(iteratorPersona.hasNext()) {
+                Map.Entry<Persona, Persona> personaEntry = iteratorPersona.next();
+                Persona personaKey = personaEntry.getKey();
+                Persona personaValue = personaEntry.getValue();
+                
+                if(boteKey.getZona() == Zona.ESTRIBOR && personaValue.getZona() == Zona.ESTRIBOR && boteKey.getNumPlazas() != plazasLibres) {
+                	personaBote.put(boteKey, personaValue);
+                	plazasLibres++;
+                }
+    		}
+		}
+		
+		/*
+        Iterator<Map.Entry<Bote, Persona>> i = personaBote.entrySet().iterator();
+		while(i.hasNext()) {
+            Map.Entry<Bote, Persona> pb = i.next();
+            Bote bk = pb.getKey();
+            Persona pv = pb.getValue();
+            
+            System.out.print(bk.getId() +"-"+ bk.getZona() + "\n" + pv.getDni() + "-" + pv.getZona()+ "\n");
+		}
+		*/
+	}
+	
+	public void asignacionBoteBabor() {
+        Iterator<Map.Entry<Bote, Bote>> iteratorBote = botes.entrySet().iterator();
+		while(iteratorBote.hasNext()) {
+            Map.Entry<Bote, Bote> boteEntry = iteratorBote.next();
+            Bote boteKey = boteEntry.getKey();
+            Bote boteValue = boteEntry.getValue();
+            
+            Integer plazasLibres = 0;
+            
+            Iterator<Map.Entry<Persona, Persona>> iteratorPersona = personas.entrySet().iterator();
+    		while(iteratorPersona.hasNext()) {
+                Map.Entry<Persona, Persona> personaEntry = iteratorPersona.next();
+                Persona personaKey = personaEntry.getKey();
+                Persona personaValue = personaEntry.getValue();
+                
+                if(boteKey.getZona() == Zona.BABOR && personaValue.getZona() == Zona.BABOR && boteKey.getNumPlazas() != plazasLibres) {
+                	personaBote.put(boteKey, personaValue);
+                	plazasLibres++;
+                }
+    		}
+		}
+		
+		/*
+        Iterator<Map.Entry<Bote, Persona>> i = personaBote.entrySet().iterator();
+		while(i.hasNext()) {
+            Map.Entry<Bote, Persona> pb = i.next();
+            Bote bk = pb.getKey();
+            Persona pv = pb.getValue();
+            
+            System.out.print(bk.getId() +"-"+ bk.getZona() + "\n" + pv.getDni() + "-" + pv.getZona()+ "\n");
+		}
+		*/
+	}
+	
+	public void asignacionBotePopa() {
+		Iterator<Map.Entry<Bote, Bote>> iteratorBote = botes.entrySet().iterator();
+		while(iteratorBote.hasNext()) {
+            Map.Entry<Bote, Bote> boteEntry = iteratorBote.next();
+            Bote boteKey = boteEntry.getKey();
+            Bote boteValue = boteEntry.getValue();
+            
+            Integer plazasLibres = 0;
+            Iterator<Map.Entry<Persona, Persona>> iteratorPersona = personas.entrySet().iterator();
+    		while(iteratorPersona.hasNext()) {
+                Map.Entry<Persona, Persona> personaEntry = iteratorPersona.next();
+                Persona personaKey = personaEntry.getKey();
+                Persona personaValue = personaEntry.getValue();
+                
+                if(boteKey.getZona() == Zona.POPA && personaValue.getZona() == Zona.POPA && boteKey.getNumPlazas() != plazasLibres) {
+                	personaBote.put(boteKey, personaValue);
+                	plazasLibres++;
+                }
+    		}
+		}
+		
+		/*
+        Iterator<Map.Entry<Bote, Persona>> i = personaBote.entrySet().iterator();
+		while(i.hasNext()) {
+            Map.Entry<Bote, Persona> pb = i.next();
+            Bote bk = pb.getKey();
+            Persona pv = pb.getValue();
+            
+            System.out.print(bk.getId() +"-"+ bk.getZona() + "\n" + pv.getDni() + "-" + pv.getZona()+ "\n");
+		}
+		*/
+	}
+	//---------------------------------------------
+	
 	//TODO
 	public void tiempo() {
         Timer timer = new Timer();

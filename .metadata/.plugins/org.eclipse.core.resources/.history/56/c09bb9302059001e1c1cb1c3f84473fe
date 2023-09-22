@@ -154,7 +154,7 @@ public class Servicio {
             
             System.out.print(bk.getId() +"-"+ bk.getZona() + "\n" + pv.get(personas) + "-" + pv.get(personas)+ "\n\n");
             
-            Iterator<Map.Entry<Persona, Persona>> j;
+            Iterator<Map.Entry<Persona, Persona>> i = personaBote.entrySet().iterator();
 		}
 		
 	}
