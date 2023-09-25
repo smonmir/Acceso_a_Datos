@@ -1,0 +1,23 @@
+package Controlador;
+
+import Servicio.Servicio;
+import Vista.Vista;
+
+public class Controlador {
+	
+	
+	private Servicio servicio;
+	private Vista vista;
+	
+	public Controlador() {
+		servicio = new Servicio();
+		vista = new Vista();
+	}
+	
+	
+	public void iniciar() {
+		vista.mostarDatos(servicio.getPersonasBotes());		
+	}
+	
+
+}

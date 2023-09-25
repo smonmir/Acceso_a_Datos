@@ -31,7 +31,7 @@ public class DaoPersonas {
 		Tripulacion tripulante;
 		
 		
-		for(int i=0; i<5; i++) {
+		for(int i=0; i<10; i++) {
 			String dni = generarDNI();
 			tripulante = new Tripulacion(dni, obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), obtenerNivelResponsabilidadAleatorio());
 			personas.put(tripulante, tripulante);	
@@ -39,7 +39,7 @@ public class DaoPersonas {
 		
 		
 		
-		for(int j=0; j<10; j++) {
+		for(int j=0; j<50; j++) {
 			pasajero = new Pasajero(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), j);
 			personas.put(pasajero, pasajero);
 		}
