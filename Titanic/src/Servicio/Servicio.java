@@ -2,10 +2,15 @@ package Servicio;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,36 +25,38 @@ import POJO.Bote;
 public class Servicio {
 
 	private static Servicio servicio = null;
-	private HashMap<Persona, Persona> personas;
-	private HashMap<Bote, Bote> botes;
-	private HashMap<Bote, HashMap<Persona, Persona>> personaBote;
+	private LinkedHashMap<Persona, Persona> personas;
+	private LinkedHashMap<Bote, Bote> botes;
+	private LinkedHashMap<Bote, LinkedHashMap<Persona, Persona>> personaBote;
 	
 	public Servicio() {
 		personas = DaoPersonas.getInstance().getPersonas();
 		botes = DaoBotes.getInstance().getBotes();
-		personaBote = new HashMap<Bote, HashMap<Persona, Persona>>();
+		personaBote = new LinkedHashMap<Bote, LinkedHashMap<Persona, Persona>>();
 	}
 
 	
-	public HashMap<Bote, HashMap<Persona, Persona>> getPersonasBotes() {
+	public LinkedHashMap<Bote, LinkedHashMap<Persona, Persona>> getPersonasBotes() {
 		return personaBote;
 	}
 	
 	
 	public void asignarPersonasBote() {
-
-		//Mostrar PERSONAS
+		//Ordenar las personas por pais y nombre
+		personas = ordenarPaisNombre();
+		
 		/*
-		int i= 1;
-		Iterator<Map.Entry<Persona, Persona>> iteratorPersona = personas.entrySet().iterator();
-		while(iteratorPersona.hasNext()) {
-            Map.Entry<Persona, Persona> personaEntry = iteratorPersona.next();
+		//Mostrar PERSONAS
+		int k= 1;
+		Iterator<Map.Entry<Persona, Persona>> iteratorP = personas.entrySet().iterator();
+		while(iteratorP.hasNext()) {
+            Map.Entry<Persona, Persona> personaEntry = iteratorP.next();
             Persona personaKey = personaEntry.getKey();
             Persona personaValue = personaEntry.getValue();
             
             System.out.print(personaKey.getClass() + "-" + personaKey.getDni() + "-" + personaKey.getNombre() + "-" + personaKey.getPais() + "-" + personaKey.getFechaNacimiento() + "-" + personaKey.getTipoPersona() + "-" + personaKey.getZona() + "-" + personaKey.isMinusvalia() 
             + "\n" + personaValue.getClass() + "-" + personaValue.getDni() + "-" + personaValue.getNombre() + "-" + personaValue.getPais() + "-" + personaValue.getFechaNacimiento() + "-" + personaValue.getTipoPersona() + "-" + personaValue.getZona() + "-" + personaValue.isMinusvalia() + "\n");
-            i++;
+            k++;
             System.out.println("\n");
 		}
 		*/
@@ -81,7 +88,7 @@ public class Servicio {
 	            //Encuentra un bote de la zona[i]
 	            if(boteKey.getZona().equals(zonas[i])) {
 	            	
-	            	 HashMap<Persona, Persona> zonaPersonas = new HashMap<Persona, Persona>();
+	            	LinkedHashMap<Persona, Persona> zonaPersonas = new LinkedHashMap<Persona, Persona>();
 	            	
 					//Itero Personas
 		            Iterator<Map.Entry<Persona, Persona>> iteratorPersona = personas.entrySet().iterator();
@@ -90,15 +97,12 @@ public class Servicio {
 		                Persona personaKey = personaEntry.getKey();
 		                Persona personaValue = personaEntry.getValue();
 		                
-		                
 		                //Encuentra las personas de la zona[i] y se guardan en el bote sin superar el numero de plazas
 			            if(personaKey.getZona().equals(zonas[i]) && zonaPersonas.size() <= boteKey.getNumPlazas()) {
 			            	zonaPersonas.put(personaKey, personaValue);
 			            	iteratorPersona.remove();
 			            }
-			            
 		    		}
-		    		
 		            //Guardo el bote y las personas de la zona[i]
 		            personaBote.put(boteKey, zonaPersonas);
 	            	
@@ -107,6 +111,30 @@ public class Servicio {
 			}
 			
 		}
+
+	}
+	
+	
+	private LinkedHashMap<Persona, Persona> ordenarPaisNombre() {
+		/*
+		List<Map.Entry<Persona, Persona>> listPersona = new ArrayList<>(personas.entrySet());
+		
+		Collections.sort(listPersona, new Comparator<Map.Entry<Persona, Persona>>() {
+	        @Override
+	        public int compare(Map.Entry<Persona, Persona> persona1, Map.Entry<Persona, Persona> persona2) {
+	            return persona1.getKey().compareTo(persona2.getKey());
+	        }
+	    });
+		*/
+		
+		
+        // Ordenar el LinkedHashMap por claves usando TreeMap
+        TreeMap<Persona, Persona> sortedByKeys = new TreeMap<>(personas);
+
+        // Crear un nuevo LinkedHashMap a partir del TreeMap ordenado
+        LinkedHashMap<Persona, Persona> personas = new LinkedHashMap<>(sortedByKeys);
+        
+        return personas;
 
 	}
 

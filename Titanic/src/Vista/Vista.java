@@ -2,6 +2,7 @@ package Vista;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import POJO.Bote;
@@ -16,12 +17,10 @@ public class Vista {
 	}
 	
 	
-	public void mostarDatos(HashMap<Bote, HashMap<Persona, Persona>> personaBote) {
-		
-		//Mostrar BOTE/PERSONA
-        Iterator<Map.Entry<Bote, HashMap<Persona, Persona>>> i = personaBote.entrySet().iterator();
+	public void mostarDatos(LinkedHashMap<Bote, LinkedHashMap<Persona, Persona>> personaBote) {
+        Iterator<Map.Entry<Bote, LinkedHashMap<Persona, Persona>>> i = personaBote.entrySet().iterator();
 		while(i.hasNext()) {
-            Map.Entry<Bote, HashMap<Persona, Persona>> pb = i.next();
+            Map.Entry<Bote, LinkedHashMap<Persona, Persona>> pb = i.next();
             Bote bk = pb.getKey();
             HashMap<Persona, Persona> pv = pb.getValue();
             
@@ -34,7 +33,6 @@ public class Vista {
                 System.out.print(personaKey.getDni() + "-" + personaKey.getZona() + "\n");
                 
             }
-            
             System.out.print("\n");
 		}
 		

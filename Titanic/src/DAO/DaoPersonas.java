@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
@@ -19,19 +20,21 @@ import POJO.Zona;
 public class DaoPersonas {
 	
 	private static DaoPersonas dao = null;
-	private HashMap<Persona, Persona> personas;
+	private LinkedHashMap<Persona, Persona> personas;
 	private static boolean existeCapitan = false;
 	private static ArrayList<String> dniUtilizados = new ArrayList<String>();
+	private final Integer NUM_PASAJEROS = 50;
+	private final Integer NUM_TRIPULANTES = 50;
 	
 	private DaoPersonas(){
 	
-		personas = new HashMap<Persona, Persona>();
+		personas = new LinkedHashMap<Persona, Persona>();
 		
 		Pasajero pasajero;
 		Tripulacion tripulante;
 		
 		
-		for(int i=0; i<10; i++) {
+		for(int i=0; i<NUM_TRIPULANTES; i++) {
 			String dni = generarDNI();
 			tripulante = new Tripulacion(dni, obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), obtenerNivelResponsabilidadAleatorio());
 			personas.put(tripulante, tripulante);	
@@ -39,14 +42,14 @@ public class DaoPersonas {
 		
 		
 		
-		for(int j=0; j<50; j++) {
+		for(int j=0; j<NUM_PASAJEROS; j++) {
 			pasajero = new Pasajero(generarDNI(), obtenerPaisAleatorio(), obtenerZonaAleatorio(), generarNombreAleatorio(), minusvaliaAleatorio(), fechaAleatoria(), obtenerTipoPersonaAleatorio(), j);
 			personas.put(pasajero, pasajero);
 		}
 	}
 	
 	
-	public HashMap<Persona, Persona> getPersonas(){
+	public LinkedHashMap<Persona, Persona> getPersonas(){
 		return personas;
 	}
 	

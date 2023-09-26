@@ -1,6 +1,7 @@
 package DAO;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.TreeMap;
 
@@ -10,11 +11,11 @@ import POJO.Zona;
 public class DaoBotes {
 
 	private static DaoBotes dao = null;
-	private HashMap<Bote, Bote> botes;
+	private LinkedHashMap<Bote, Bote> botes;
 	
 	private DaoBotes() {
 		
-		botes = new HashMap<Bote, Bote>();
+		botes = new LinkedHashMap<Bote, Bote>();
 		
 		Bote bote;
 		
@@ -25,7 +26,7 @@ public class DaoBotes {
 		
 	}
 	
-	public HashMap<Bote, Bote> getBotes(){
+	public LinkedHashMap<Bote, Bote> getBotes(){
 		return botes;
 	}
 	
