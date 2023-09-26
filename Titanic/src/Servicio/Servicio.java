@@ -42,7 +42,7 @@ public class Servicio {
 	
 	
 	public void asignarPersonasBote() {
-		//Ordenar las personas por pais y nombre
+		
 		personas = ordenarPaisNombre();
 		
 		/*
@@ -98,7 +98,7 @@ public class Servicio {
 		                Persona personaValue = personaEntry.getValue();
 		                
 		                //Encuentra las personas de la zona[i] y se guardan en el bote sin superar el numero de plazas
-			            if(personaKey.getZona().equals(zonas[i]) && zonaPersonas.size() <= boteKey.getNumPlazas()) {
+			            if(personaKey.getZona().equals(zonas[i]) && zonaPersonas.size() < boteKey.getNumPlazas()) {
 			            	zonaPersonas.put(personaKey, personaValue);
 			            	iteratorPersona.remove();
 			            }
@@ -116,7 +116,6 @@ public class Servicio {
 	
 	
 	private LinkedHashMap<Persona, Persona> ordenarPaisNombre() {
-
         // Ordenar el LinkedHashMap por claves usando TreeMap
         TreeMap<Persona, Persona> sortedByKeys = new TreeMap<>(personas);
 

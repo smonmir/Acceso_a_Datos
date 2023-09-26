@@ -24,7 +24,7 @@ public class Vista {
             Bote bk = pb.getKey();
             HashMap<Persona, Persona> pv = pb.getValue();
             
-            System.out.print(bk.getId() + "-" + bk.getZona() + "-NumPlazas: " + bk.getNumPlazas() + "\n");
+            System.out.print(bk.getId() + "-" + bk.getZona()+ "\n");
             
             for (Map.Entry<Persona, Persona> personaEntry : pv.entrySet()) {
                 Persona personaKey = personaEntry.getKey();

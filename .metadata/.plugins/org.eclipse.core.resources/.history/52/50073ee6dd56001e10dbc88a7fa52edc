@@ -1,7 +1,0 @@
-package POJO;
-
-public enum Enum {
-
-	PROA, POPA, BABOR, ESTRIBOR;
-	
-}
