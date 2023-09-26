@@ -3,7 +3,6 @@
     <fullyQualifiedTypeName name="POJO.Pais"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="POJO.Pasajero"/>
-    <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="POJO.TipoPersona"/>
     <fullyQualifiedTypeName name="POJO.Tripulacion"/>
     <fullyQualifiedTypeName name="POJO.NivelResponsabilidad"/>
@@ -25,4 +24,8 @@
     <fullyQualifiedTypeName name="java.util.HashSet"/>
     <fullyQualifiedTypeName name="Vista.Vista"/>
     <fullyQualifiedTypeName name="Controlador.Controlador"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="java.util.Comparator"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.LinkedHashMap"/>
 </qualifiedTypeNameHistroy>

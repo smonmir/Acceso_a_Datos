@@ -116,18 +116,7 @@ public class Servicio {
 	
 	
 	private LinkedHashMap<Persona, Persona> ordenarPaisNombre() {
-		/*
-		List<Map.Entry<Persona, Persona>> listPersona = new ArrayList<>(personas.entrySet());
-		
-		Collections.sort(listPersona, new Comparator<Map.Entry<Persona, Persona>>() {
-	        @Override
-	        public int compare(Map.Entry<Persona, Persona> persona1, Map.Entry<Persona, Persona> persona2) {
-	            return persona1.getKey().compareTo(persona2.getKey());
-	        }
-	    });
-		*/
-		
-		
+
         // Ordenar el LinkedHashMap por claves usando TreeMap
         TreeMap<Persona, Persona> sortedByKeys = new TreeMap<>(personas);
 
@@ -135,7 +124,6 @@ public class Servicio {
         LinkedHashMap<Persona, Persona> personas = new LinkedHashMap<>(sortedByKeys);
         
         return personas;
-
 	}
 
 	

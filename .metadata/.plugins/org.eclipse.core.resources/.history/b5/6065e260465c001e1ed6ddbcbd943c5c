@@ -7,7 +7,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -22,26 +25,28 @@ import POJO.Bote;
 public class Servicio {
 
 	private static Servicio servicio = null;
-	private HashMap<Persona, Persona> personas;
-	private HashMap<Bote, Bote> botes;
-	private HashMap<Bote, HashMap<Persona, Persona>> personaBote;
+	private LinkedHashMap<Persona, Persona> personas;
+	private LinkedHashMap<Bote, Bote> botes;
+	private LinkedHashMap<Bote, LinkedHashMap<Persona, Persona>> personaBote;
 	
 	public Servicio() {
 		personas = DaoPersonas.getInstance().getPersonas();
 		botes = DaoBotes.getInstance().getBotes();
-		personaBote = new HashMap<Bote, HashMap<Persona, Persona>>();
+		personaBote = new LinkedHashMap<Bote, LinkedHashMap<Persona, Persona>>();
 	}
 
 	
-	public HashMap<Bote, HashMap<Persona, Persona>> getPersonasBotes() {
+	public LinkedHashMap<Bote, LinkedHashMap<Persona, Persona>> getPersonasBotes() {
 		return personaBote;
 	}
 	
 	
 	public void asignarPersonasBote() {
-
-		//Mostrar PERSONAS
+		//Ordenar las personas por pais y nombre
+		personas = ordenarPaisNombre();
 		
+		/*
+		//Mostrar PERSONAS
 		int k= 1;
 		Iterator<Map.Entry<Persona, Persona>> iteratorP = personas.entrySet().iterator();
 		while(iteratorP.hasNext()) {
@@ -54,7 +59,7 @@ public class Servicio {
             k++;
             System.out.println("\n");
 		}
-		
+		*/
 		
 		//Mostrar BOTES
 		/*
@@ -83,7 +88,7 @@ public class Servicio {
 	            //Encuentra un bote de la zona[i]
 	            if(boteKey.getZona().equals(zonas[i])) {
 	            	
-	            	 HashMap<Persona, Persona> zonaPersonas = new HashMap<Persona, Persona>();
+	            	LinkedHashMap<Persona, Persona> zonaPersonas = new LinkedHashMap<Persona, Persona>();
 	            	
 					//Itero Personas
 		            Iterator<Map.Entry<Persona, Persona>> iteratorPersona = personas.entrySet().iterator();
@@ -110,13 +115,16 @@ public class Servicio {
 	}
 	
 	
-	private void ordenarTipoPersona() {
-	       Collections.sort(list, new Comparator<Map.Entry<Persona, Persona>>() {
-	            @Override
-	            public int compare(Map.Entry<Persona, Persona> persona1, Map.Entry<Persona, Persona> persona2) {
-	                return persona1.getKey().compareTo(persona2.getKey());
-	            }
-	        });
+	private LinkedHashMap<Persona, Persona> ordenarPaisNombre() {
+
+        // Ordenar el LinkedHashMap por claves usando TreeMap
+        TreeMap<Persona, Persona> sortedByKeys = new TreeMap<>(personas);
+
+        // Crear un nuevo LinkedHashMap a partir del TreeMap ordenado
+        LinkedHashMap<Persona, Persona> personas = new LinkedHashMap<>(sortedByKeys);
+        
+        return personas;
+
 	}
 
 	
