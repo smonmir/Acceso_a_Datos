@@ -1,8 +1,0 @@
-package POJO;
-
-public class Bote {
-
-	private Integer id;
-	
-	
-}
