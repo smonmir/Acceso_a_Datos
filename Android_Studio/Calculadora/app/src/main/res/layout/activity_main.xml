@@ -4,198 +4,277 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A9B0CC"
     tools:context=".MainActivity">
 
     <GridLayout
         android:id="@+id/gridLayout3"
-        android:layout_width="412dp"
-        android:layout_height="432dp"
+        android:layout_width="413dp"
+        android:layout_height="308dp"
         android:layout_gravity="fill"
         android:columnCount="4"
         android:padding="5dp"
-        android:rowCount="6"
+        android:rowCount="7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.592">
+        app:layout_constraintTop_toBottomOf="@+id/txtVista"
+        app:layout_constraintVertical_bias="0.224">
 
         <!-- Fila 1 -->
 
         <Button
+            android:id="@+id/btnOcho"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="8" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:onClick="onClick"
+            android:text="8"
+            android:textSize="20sp" />
 
         <Button
+            android:id="@+id/btnNueve"
             android:layout_row="1"
             android:layout_column="2"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="9" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:onClick="onClick"
+            android:text="9"
+            android:textSize="20sp" />
 
         <!-- Fila 2 -->
 
         <Button
+            android:id="@+id/btnSuma"
             android:layout_row="2"
             android:layout_column="3"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="+" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:text="+"
+            android:textSize="20sp" />
 
         <Button
+            android:id="@+id/btnCuatro"
             android:layout_row="2"
             android:layout_column="0"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="4" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:onClick="onClick"
+            android:text="4"
+            android:textSize="20sp" />
 
         <Button
+            android:id="@+id/btnCinco"
             android:layout_row="2"
             android:layout_column="1"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="5" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:onClick="onClick"
+            android:text="5"
+            android:textSize="20sp" />
 
         <Button
+            android:id="@+id/btnSeis"
             android:layout_row="2"
             android:layout_column="2"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="6" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:onClick="onClick"
+            android:text="6"
+            android:textSize="20sp" />
 
         <!-- Fila 3 -->
 
         <Button
+            android:id="@+id/btnResta"
             android:layout_width="wrap_content"
             android:layout_row="1"
             android:layout_column="3"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="-" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:text="-"
+            android:textSize="20sp" />
 
         <Button
+            android:id="@+id/btnUno"
             android:layout_row="3"
             android:layout_column="0"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="1" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:onClick="onClick"
+            android:text="1"
+            android:textSize="20sp" />
 
         <Button
+            android:id="@+id/btnDos"
             android:layout_row="3"
             android:layout_column="1"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="2" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:onClick="onClick"
+            android:text="2"
+            android:textSize="20sp" />
 
         <!-- Fila 4 -->
 
         <!-- Fila 5 -->
 
         <Button
+            android:id="@+id/btnTres"
             android:layout_row="3"
             android:layout_column="2"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="3" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:onClick="onClick"
+            android:text="3"
+            android:textSize="20sp" />
 
         <Button
+            android:id="@+id/btnMultiplicacion"
             android:layout_row="0"
             android:layout_column="3"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="*" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:text="*"
+            android:textSize="20sp" />
 
         <Button
-            android:layout_width="178dp"
+            android:id="@+id/btnCero"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_row="4"
             android:layout_column="0"
             android:layout_columnSpan="2"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="0" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:onClick="onClick"
+            android:text="0"
+            android:textSize="20sp" />
 
         <Button
+            android:id="@+id/btnRestablecer"
             android:layout_row="0"
             android:layout_column="0"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="C" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:text="C"
+            android:textSize="20sp" />
 
         <Button
-            android:layout_width="73dp"
-            android:layout_height="99dp"
+            android:id="@+id/btnIgual"
+            android:layout_width="wrap_content"
+            android:layout_height="108dp"
             android:layout_row="3"
             android:layout_rowSpan="2"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
+            android:layout_margin="6dp"
             android:background="@drawable/rectangulo"
-            android:text="=" />
+            android:text="="
+            android:textSize="40sp" />
 
         <Button
+            android:id="@+id/btnDivision"
             android:layout_row="0"
             android:layout_column="2"
             android:layout_columnSpan="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="/" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:text="/"
+            android:textSize="20sp" />
 
         <Button
-            android:id="@+id/button41"
+            android:id="@+id/btnPunto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="4"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="." />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:text="."
+            android:textSize="20sp" />
 
         <Button
-            android:id="@+id/button42"
+            android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:text="+/-" />
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:text="DEL"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
         <Button
-            android:id="@+id/button43"
+            android:id="@+id/btnSiete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="0"
-            android:text="Button" />
+            android:layout_gravity="center"
+            android:layout_margin="6dp"
+            android:background="@drawable/bordeboton"
+            android:onClick="onClick"
+            android:text="7"
+            android:textSize="20sp" />
 
     </GridLayout>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="381dp"
-        android:layout_height="136dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/bordetexto"
+        android:id="@+id/txtVista"
+        android:layout_width="369dp"
+        android:layout_height="183dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/marco"
+        android:textAlignment="textEnd"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="293dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:text="CALCULADORA"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
