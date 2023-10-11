@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private String cadena = "\n";
-    private final int MAX_CARACTERES = 21;
+    private String cadena = "";
+    private final int MAX_CARACTERES = 45;
     private Button uno;
     private Button dos;
     private Button tres;
@@ -98,12 +98,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ExpressionBuilder expresionBuilder = new ExpressionBuilder(cadena);
                 Expression exp = expresionBuilder.build();
                 double resultado = exp.evaluate();
-                txtVista.setText("\n"+resultado);
-                cadena = "\n"+resultado;
+                txtVista.setText(""+resultado);
+                cadena = ""+resultado;
             }
             catch (Exception e){
                 txtVista.setText("Error");
-                cadena = "\n";
+                cadena = "";
             }
         }
         else{
@@ -165,7 +165,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     txtVista.setText(cadena);
                 }
             }
-
             else if(view.getId() == R.id.btnPunto){
                 if (comprobarOperador()) {
                     cadena += ".";
@@ -175,13 +174,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         if (view.getId() == R.id.btnDelete) {
-            if (cadena.length() != 1) {
+            if (cadena.length() != 0) {
                 cadena = cadena.substring(0, cadena.length() - 1);
                 txtVista.setText(cadena);
             }
         }
         else if (view.getId() == R.id.btnRestablecer) {
-            cadena = "\n";
+            cadena = "";
             txtVista.setText(cadena);
         }
 
@@ -189,9 +188,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean comprobarOperador(){
         boolean correcto = true;
-        char ultCaracter = cadena.charAt(cadena.length() - 1);
-        if (ultCaracter == '+' || ultCaracter == '-' || ultCaracter == '*' || ultCaracter == '/' || ultCaracter == '.') {
-            correcto = false;
+        if(cadena.length() != 0){
+            char ultCaracter = cadena.charAt(cadena.length() - 1);
+            if (ultCaracter == '+' || ultCaracter == '-' || ultCaracter == '*' || ultCaracter == '/' || ultCaracter == '.') {
+                correcto = false;
+            }
         }
         return correcto;
     }
