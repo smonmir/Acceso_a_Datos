@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A9B0CC"
+    android:background="#D2F1F1"
     tools:context=".MainActivity">
 
     <GridLayout
@@ -31,10 +31,11 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_green_light"
             android:onClick="onClick"
             android:text="8"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnNueve"
@@ -43,10 +44,11 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_green_light"
             android:onClick="onClick"
             android:text="9"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <!-- Fila 2 -->
 
@@ -57,9 +59,9 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_orange_dark"
             android:text="+"
-            android:textSize="20sp" />
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnCuatro"
@@ -68,10 +70,11 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_green_light"
             android:onClick="onClick"
             android:text="4"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnCinco"
@@ -80,10 +83,11 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_green_light"
             android:onClick="onClick"
             android:text="5"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnSeis"
@@ -92,10 +96,11 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_green_light"
             android:onClick="onClick"
             android:text="6"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <!-- Fila 3 -->
 
@@ -107,9 +112,10 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_orange_dark"
             android:text="-"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnUno"
@@ -118,10 +124,11 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_green_light"
             android:onClick="onClick"
             android:text="1"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnDos"
@@ -130,10 +137,11 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_green_light"
             android:onClick="onClick"
             android:text="2"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <!-- Fila 4 -->
 
@@ -146,10 +154,11 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_green_light"
             android:onClick="onClick"
             android:text="3"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnMultiplicacion"
@@ -158,9 +167,10 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_orange_dark"
             android:text="*"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnCero"
@@ -171,10 +181,11 @@
             android:layout_columnSpan="2"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_green_light"
             android:onClick="onClick"
             android:text="0"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnRestablecer"
@@ -183,9 +194,10 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@color/material_dynamic_primary50"
             android:text="C"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnIgual"
@@ -196,9 +208,10 @@
             android:layout_column="3"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/rectangulo"
+            android:backgroundTint="@color/design_default_color_primary_dark"
             android:text="="
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            app:cornerRadius="20dp" />
 
         <Button
             android:id="@+id/btnDivision"
@@ -207,9 +220,10 @@
             android:layout_columnSpan="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_orange_dark"
             android:text="/"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnPunto"
@@ -219,9 +233,10 @@
             android:layout_column="2"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_purple"
             android:text="."
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnDelete"
@@ -231,10 +246,11 @@
             android:layout_column="1"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@color/design_default_color_error"
             android:text="DEL"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/btnSiete"
@@ -244,10 +260,11 @@
             android:layout_column="0"
             android:layout_gravity="center"
             android:layout_margin="6dp"
-            android:background="@drawable/bordeboton"
+            android:backgroundTint="@android:color/holo_green_light"
             android:onClick="onClick"
             android:text="7"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
 
     </GridLayout>
 
@@ -270,6 +287,7 @@
         android:layout_marginTop="12dp"
         android:text="CALCULADORA"
         android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

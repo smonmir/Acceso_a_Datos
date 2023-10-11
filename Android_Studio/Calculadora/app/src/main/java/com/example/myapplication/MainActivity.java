@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 
 import java.util.ArrayList;
 
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button restablecer;
     private Button delete;
+    private Button punto;
+    private Button igual;
 
     private TextView txtVista;
 
@@ -57,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         restablecer = findViewById(R.id.btnRestablecer);
         delete = findViewById(R.id.btnDelete);
+        punto = findViewById(R.id.btnPunto);
+        igual = findViewById(R.id.btnIgual);
 
         uno.setOnClickListener(this);
         dos.setOnClickListener(this);
@@ -76,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         restablecer.setOnClickListener(this);
         delete.setOnClickListener(this);
+        punto.setOnClickListener(this);
+        igual.setOnClickListener(this);
 
         txtVista = findViewById(R.id.txtVista);
 
@@ -85,6 +93,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
+        if(view.getId() == R.id.btnIgual){
+            try {
+                ExpressionBuilder expresionBuilder = new ExpressionBuilder(cadena);
+                Expression exp = expresionBuilder.build();
+                double resultado = exp.evaluate();
+                txtVista.setText("\n"+resultado);
+                cadena = "\n"+resultado;
+            }
+            catch (Exception e){
+                txtVista.setText("Error");
+                cadena = "\n";
+            }
+        }
+        else{
+            if(txtVista.getText().equals("Error")){
+                txtVista.setText(cadena);
+            }
+        }
         if(cadena.length() != MAX_CARACTERES) {
 
             //Botones numericos
@@ -138,22 +164,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     cadena += "/";
                     txtVista.setText(cadena);
                 }
-            } else if (view.getId() == R.id.btnRestablecer) {
-                cadena = "\n";
-                txtVista.setText(cadena);
-            } else if (view.getId() == R.id.btnDelete) {
-                if (cadena.length() != 1) {
-                    cadena = cadena.substring(0, cadena.length() - 1);
+            }
+
+            else if(view.getId() == R.id.btnPunto){
+                if (comprobarOperador()) {
+                    cadena += ".";
                     txtVista.setText(cadena);
                 }
             }
+
         }
+        if (view.getId() == R.id.btnDelete) {
+            if (cadena.length() != 1) {
+                cadena = cadena.substring(0, cadena.length() - 1);
+                txtVista.setText(cadena);
+            }
+        }
+        else if (view.getId() == R.id.btnRestablecer) {
+            cadena = "\n";
+            txtVista.setText(cadena);
+        }
+
     }
 
     private boolean comprobarOperador(){
         boolean correcto = true;
         char ultCaracter = cadena.charAt(cadena.length() - 1);
-        if (ultCaracter == '+' || ultCaracter == '-' || ultCaracter == '*' || ultCaracter == '/') {
+        if (ultCaracter == '+' || ultCaracter == '-' || ultCaracter == '*' || ultCaracter == '/' || ultCaracter == '.') {
             correcto = false;
         }
         return correcto;
