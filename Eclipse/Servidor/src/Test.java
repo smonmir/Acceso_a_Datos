@@ -1,5 +1,6 @@
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
@@ -7,7 +8,7 @@ import java.net.Socket;
 
 public class Test {
 
-	public static void main(String[] args) throws Exception {	
+	public static void main(String[] args) throws IOException {	
 		//SERVIDOR
 		int numeroPuerto = 6000;// Puerto
 		ServerSocket servidor = new ServerSocket(numeroPuerto);
