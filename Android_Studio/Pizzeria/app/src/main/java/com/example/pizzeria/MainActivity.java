@@ -25,7 +25,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.btnElegirPizza){
-            //Intent i = new Intent(com.example.pizzeria.ElegirPizzeria, ElegirPizzeria);
+            Intent i = new Intent(this, ElegirPizzeria.class);
+            startActivity(i);
+        }
+        else if(view.getId() == R.id.btnConfigurar){
+
+        }
+        else if(view.getId() == R.id.btnSalir){
+
         }
     }
 }
