@@ -15,6 +15,7 @@ public class Pizza {
         this.nombre = nombre;
         this.ingredientes = ingredientes;
         this.ingredienteExtra = false;
+        this.precio = ingredientes.size()*2;
     }
 
     public Pizza(){
@@ -72,13 +73,7 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Pizza{" +
-                "nombre='" + nombre + '\'' +
-                ", tamano=" + tamano +
-                ", precio=" + precio +
-                ", ingredientes=" + ingredientes +
-                ", ingredienteExtra=" + ingredienteExtra +
-                '}';
+        return "Pizza= " + nombre +"\nIngredientes= " + ingredientes.toString()+"\nPrecio= "+precio+"\n";
     }
 
     @Override

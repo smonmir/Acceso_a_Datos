@@ -21,6 +21,13 @@ public class DaoPizza {
 
         pizza = new Pizza("Jamon york", new ArrayList<String>(){{add("Queso");add("Tomate");add("Jamon york");}});
         pizzas.put(pizza, pizza);
+        pizza = new Pizza("Margarita", new ArrayList<String>(){{add("Queso");add("Tomate");add("mozzarella");add("Orégano");}});
+        pizzas.put(pizza, pizza);
+
+        pizza = new Pizza("Carbonara", new ArrayList<String>(){{add("Huevo");add("Tomate");add("Salsa carbonara");add("Parmesano");}});
+        pizzas.put(pizza, pizza);
+
+
 
     }
 
@@ -31,7 +38,7 @@ public class DaoPizza {
 
     public static DaoPizza getInstance(){
         if(daoPizza == null){
-            return new DaoPizza();
+            return daoPizza = new DaoPizza();
         }
         else{
             return daoPizza;

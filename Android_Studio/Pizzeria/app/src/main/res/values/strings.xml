@@ -9,4 +9,5 @@
     <string name="btnPizzaPersonalizada">Pizza personalizada</string>
     <string name="txtConfeccionar">Confeccionarla paso a paso</string>
     <string name="btnRepUltPedido">Repetir último pedido</string>
+    <string name="btnAceptar">Aceptar</string>
 </resources>
