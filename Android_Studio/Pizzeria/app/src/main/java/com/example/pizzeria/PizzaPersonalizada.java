@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.example.pizzeria.POJO.tipoTamano;
 import com.example.pizzeria.Servicio.Servicio;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +26,12 @@ public class PizzaPersonalizada extends AppCompatActivity {
     private Map<Pizza, Pizza> pizzas;
     private Pizza pizzaSeleccionada;
     private String[] tamanos;
-    private ListView listView;
+    private TextView txtNombrePizza;
+    private TextView txtIngredientesPizza;
     private Spinner spinner;
+    private LinearLayout linearLayout;
+    private LinearLayout.LayoutParams layoutParams;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +41,11 @@ public class PizzaPersonalizada extends AppCompatActivity {
         servicio = Servicio.getInstance();
         pizzas = servicio.getPizzas();
 
-        listView = findViewById(R.id.listView);
         spinner = findViewById(R.id.spinner);
+        linearLayout = findViewById(R.id.linearLayout);
+        listView = findViewById(R.id.listView);
 
-        // Convierte el Map en una lista de elementos
-        List<Pizza> elementosPizzas = new ArrayList<Pizza>(pizzas.keySet());
-
-        ArrayAdapter<Pizza> adapter = new ArrayAdapter<Pizza>(this, android.R.layout.simple_list_item_1, elementosPizzas);
-        listView.setAdapter(adapter);
+        mostrarPizzas(pizzas);
 
         tamanos = new String[]{tipoTamano.PEQUENO.toString(),tipoTamano.MEDIANO.toString(),tipoTamano.GRANDE.toString()};
 
@@ -50,13 +53,31 @@ public class PizzaPersonalizada extends AppCompatActivity {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                pizzaSeleccionada = elementosPizzas.get(position);
-
-            }
-        });
 
     }
+
+    public void mostrarPizzas(Map<Pizza, Pizza> pizzas){
+        Iterator<Map.Entry<Pizza, Pizza>> iterator = pizzas.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Pizza, Pizza> entry = iterator.next();
+            Pizza key = entry.getKey();
+            Pizza value = entry.getValue();
+
+            layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(300, 100, 0, 0);
+
+            txtNombrePizza = new TextView(this);
+            txtNombrePizza.setLayoutParams(layoutParams);
+            txtNombrePizza.setText("Pizza: "+value.getNombre());
+            txtNombrePizza.setTextSize(20);
+            linearLayout.addView(txtNombrePizza);
+
+            txtIngredientesPizza = new TextView(this);
+            txtIngredientesPizza.setLayoutParams(layoutParams);
+            txtIngredientesPizza.setText("Ingredientes: "+value.getIngredientes().toString());
+            txtIngredientesPizza.setTextSize(20);
+            linearLayout.addView(txtIngredientesPizza);
+        }
+    }
+
 }

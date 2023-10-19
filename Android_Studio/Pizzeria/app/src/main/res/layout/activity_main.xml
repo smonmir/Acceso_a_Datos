@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/btnElegirPizza"
         android:layout_width="240dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginTop="81dp"
         android:layout_marginBottom="45dp"
         android:backgroundTint="@color/material_dynamic_primary70"
@@ -27,7 +27,7 @@
     <Button
         android:id="@+id/btnConfigurar"
         android:layout_width="240dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="45dp"
         android:backgroundTint="@color/material_dynamic_primary70"
         android:text="@string/btnConfigurar"
@@ -42,7 +42,7 @@
     <Button
         android:id="@+id/btnSalir"
         android:layout_width="240dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="210dp"
         android:backgroundTint="@color/material_dynamic_primary70"
         android:text="@string/btnSalir"
