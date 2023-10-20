@@ -47,12 +47,11 @@ public class PizzaPersonalizada extends AppCompatActivity {
 
         mostrarPizzas(pizzas);
 
-        tamanos = new String[]{tipoTamano.PEQUENO.toString(),tipoTamano.MEDIANO.toString(),tipoTamano.GRANDE.toString()};
+        tamanos = new String[]{tipoTamano.PEQUENO.getTamano(),tipoTamano.MEDIANO.getTamano(),tipoTamano.GRANDE.getTamano()};
 
         ArrayAdapter spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tamanos);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
-
 
     }
 

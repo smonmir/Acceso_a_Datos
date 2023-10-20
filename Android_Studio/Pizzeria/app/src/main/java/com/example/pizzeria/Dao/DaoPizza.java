@@ -1,6 +1,7 @@
 package com.example.pizzeria.Dao;
 
 import com.example.pizzeria.POJO.Pizza;
+import com.example.pizzeria.POJO.Usuario;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -26,8 +27,6 @@ public class DaoPizza {
 
         pizza = new Pizza("Carbonara", new ArrayList<String>(){{add("Huevo");add("Tomate");add("Salsa carbonara");add("Parmesano");}});
         pizzas.put(pizza, pizza);
-
-
 
     }
 

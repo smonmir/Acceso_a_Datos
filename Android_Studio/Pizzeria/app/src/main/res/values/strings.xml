@@ -10,4 +10,8 @@
     <string name="txtConfeccionar">Confeccionarla paso a paso</string>
     <string name="btnRepUltPedido">Repetir último pedido</string>
     <string name="btnAceptar">Aceptar</string>
+    <string name="txtContrasena">Contraseña</string>
+    <string name="btnConfirmar">Confirmar</string>
+    <string name="txtIniciarSesion">Iniciar Sesión</string>
+    <string name="txtRegistrase">Registrarse</string>
 </resources>
