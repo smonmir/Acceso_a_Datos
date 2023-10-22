@@ -24,10 +24,6 @@ public class DaoUsuario {
         return usuarios;
     }
 
-    public Map<Usuario, Usuario> pizzas(){
-        return this.usuarios;
-    }
-
 
     public static DaoUsuario getInstance(){
         if(daoUsuario == null){

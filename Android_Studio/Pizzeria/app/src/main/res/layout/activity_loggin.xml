@@ -7,7 +7,7 @@
     tools:context=".Loggin">
 
     <Button
-        android:id="@+id/btnAceptar3"
+        android:id="@+id/btnRegistrar"
         android:layout_width="160dp"
         android:layout_height="60dp"
         android:layout_marginTop="44dp"
