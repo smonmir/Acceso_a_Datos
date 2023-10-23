@@ -7,6 +7,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AlignmentSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -54,12 +59,17 @@ public class Loggin extends AppCompatActivity {
                 else{
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(Loggin.this);
-                    builder.setMessage("Usuario o contraseña incorrecto.");
+
+                    String message = "Usuario o contraseña incorrecto.";
+
+                    SpannableString spannableMessage = new SpannableString(message);
+                    spannableMessage.setSpan(new ForegroundColorSpan(Color.WHITE), 0, message.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannableMessage.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), 0, message.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    builder.setMessage(spannableMessage);
 
                     AlertDialog dialog = builder.create();
-
-
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.alert_dialog);
 
                     dialog.show();
                     new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {

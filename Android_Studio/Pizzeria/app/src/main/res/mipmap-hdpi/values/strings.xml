@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Pizzeria</string>
+    <string name="txtTituloPizzeria">PIZZERIA</string>
+    <string name="txtBienvenido">¡Bienvenido!</string>
+    <string name="btnElegirPizza">Elegir pizza</string>
+    <string name="btnConfigurar">Configurar</string>
+    <string name="btnSalir">Salir</string>
+    <string name="btnPizzaPersonalizada">Pizza personalizada</string>
+    <string name="txtConfeccionar">Confeccionarla paso a paso</string>
+    <string name="btnRepUltPedido">Repetir último pedido</string>
+    <string name="btnAceptar">Aceptar</string>
+    <string name="txtContrasena">Contraseña</string>
+    <string name="btnConfirmar">Confirmar</string>
+    <string name="txtIniciarSesion">Iniciar Sesión</string>
+    <string name="txtRegistrase">Registrarse</string>
+    <string name="txtCheckBoxRecuerdame">Recuerdame</string>
+</resources>
