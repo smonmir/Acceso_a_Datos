@@ -10,7 +10,7 @@
         android:id="@+id/btnRegistrar"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/material_dynamic_primary70"
         android:text="@string/txtRegistrase"
         android:textAlignment="center"
@@ -26,7 +26,7 @@
         android:id="@+id/btnConfirmar"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/material_dynamic_primary70"
         android:text="@string/btnConfirmar"
         android:textAlignment="center"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtContrasena" />
+        app:layout_constraintTop_toBottomOf="@+id/chBoxRecuerdame" />
 
     <EditText
         android:id="@+id/txtContrasena"
@@ -54,7 +54,7 @@
         android:id="@+id/txtViewContrasena"
         android:layout_width="220dp"
         android:layout_height="44dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="50dp"
         android:text="Contraseña:"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +66,7 @@
         android:id="@+id/txtVIewUsuario"
         android:layout_width="220dp"
         android:layout_height="44dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="50dp"
         android:text="Usuario:"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,5 +98,30 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <CheckBox
+        android:id="@+id/chBoxRecuerdame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/txtCheckBoxRecuerdame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtContrasena" />
+
+    <TextView
+        android:id="@android:id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Mensaje del diálogo"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textSize="16sp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
