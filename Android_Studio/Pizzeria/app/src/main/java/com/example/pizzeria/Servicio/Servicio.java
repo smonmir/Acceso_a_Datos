@@ -24,6 +24,11 @@ public class Servicio {
     public Map<Usuario, Usuario> getUsuarios() {return usuarios;}
 
 
+    public void anadirUsuario(String usuario, String contrasena){
+        Usuario usu = new Usuario(usuario, contrasena);
+        usuarios.put(usu, usu);
+    }
+
     public boolean comprobarUsuario(String nombre, String contrasena){
         boolean existe = false;
         Iterator<Map.Entry<Usuario, Usuario>> iterator = usuarios.entrySet().iterator();

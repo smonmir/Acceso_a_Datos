@@ -14,4 +14,7 @@
     <string name="txtIniciarSesion">Iniciar Sesión</string>
     <string name="txtRegistrase">Registrarse</string>
     <string name="txtCheckBoxRecuerdame">Recuerdame</string>
+    <string name="txtRegistro">Registro</string>
+    <string name="txtUsuario">Usuario</string>
+    <string name="btnCancelar">Cancelar</string>
 </resources>

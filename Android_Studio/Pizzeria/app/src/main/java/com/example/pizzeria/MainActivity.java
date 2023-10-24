@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnElegirPizza;
+    private Button btnElegirPizza, btnSalir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,8 +17,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         btnElegirPizza = findViewById(R.id.btnElegirPizza);
+        btnSalir = findViewById(R.id.btnSalir);
 
         btnElegirPizza.setOnClickListener(this);
+        btnSalir.setOnClickListener(this);
 
     }
 
@@ -32,7 +34,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         else if(view.getId() == R.id.btnSalir){
-
+            finish();
         }
+    }
+
+    //Boton de retroceso del movil
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
