@@ -3,7 +3,9 @@ package com.example.pizzeria;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.os.Handler;
 import android.os.Looper;
@@ -28,11 +31,9 @@ import java.nio.file.attribute.FileTime;
 
 public class Loggin extends AppCompatActivity {
 
-    private Button btnConfirmar;
-    private Button btnRegistrar;
-
-    private EditText txtUsuario;
-    private EditText txtContrasena;
+    private Button btnConfirmar, btnRegistrar;
+    private EditText txtUsuario, txtContrasena;
+    private CheckBox recordar;
     private Servicio servicio;
 
     @Override
@@ -41,14 +42,16 @@ public class Loggin extends AppCompatActivity {
         setContentView(R.layout.activity_loggin);
 
         btnConfirmar = findViewById(R.id.btnConfirmar);
-
         btnRegistrar = findViewById(R.id.btnRegistrar);
 
         txtUsuario = findViewById(R.id.txtUsuario);
-
         txtContrasena = findViewById(R.id.txtContrasena);
 
+        recordar = findViewById(R.id.chBoxRecuerdame);
+
         servicio = Servicio.getInstance();
+
+        recordarUsuario();
 
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +74,8 @@ public class Loggin extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
     }
 
     private void alertaIncorrecto(){
@@ -104,5 +109,37 @@ public class Loggin extends AppCompatActivity {
                 dialog.dismiss();
             }
         }, 2000);
+    }
+
+
+    private void recordarUsuario(){
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+
+        String clave = "usuario_"+txtUsuario.getText().toString();
+
+        // Recuperar el nombre de usuario si se guardó previamente y establecerlo en el EditText
+        String savedUsername = sharedPreferences.getString(clave, "");
+        txtUsuario.setText(savedUsername);
+        txtContrasena.setText("");
+
+        //CheckBox checked si se pulso y se guardo un usuario
+        if(savedUsername.length() != 0){
+            recordar.setChecked(true);
+        }
+
+        recordar.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                // Si se marca el CheckBox, guardar el nombre de usuario
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(clave, txtUsuario.getText().toString());
+                editor.apply();
+            } else {
+                // Si se desmarca el CheckBox, borrar el nombre de usuario
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove(clave);
+                editor.apply();
+            }
+        });
     }
 }
