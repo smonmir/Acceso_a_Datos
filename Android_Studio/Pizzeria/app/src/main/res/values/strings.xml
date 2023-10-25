@@ -17,4 +17,6 @@
     <string name="txtRegistro">Registro</string>
     <string name="txtUsuario">Usuario</string>
     <string name="btnCancelar">Cancelar</string>
+    <string name="btnPersonalizar">Personalizar</string>
+    <string name="btnPredeterminada">Predeterminadas</string>
 </resources>
