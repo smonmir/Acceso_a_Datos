@@ -8,9 +8,9 @@ public class Server {
 		
 		ServerSocket server = new ServerSocket(90);
 
-		System.out.println("Iniciando conexion...");
+		System.out.println("Iniciando conexion");
+		
 		while(true) {
-			
 			Socket cliente = server.accept();
 			HiloServer hilo = new HiloServer(cliente);
 			hilo.start();
@@ -18,3 +18,4 @@ public class Server {
 	}
 
 }
+
