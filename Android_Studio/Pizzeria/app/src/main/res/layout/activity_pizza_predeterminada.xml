@@ -8,26 +8,26 @@
 
     <Button
         android:id="@+id/btnAceptarPredeterminada"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="68dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/material_dynamic_primary70"
         android:text="@string/btnAceptar"
         android:textColor="@color/material_dynamic_neutral20"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerPredeterminada"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.142" />
 
     <Spinner
         android:id="@+id/spinnerPredeterminada"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,11 +35,62 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutPredeterminada"
-        android:layout_width="400dp"
-        android:layout_height="490dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
+        android:layout_width="379dp"
+        android:layout_height="395dp"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/txtPizzas">
+
+        <ListView
+            android:id="@+id/listViewPizzas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtPizzas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/txtPizzas"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="@string/txtSeleccionaPizza"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/material_dynamic_primary70"
+        android:text="@string/btnCancelar"
+        android:textColor="@color/material_dynamic_neutral20"
+        android:textSize="25sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.232"
+        app:layout_constraintStart_toEndOf="@+id/btnAceptarPredeterminada"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPredeterminada"
+        app:layout_constraintVertical_bias="0.142" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

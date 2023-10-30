@@ -19,4 +19,6 @@
     <string name="btnCancelar">Cancelar</string>
     <string name="btnPersonalizar">Personalizar</string>
     <string name="btnPredeterminada">Predeterminadas</string>
+    <string name="txtPizzas">Pizzas</string>
+    <string name="txtSeleccionaPizza">Selecciona una pizza:</string>
 </resources>

@@ -3,17 +3,25 @@ package com.example.pizzeria;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pizzeria.POJO.Pizza;
 import com.example.pizzeria.POJO.tipoTamano;
 import com.example.pizzeria.Servicio.Servicio;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class PizzaPredeterminada extends AppCompatActivity {
@@ -23,7 +31,8 @@ public class PizzaPredeterminada extends AppCompatActivity {
     private String[] tamanos;
     private TextView txtNombrePizza, txtIngredientesPizza;
     private Spinner spinner;
-    private LinearLayout linearLayout, item;
+    private LinearLayout linearLayout;
+    private ListView listView;
     private LinearLayout.LayoutParams layoutParams;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
         spinner = findViewById(R.id.spinnerPredeterminada);
         linearLayout = findViewById(R.id.linearLayoutPredeterminada);
+        listView = findViewById(R.id.listViewPizzas);
 
         mostrarPizzas(pizzas);
 
@@ -44,36 +54,45 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
 
     public void mostrarPizzas(Map<Pizza, Pizza> pizzas){
+
+        ArrayList<String> listaPizzas = new ArrayList<>();
+
         Iterator<Map.Entry<Pizza, Pizza>> iterator = pizzas.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<Pizza, Pizza> entry = iterator.next();
-            Pizza key = entry.getKey();
             Pizza value = entry.getValue();
 
-            item = new LinearLayout(this);
-            item.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            List<String> ingredientes = value.getIngredientes();
+            String ingredientesString = TextUtils.join(", ", ingredientes); // Combina los ingredientes con comas
 
-            layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(0, 0, 0, 0);
-
-            txtNombrePizza = new TextView(this);
-            txtNombrePizza.setLayoutParams(layoutParams);
-            txtNombrePizza.setText("Pizza: "+value.getNombre());
-            txtNombrePizza.setTextSize(20);
-
-            item.addView(txtNombrePizza);
-
-            linearLayout.addView(item);
-
-            /*
-            txtIngredientesPizza = new TextView(this);
-            txtIngredientesPizza.setLayoutParams(layoutParams);
-            txtIngredientesPizza.setText("Ingredientes: "+value.getIngredientes().toString());
-            txtIngredientesPizza.setTextSize(20);
-            linearLayout.addView(txtIngredientesPizza);
-            */
+            String StringPizza = "Pizza: " + value.getNombre() + ".\nIngredientes: " + ingredientesString;
+            listaPizzas.add(StringPizza);
 
         }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaPizzas) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView textView = (TextView) view.findViewById(android.R.id.text1);
+
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+
+                return view;
+            }
+        };
+
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Acción a realizar cuando se selecciona un elemento
+                String selectedPizza = listaPizzas.get(position);
+                Toast.makeText(getApplicationContext(), "Pizza seleccionada: " + selectedPizza, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void spinnerTamanos(){
