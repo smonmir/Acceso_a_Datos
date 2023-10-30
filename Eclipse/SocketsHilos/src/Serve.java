@@ -12,7 +12,9 @@ public class Serve {
 		
 		while(true) {
 			Socket cliente = server.accept();
+			
 			HiloServer hilo = new HiloServer(cliente);
+			
 			hilo.start();
 		}
 	}

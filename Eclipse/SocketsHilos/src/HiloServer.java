@@ -11,11 +11,11 @@ public class HiloServer extends Thread {
 	private PrintWriter salida;
 	private BufferedReader entrada;
     private Socket cliente;
-
+ 
     public HiloServer(Socket socket) {
         this.cliente = socket;
     }
-
+    
     public void run() {
     	
         try {
@@ -23,14 +23,14 @@ public class HiloServer extends Thread {
             salida = new PrintWriter(cliente.getOutputStream(), true);
 
             String cadena = entrada.readLine();
-
+            
             if (cadena != null && cadena.startsWith("GET ")) {
                 
             	String[] requestParts = cadena.split(" ");
                 
             	String direccionArchivo = requestParts[1].substring(1);// Elimina el primer carácter: /
-
-            	File archivo = new File(direccionArchivo); // src/archivo.html
+            	
+            	File archivo = new File(direccionArchivo); // src/index.html (Hay que crear el archivo html)
                 
             	if (archivo.exists() && archivo.isFile()) {
                     
@@ -57,12 +57,10 @@ public class HiloServer extends Thread {
                 }
                 
             }
-
+			
         } 
         catch (IOException e) {
-        	
             e.printStackTrace();
-            
         }
         
     }
