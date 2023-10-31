@@ -3,12 +3,15 @@ package com.example.pizzeria;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -29,11 +32,9 @@ public class PizzaPredeterminada extends AppCompatActivity {
     private Servicio servicio;
     private Map<Pizza, Pizza> pizzas;
     private String[] tamanos;
-    private TextView txtNombrePizza, txtIngredientesPizza;
     private Spinner spinner;
-    private LinearLayout linearLayout;
     private ListView listView;
-    private LinearLayout.LayoutParams layoutParams;
+    private Button btnAceptar, btnCancelar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +44,10 @@ public class PizzaPredeterminada extends AppCompatActivity {
         pizzas = servicio.getPizzas();
 
         spinner = findViewById(R.id.spinnerPredeterminada);
-        linearLayout = findViewById(R.id.linearLayoutPredeterminada);
         listView = findViewById(R.id.listViewPizzas);
+
+        btnAceptar = findViewById(R.id.btnAceptarPredeterminada);
+        btnCancelar = findViewById(R.id.btnCancelarPredeterminada);
 
         mostrarPizzas(pizzas);
 
@@ -84,15 +87,18 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
+        listView.setSelector(R.drawable.color_fondo_listview);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Acción a realizar cuando se selecciona un elemento
+
                 String selectedPizza = listaPizzas.get(position);
-                Toast.makeText(getApplicationContext(), "Pizza seleccionada: " + selectedPizza, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Pizza seleccionada: " + selectedPizza, Toast.LENGTH_SHORT).show();
+
+                //TODO
+
             }
         });
-
     }
 
     private void spinnerTamanos(){

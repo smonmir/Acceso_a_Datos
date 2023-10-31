@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Pizzeria"
         tools:targetApi="31">
         <activity
+            android:name=".ConfirmacionPedido"
+            android:exported="false" />
+        <activity
             android:name=".PizzaPredeterminada"
             android:exported="false" />
         <activity
