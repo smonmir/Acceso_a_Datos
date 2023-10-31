@@ -22,4 +22,7 @@
     <string name="txtPizzas">Pizzas</string>
     <string name="txtSeleccionaPizza">Selecciona una pizza:</string>
     <string name="txtConfirmacionPedido">Confirmar Pedido</string>
+    <string name="txtPizzaSeleccionada">Pizza seleccionada:</string>
+    <string name="txtTamano">Tamaño:</string>
+    <string name="txtPrecio">Precio:</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.pizzeria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -31,6 +32,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
     private Servicio servicio;
     private Map<Pizza, Pizza> pizzas;
+    private String pizzaSeleccionada;
     private String[] tamanos;
     private Spinner spinner;
     private ListView listView;
@@ -49,10 +51,24 @@ public class PizzaPredeterminada extends AppCompatActivity {
         btnAceptar = findViewById(R.id.btnAceptarPredeterminada);
         btnCancelar = findViewById(R.id.btnCancelarPredeterminada);
 
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(PizzaPredeterminada.this, ConfirmacionPedido.class);
+                i.putExtra("pizzaSeleccionada", pizzaSeleccionada);
+                startActivity(i);
+            }
+        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         mostrarPizzas(pizzas);
-
         spinnerTamanos();
-
     }
 
 
@@ -68,9 +84,8 @@ public class PizzaPredeterminada extends AppCompatActivity {
             List<String> ingredientes = value.getIngredientes();
             String ingredientesString = TextUtils.join(", ", ingredientes); // Combina los ingredientes con comas
 
-            String StringPizza = "Pizza: " + value.getNombre() + ".\nIngredientes: " + ingredientesString;
-            listaPizzas.add(StringPizza);
-
+            String StringNombrePizza = value.getNombre().toUpperCase() + ".\nIngredientes: " + ingredientesString+".\n";
+            listaPizzas.add(StringNombrePizza);
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaPizzas) {
@@ -95,10 +110,16 @@ public class PizzaPredeterminada extends AppCompatActivity {
                 String selectedPizza = listaPizzas.get(position);
                 //Toast.makeText(getApplicationContext(), "Pizza seleccionada: " + selectedPizza, Toast.LENGTH_SHORT).show();
 
-                //TODO
+                //pizzaSeleccionada = selectedPizza;
+                buscarNombrePizza(selectedPizza);
 
             }
         });
+    }
+
+    private void buscarNombrePizza(String cadena){
+
+        //TODO
     }
 
     private void spinnerTamanos(){
