@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pizzeria.POJO.Pizza;
 import com.example.pizzeria.POJO.tipoTamano;
@@ -74,7 +71,8 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
     public void mostrarPizzas(Map<Pizza, Pizza> pizzas){
 
-        ArrayList<String> listaPizzas = new ArrayList<>();
+        ArrayList<String> listaNombrePizzas = new ArrayList<>();
+        ArrayList<String> listaIngredientePizzas = new ArrayList<>();
 
         Iterator<Map.Entry<Pizza, Pizza>> iterator = pizzas.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -84,18 +82,25 @@ public class PizzaPredeterminada extends AppCompatActivity {
             List<String> ingredientes = value.getIngredientes();
             String ingredientesString = TextUtils.join(", ", ingredientes); // Combina los ingredientes con comas
 
-            String StringNombrePizza = value.getNombre().toUpperCase() + ".\nIngredientes: " + ingredientesString+".\n";
-            listaPizzas.add(StringNombrePizza);
+            String strIngredientePizza = "Ingredientes: "+ingredientesString;
+            listaIngredientePizzas.add(strIngredientePizza);
+
+            String strNombrePizza = value.getNombre().toUpperCase(); //+ ".\nIngredientes: " + ingredientesString+".\n";
+            listaNombrePizzas.add(strNombrePizza);
+
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaPizzas) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaNombrePizzas) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
-                TextView textView = (TextView) view.findViewById(android.R.id.text1);
 
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+                // Obtener la referencia al TextView en el diseño personalizado
+                TextView textView = view.findViewById(android.R.id.text1);
 
+                // Establecer el texto que combina nombre e ingredientes
+                textView.setText(listaNombrePizzas.get(position) + "\n" + listaIngredientePizzas.get(position));
+                
                 return view;
             }
         };
@@ -107,7 +112,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String selectedPizza = listaPizzas.get(position);
+                String selectedPizza = listaNombrePizzas.get(position);
                 //Toast.makeText(getApplicationContext(), "Pizza seleccionada: " + selectedPizza, Toast.LENGTH_SHORT).show();
 
                 //pizzaSeleccionada = selectedPizza;
