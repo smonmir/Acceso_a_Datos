@@ -26,8 +26,9 @@
     <Spinner
         android:id="@+id/spinnerPredeterminada"
         android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="40dp"
+        android:background="@drawable/spinner_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,32 +36,20 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutPredeterminada"
-        android:layout_width="379dp"
-        android:layout_height="395dp"
-        android:layout_marginTop="70dp"
+        android:layout_width="376dp"
+        android:layout_height="391dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPizzas">
-
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/subtitleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
 
         <ListView
             android:id="@+id/listViewPizzas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:choiceMode="singleChoice"/>
+            android:background="@drawable/listview_border"
+            android:choiceMode="singleChoice" />
     </LinearLayout>
 
     <TextView

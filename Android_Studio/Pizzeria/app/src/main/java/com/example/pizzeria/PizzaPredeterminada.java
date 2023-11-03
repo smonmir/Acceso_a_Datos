@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pizzeria.POJO.Pizza;
 import com.example.pizzeria.POJO.tipoTamano;
@@ -29,7 +30,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
     private Servicio servicio;
     private Map<Pizza, Pizza> pizzas;
-    private String pizzaSeleccionada;
+    private String pizzaSeleccionada, tamañoSeleccionado;
     private String[] tamanos;
     private Spinner spinner;
     private ListView listView;
@@ -48,11 +49,17 @@ public class PizzaPredeterminada extends AppCompatActivity {
         btnAceptar = findViewById(R.id.btnAceptarPredeterminada);
         btnCancelar = findViewById(R.id.btnCancelarPredeterminada);
 
+        mostrarPizzas(pizzas);
+        spinnerTamanos();
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                tamañoSeleccionado = (String) spinner.getSelectedItem();
+                
                 Intent i = new Intent(PizzaPredeterminada.this, ConfirmacionPedido.class);
                 i.putExtra("pizzaSeleccionada", pizzaSeleccionada);
+                i.putExtra("tamañoSeleccionado", tamañoSeleccionado);
                 startActivity(i);
             }
         });
@@ -64,8 +71,6 @@ public class PizzaPredeterminada extends AppCompatActivity {
             }
         });
 
-        mostrarPizzas(pizzas);
-        spinnerTamanos();
     }
 
 
@@ -95,10 +100,10 @@ public class PizzaPredeterminada extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
 
-                // Obtener la referencia al TextView en el diseño personalizado
                 TextView textView = view.findViewById(android.R.id.text1);
 
-                // Establecer el texto que combina nombre e ingredientes
+                textView.setTextSize(20);
+
                 textView.setText(listaNombrePizzas.get(position) + "\n" + listaIngredientePizzas.get(position));
                 
                 return view;
@@ -111,21 +116,12 @@ public class PizzaPredeterminada extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 String selectedPizza = listaNombrePizzas.get(position);
-                //Toast.makeText(getApplicationContext(), "Pizza seleccionada: " + selectedPizza, Toast.LENGTH_SHORT).show();
-
-                //pizzaSeleccionada = selectedPizza;
-                buscarNombrePizza(selectedPizza);
-
+                pizzaSeleccionada = selectedPizza;
             }
         });
     }
 
-    private void buscarNombrePizza(String cadena){
-
-        //TODO
-    }
 
     private void spinnerTamanos(){
         tamanos = new String[]{tipoTamano.PEQUENO.getTamano(),tipoTamano.MEDIANO.getTamano(),tipoTamano.GRANDE.getTamano()};
