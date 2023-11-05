@@ -20,19 +20,25 @@ import java.util.logging.Logger;
  */
 public class Server{
     
-    private static ArrayList<Cliente> clientes;
+    private static ArrayList<Socket> clientes = new ArrayList<Socket>();
+    private static ServerSocket server;
+    
+    
+    public static ArrayList<Socket> getClientes(){
+        return clientes;
+    }
     
     public static void main(String args[]) {
         try {
-            ServerSocket server = new ServerSocket(90);
+            server = new ServerSocket(2000);
 
             System.out.println("Iniciando...");
             
             while(true){
                 Socket cliente = server.accept();
-                Cliente hiloCliente = new Cliente(cliente);
+                clientes.add(cliente);
+                HiloServer hiloCliente = new HiloServer(cliente);
                 hiloCliente.start();
-                clientes.add(hiloCliente);
             }
             
         } catch (IOException ex) {
