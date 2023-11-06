@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(i);
         }
         else if(view.getId() == R.id.btnConfigurar){
-
+            Intent i = new Intent(this, Configuracion.class);
+            startActivity(i);
         }
         else if(view.getId() == R.id.btnSalir){
             alertaSalida();

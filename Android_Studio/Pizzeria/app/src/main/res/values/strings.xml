@@ -25,4 +25,7 @@
     <string name="txtPizzaSeleccionada">Pizza seleccionada:</string>
     <string name="txtTamano">Tamaño:</string>
     <string name="txtPrecio">Precio:</string>
+    <string name="txtCambiarFondoColor">Modo oscuro:</string>
+    <string name="swOnOff">On/Off</string>
+    <string name="txtConfigurar">Configurar</string>
 </resources>
