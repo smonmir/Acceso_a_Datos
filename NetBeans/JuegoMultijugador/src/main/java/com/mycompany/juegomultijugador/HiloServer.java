@@ -33,20 +33,21 @@ public class HiloServer extends Thread{
         sumaPos += 40;
         sumaId ++;
         
-        entrada = new DataInputStream(cliente.getInputStream());
-        salida = new DataOutputStream(cliente.getOutputStream());
+        entrada = new DataInputStream(this.cliente.getInputStream());
+        salida = new DataOutputStream(this.cliente.getOutputStream());
     }
     
     
     public void run(){
-
+        enviarDatosCliente(posicionX, posicionY, idCliente);
+        
         while(true){
             try {
-                posicionX = entrada.readInt();
-                posicionY = entrada.readInt();
-                idCliente = entrada.readInt();
+                int x = entrada.readInt();
+                int y = entrada.readInt();
+                int id = entrada.readInt();
                 
-                enviarDatos(posicionX, posicionY, idCliente);
+                enviarDatos(x, y, id);
                 
             } catch (IOException ex) {
                 Logger.getLogger(HiloServer.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,6 +62,7 @@ public class HiloServer extends Thread{
             Socket s1 = Server.getClientes().get(i);
                 try {
                     salida = new DataOutputStream(s1.getOutputStream());
+                    
                     salida.writeInt(x);
                     salida.writeInt(y);
                     salida.writeInt(id);
@@ -70,5 +72,17 @@ public class HiloServer extends Thread{
         }
     }
     
+    public void enviarDatosCliente(int x, int y, int id){
+        Socket s1 = Server.getClientes().get(Server.getClientes().size());
+            try {
+                salida = new DataOutputStream(s1.getOutputStream());
+
+                salida.writeInt(x);
+                salida.writeInt(y);
+                salida.writeInt(id);
+            } catch (IOException ex) {
+                Logger.getLogger(HiloServer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
     
 }
