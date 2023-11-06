@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="azulCeleste">#CCFFFF</color>
+    <color name="colorFondoOn">#333333</color>
+    <color name="colorFondoOff">#FFFFFFFF</color>
+    <color name="colorHint">#CCCCCC</color>
 </resources>

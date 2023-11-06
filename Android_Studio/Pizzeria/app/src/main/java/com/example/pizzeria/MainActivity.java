@@ -4,8 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,10 +20,14 @@ import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnElegirPizza, btnSalir;
+    private Button btnElegirPizza, btnConfigurar, btnSalir;
+    private TextView txtTituloPizzeria;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +35,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         btnElegirPizza = findViewById(R.id.btnElegirPizza);
+        btnConfigurar = findViewById(R.id.btnConfigurar);
         btnSalir = findViewById(R.id.btnSalir);
 
         btnElegirPizza.setOnClickListener(this);
+        btnConfigurar.setOnClickListener(this);
         btnSalir.setOnClickListener(this);
 
     }
@@ -80,4 +88,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onBackPressed() {
         alertaSalida();
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPref = getSharedPreferences("switchModo", Context.MODE_PRIVATE);
+        boolean switchState = sharedPref.getBoolean("switchColor", false);
+
+        if (switchState) {
+            getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOn));
+            changeTextViewColor(R.color.colorFondoOff);
+        } else {
+            getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
+            changeTextViewColor(R.color.colorFondoOn);
+        }
+    }
+
+    private void changeTextViewColor(int colorResId) {
+        txtTituloPizzeria = findViewById(R.id.txtTituloPizzeria);
+
+        int textColor = getResources().getColor(colorResId);
+
+        txtTituloPizzeria.setTextColor(textColor);
+    }
+
+
 }

@@ -2,7 +2,9 @@ package com.example.pizzeria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.TypedValue;
@@ -128,5 +130,19 @@ public class PizzaPredeterminada extends AppCompatActivity {
         ArrayAdapter spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tamanos);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPref = getSharedPreferences("switchModo", Context.MODE_PRIVATE);
+        boolean switchState = sharedPref.getBoolean("switchColor", false);
+
+        if (switchState) {
+            getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOn));
+        } else {
+            getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
+        }
     }
 }

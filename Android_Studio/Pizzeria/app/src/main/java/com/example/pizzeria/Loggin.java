@@ -34,6 +34,7 @@ public class Loggin extends AppCompatActivity {
     private Button btnConfirmar, btnRegistrar;
     private EditText txtUsuario, txtContrasena;
     private CheckBox recordar;
+    private TextView txtViewInicioSesion, txtViewUsuario, txtViewContrasena;
     private Servicio servicio;
 
     @Override
@@ -113,11 +114,8 @@ public class Loggin extends AppCompatActivity {
 
 
     private void recordarUsuario(){
-
         SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-
         String clave = "usuario_"+txtUsuario.getText().toString();
-
         // Recuperar el nombre de usuario si se guardó previamente y establecerlo en el EditText
         String savedUsername = sharedPreferences.getString(clave, "");
         txtUsuario.setText(savedUsername);
@@ -141,5 +139,39 @@ public class Loggin extends AppCompatActivity {
                 editor.apply();
             }
         });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPref = getSharedPreferences("switchModo", Context.MODE_PRIVATE);
+        boolean switchState = sharedPref.getBoolean("switchColor", false);
+
+        if (switchState) {
+            getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOn));
+            changeTextViewColor(R.color.colorFondoOff);
+        } else {
+            getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
+            changeTextViewColor(R.color.colorFondoOn);
+        }
+    }
+
+    private void changeTextViewColor(int colorResId) {
+        txtViewInicioSesion = findViewById(R.id.txtViewInicioSesion);
+        txtViewUsuario = findViewById(R.id.txtViewUsuario);
+        txtViewContrasena = findViewById(R.id.txtViewContrasena);
+
+        int textColor = getResources().getColor(colorResId);
+        int textColorHint =  getResources().getColor(R.color.colorHint);
+
+        txtViewInicioSesion.setTextColor(textColor);
+        txtViewUsuario.setTextColor(textColor);
+        txtViewContrasena.setTextColor(textColor);
+        recordar.setTextColor(textColor);
+        txtUsuario.setTextColor(textColor);
+        txtUsuario.setHintTextColor(textColorHint);
+        txtContrasena.setTextColor(textColor);
+        txtContrasena.setHintTextColor(textColorHint);
     }
 }

@@ -2,6 +2,8 @@ package com.example.pizzeria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -71,6 +73,19 @@ public class PizzaPersonalizada extends AppCompatActivity {
             txtIngredientesPizza.setText("Ingredientes: "+value.getIngredientes().toString());
             txtIngredientesPizza.setTextSize(20);
             linearLayout.addView(txtIngredientesPizza);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPref = getSharedPreferences("switchModo", Context.MODE_PRIVATE);
+        boolean switchState = sharedPref.getBoolean("switchColor", false);
+
+        if (switchState) {
+            getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOn));
+        } else {
+            getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
         }
     }
 
