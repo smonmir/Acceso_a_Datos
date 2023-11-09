@@ -1,15 +1,25 @@
 package com.example.pizzeria;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.AlignmentSpan;
+import android.text.style.ForegroundColorSpan;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,6 +47,8 @@ public class PizzaPredeterminada extends AppCompatActivity {
     private Spinner spinner;
     private ListView listView;
     private Button btnAceptar, btnCancelar;
+    private TextView txtPizzas, txtSeleccionarPizza, txtLista;
+    private boolean modoOscuro = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +70,16 @@ public class PizzaPredeterminada extends AppCompatActivity {
             public void onClick(View v) {
 
                 tamañoSeleccionado = (String) spinner.getSelectedItem();
-                
-                Intent i = new Intent(PizzaPredeterminada.this, ConfirmacionPedido.class);
-                i.putExtra("pizzaSeleccionada", pizzaSeleccionada);
-                i.putExtra("tamañoSeleccionado", tamañoSeleccionado);
-                startActivity(i);
+
+                if(pizzaSeleccionada != null){
+                    Intent i = new Intent(PizzaPredeterminada.this, ConfirmacionPedido.class);
+                    i.putExtra("pizzaSeleccionada", pizzaSeleccionada);
+                    i.putExtra("tamañoSeleccionado", tamañoSeleccionado);
+                    startActivity(i);
+                }
+                else{
+                    alertaIncorrecto();
+                }
             }
         });
 
@@ -102,28 +119,89 @@ public class PizzaPredeterminada extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
 
-                TextView textView = view.findViewById(android.R.id.text1);
+                txtLista = view.findViewById(android.R.id.text1);
 
-                textView.setTextSize(20);
+                txtLista.setTextSize(20);
+                txtLista.setText(listaNombrePizzas.get(position) + "\n" + listaIngredientePizzas.get(position));
 
-                textView.setText(listaNombrePizzas.get(position) + "\n" + listaIngredientePizzas.get(position));
-                
+                if(modoOscuro){
+                    txtLista.setTextColor(Color.WHITE);
+                    txtLista.setBackgroundColor(getResources().getColor(R.color.colorFondoOn));
+                }
+                else{
+                    txtLista.setTextColor(Color.BLACK);
+                    txtLista.setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
+                }
+
                 return view;
             }
         };
 
         listView.setAdapter(adapter);
 
-        listView.setSelector(R.drawable.color_fondo_listview);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedPizza = listaNombrePizzas.get(position);
                 pizzaSeleccionada = selectedPizza;
+
+                if(!modoOscuro){
+                    for (int i = 0; i < listView.getChildCount(); i++) {
+                        if(position == i ){
+                            listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.azulCeleste));
+                        }else{
+                            listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                        }
+                    }
+                }
+                else{
+                    for (int i = 0; i < listView.getChildCount(); i++) {
+                        if(position == i ){
+                            listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.grisClaro));
+                        }else{
+                            listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.colorFondoOn));
+                        }
+                    }
+                }
+
             }
         });
+
     }
 
+
+    private void alertaIncorrecto(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(PizzaPredeterminada.this);
+
+        String message = "Debe seleccionar una pizza.";
+
+        //Cambiar color de texto y alinearlo al centro
+        SpannableString spannableMessage = new SpannableString(message);
+        spannableMessage.setSpan(new ForegroundColorSpan(Color.WHITE), 0, message.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableMessage.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), 0, message.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        builder.setMessage(spannableMessage);
+
+        AlertDialog dialog = builder.create();
+
+        //Cambiar posicion
+        WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
+        layoutParams.y = 800;
+
+        dialog.getWindow().setAttributes(layoutParams);
+        //Cambiar color de fondo
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.alert_dialog);
+
+        dialog.show();
+
+        //Tiempo de duracion del AlertDialog
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 2000);
+    }
 
     private void spinnerTamanos(){
         tamanos = new String[]{tipoTamano.PEQUENO.getTamano(),tipoTamano.MEDIANO.getTamano(),tipoTamano.GRANDE.getTamano()};
@@ -141,8 +219,22 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
         if (switchState) {
             getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOn));
+            changeTextViewColor(R.color.colorFondoOff);
+            modoOscuro = true;
         } else {
             getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
+            changeTextViewColor(R.color.colorFondoOn);
+            modoOscuro = false;
         }
+    }
+
+    private void changeTextViewColor(int colorResId) {
+        txtPizzas = findViewById(R.id.txtPizzas);
+        txtSeleccionarPizza = findViewById(R.id.txtSeleccionarPizza);
+
+        int textColor = getResources().getColor(colorResId);
+
+        txtPizzas.setTextColor(textColor);
+        txtSeleccionarPizza.setTextColor(textColor);
     }
 }
