@@ -58,7 +58,6 @@ public class ConfirmacionPedido extends AppCompatActivity {
 
             precio = buscarPrecioPizza()+"€";
             txtPrecio.setText(precio);
-
         }
         else if ("RepUlt".equals(fuente)) {
             nombrePizza = intent.getStringExtra("nombrePizza");

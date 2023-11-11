@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnConfigurar.setOnClickListener(this);
         btnWeb.setOnClickListener(this);
         btnSalir.setOnClickListener(this);
-
     }
 
     @Override
