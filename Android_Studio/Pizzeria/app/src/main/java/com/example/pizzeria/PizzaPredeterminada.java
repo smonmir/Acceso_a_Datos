@@ -75,6 +75,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
                     Intent i = new Intent(PizzaPredeterminada.this, ConfirmacionPedido.class);
                     i.putExtra("pizzaSeleccionada", pizzaSeleccionada);
                     i.putExtra("tamañoSeleccionado", tamañoSeleccionado);
+                    i.putExtra("fuente", "Predeterminada");
                     startActivity(i);
                 }
                 else{

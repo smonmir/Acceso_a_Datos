@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Pizzeria"
         tools:targetApi="31">
         <activity
+            android:name=".CargarPedido"
+            android:exported="false" />
+        <activity
+            android:name=".UltimoPedido"
+            android:exported="false" />
+        <activity
             android:name=".Configuracion"
             android:exported="false" />
         <activity

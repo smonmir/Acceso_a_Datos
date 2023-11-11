@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 public class Configuracion extends AppCompatActivity {
 
     private Switch modo;
+    private Button btnVolver;
     private TextView textViewConfigurar, textViewModoOscuro;
 
     @Override
@@ -21,6 +23,8 @@ public class Configuracion extends AppCompatActivity {
         setContentView(R.layout.activity_configuracion);
 
         modo = findViewById(R.id.switch1);
+
+        btnVolver = findViewById(R.id.btnVolver);
 
         modo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -38,6 +42,13 @@ public class Configuracion extends AppCompatActivity {
                 editor.putBoolean("switchColor", isChecked);
                 editor.apply();
 
+            }
+        });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

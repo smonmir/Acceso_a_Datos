@@ -28,4 +28,7 @@
     <string name="txtCambiarFondoColor">Modo oscuro:</string>
     <string name="swOnOff">On/Off</string>
     <string name="txtConfigurar">Configurar</string>
+    <string name="txtWeb">Web</string>
+    <string name="txtVolver">Volver</string>
+    <string name="txtRealizandoPedido">Realizando Pedido</string>
 </resources>

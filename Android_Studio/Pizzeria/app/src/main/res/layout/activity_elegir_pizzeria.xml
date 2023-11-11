@@ -7,6 +7,21 @@
     tools:context=".ElegirPizzeria">
 
     <Button
+        android:id="@+id/btnVolver2"
+        android:layout_width="240dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/material_dynamic_primary70"
+        android:text="@string/txtVolver"
+        android:textColor="@color/material_dynamic_neutral20"
+        android:textSize="30sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRepUltPedido" />
+
+    <Button
         android:id="@+id/btnRepUltPedido"
         android:layout_width="0dp"
         android:layout_height="95dp"
@@ -28,7 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="95dp"
         android:layout_marginStart="65dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="156dp"
         android:layout_marginEnd="65dp"
         android:backgroundTint="@color/material_dynamic_primary70"
         android:text="@string/btnPersonalizar"

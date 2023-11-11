@@ -6,25 +6,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.pizzeria.POJO.Pizza;
 import com.example.pizzeria.Servicio.Servicio;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 public class ConfirmacionPedido extends AppCompatActivity {
 
     private Servicio servicio;
     private Map<Pizza, Pizza> pizzas;
-    private String nombrePizza, tamano;
+    private String nombrePizza, tamano, precio;
     private Button btnAceptar, btnCancelar;
-    private TextView txtPizza, txtTamano, txtPrecio;
+
+    private TextView txtPizza, txtTamano, txtPrecio, txtConfirmarPedido, txtPizzaSeleccionada, textViewTamano, txtViewPrecio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +41,57 @@ public class ConfirmacionPedido extends AppCompatActivity {
         btnCancelar = findViewById(R.id.btnCancelarConfirmacion);
 
         txtPizza = findViewById(R.id.txtViewPizzaSelecionada);
-        txtTamano = findViewById(R.id.txtViewTamano);
-        txtPrecio = findViewById(R.id.txtViewPrecio);
+        txtTamano = findViewById(R.id.txtTamano);
+        txtPrecio = findViewById(R.id.txtPrecio);
+
 
         Intent intent = getIntent();
-        nombrePizza = intent.getStringExtra("pizzaSeleccionada");
-        txtPizza.setText(nombrePizza);
+        String fuente = intent.getStringExtra("fuente");
 
-        tamano = intent.getStringExtra("tamañoSeleccionado");
-        txtTamano.setText(tamano);
+        //Comprobar desde que Activity se ha iniciado este activity
+        if ("Predeterminada".equals(fuente)) {
+            nombrePizza = intent.getStringExtra("pizzaSeleccionada");
+            txtPizza.setText(nombrePizza);
 
-        txtPrecio.setText(buscarPrecioPizza()+"€");
-        ;
+            tamano = intent.getStringExtra("tamañoSeleccionado");
+            txtTamano.setText(tamano);
+
+            precio = buscarPrecioPizza()+"€";
+            txtPrecio.setText(precio);
+
+        }
+        else if ("RepUlt".equals(fuente)) {
+            nombrePizza = intent.getStringExtra("nombrePizza");
+            txtPizza.setText(nombrePizza);
+
+            tamano = intent.getStringExtra("tamano");
+            txtTamano.setText(tamano);
+
+            precio = intent.getStringExtra("precio");;
+            txtPrecio.setText(precio);
+        }
 
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                SharedPreferences sharedPreferences = getSharedPreferences("UltPizza", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("pizza", nombrePizza);
+                editor.putString("tamano", tamano);
+                editor.putString("precio", precio);
 
+                //Se eliminan los datos del SharedPreference, para comprobar el alertDialog del activity ElegirPizza
+                /*
+                editor.remove("pizza");
+                editor.remove("tamano");
+                editor.remove("precio");
+                */
+
+                editor.apply();
+
+                Intent i = new Intent(ConfirmacionPedido.this, CargarPedido.class);
+                startActivity(i);
             }
         });
 
@@ -90,9 +126,28 @@ public class ConfirmacionPedido extends AppCompatActivity {
 
         if (switchState) {
             getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOn));
+            changeTextViewColor(R.color.colorFondoOff);
         } else {
             getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
+            changeTextViewColor(R.color.colorFondoOn);
         }
+    }
+
+    private void changeTextViewColor(int colorResId) {
+        txtConfirmarPedido = findViewById(R.id.txtConfirmarPedido);
+        txtPizzaSeleccionada = findViewById(R.id.txtPizzaSeleccionada);
+        textViewTamano = findViewById(R.id.textViewTamano);
+        txtViewPrecio = findViewById(R.id.txtViewPrecio);
+
+        int textColor = getResources().getColor(colorResId);
+
+        txtConfirmarPedido.setTextColor(textColor);
+        txtPizzaSeleccionada.setTextColor(textColor);
+        textViewTamano.setTextColor(textColor);
+        txtViewPrecio.setTextColor(textColor);
+        txtPizza.setTextColor(textColor);
+        txtTamano.setTextColor(textColor);
+        txtPrecio.setTextColor(textColor);
     }
 
 }

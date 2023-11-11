@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -24,9 +25,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnElegirPizza, btnConfigurar, btnSalir;
+    private Button btnElegirPizza, btnConfigurar, btnSalir, btnWeb;
     private TextView txtTituloPizzeria;
-
 
 
     @Override
@@ -36,10 +36,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnElegirPizza = findViewById(R.id.btnElegirPizza);
         btnConfigurar = findViewById(R.id.btnConfigurar);
+        btnWeb = findViewById(R.id.btnWeb);
         btnSalir = findViewById(R.id.btnSalir);
 
         btnElegirPizza.setOnClickListener(this);
         btnConfigurar.setOnClickListener(this);
+        btnWeb.setOnClickListener(this);
         btnSalir.setOnClickListener(this);
 
     }
@@ -53,6 +55,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(view.getId() == R.id.btnConfigurar){
             Intent i = new Intent(this, Configuracion.class);
             startActivity(i);
+        }//"https://pizzerialaroma.com"
+        else if(view.getId() == R.id.btnWeb){
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://www.dominospizza.es/"));
+            startActivity(intent);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
         }
         else if(view.getId() == R.id.btnSalir){
             alertaSalida();
@@ -90,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    //Cambio del color de fondo si se selecciono en configuracion
     @Override
     protected void onResume() {
         super.onResume();
@@ -105,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //Cambio del color de texto si se selecciono en configuracion
     private void changeTextViewColor(int colorResId) {
         txtTituloPizzeria = findViewById(R.id.txtTituloPizzeria);
 
