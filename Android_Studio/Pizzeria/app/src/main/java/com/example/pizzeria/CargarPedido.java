@@ -17,11 +17,13 @@ import android.widget.TextView;
 public class CargarPedido extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView txtRealizandoPedido;
-    private Handler handler = new Handler();;
+    private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cargar_pedido);
+
+        handler = new Handler();
 
         progressBar = findViewById(R.id.progressBar);
 
@@ -56,7 +58,7 @@ public class CargarPedido extends AppCompatActivity {
     }
 
     private void changeTextViewColor(int colorResId) {
-        txtRealizandoPedido = findViewById(R.id.txtConfirmarPedido);
+        txtRealizandoPedido = findViewById(R.id.txtRealizandoPedido);
 
         int textColor = getResources().getColor(colorResId);
 

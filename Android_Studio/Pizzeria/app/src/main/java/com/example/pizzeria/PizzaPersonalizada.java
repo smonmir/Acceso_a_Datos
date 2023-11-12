@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.pizzeria.POJO.Pizza;
+import com.example.pizzeria.POJO.tipoIngrediente;
 import com.example.pizzeria.POJO.tipoTamano;
 import com.example.pizzeria.Servicio.Servicio;
 
@@ -27,8 +29,7 @@ public class PizzaPersonalizada extends AppCompatActivity {
     private TextView txtIngredientesPizza;
     private Spinner spinner;
     private LinearLayout linearLayout;
-    private LinearLayout.LayoutParams layoutParams;
-    private ListView listView;
+    private ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +39,16 @@ public class PizzaPersonalizada extends AppCompatActivity {
         servicio = Servicio.getInstance();
         pizzas = servicio.getPizzas();
 
-        spinner = findViewById(R.id.spinner);
         linearLayout = findViewById(R.id.linearLayout);
-        listView = findViewById(R.id.listView);
+        spinner = findViewById(R.id.spinner);
 
-        mostrarPizzas(pizzas);
+        mostrarIngredientes();
 
+        mostrarTamanos();
+    }
+
+
+    private void mostrarTamanos(){
         tamanos = new String[]{tipoTamano.PEQUENO.getTamano(),tipoTamano.MEDIANO.getTamano(),tipoTamano.GRANDE.getTamano()};
 
         ArrayAdapter spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tamanos);
@@ -52,30 +57,45 @@ public class PizzaPersonalizada extends AppCompatActivity {
 
     }
 
-    public void mostrarPizzas(Map<Pizza, Pizza> pizzas){
-        Iterator<Map.Entry<Pizza, Pizza>> iterator = pizzas.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<Pizza, Pizza> entry = iterator.next();
-            Pizza key = entry.getKey();
-            Pizza value = entry.getValue();
+    public void mostrarIngredientes(){
 
-            layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(300, 100, 0, 0);
+        // Crea un ScrollView que contendrá los TextView
+        ScrollView scrollView = new ScrollView(this);
 
-            txtNombrePizza = new TextView(this);
-            txtNombrePizza.setLayoutParams(layoutParams);
-            txtNombrePizza.setText("Pizza: "+value.getNombre());
-            txtNombrePizza.setTextSize(20);
-            linearLayout.addView(txtNombrePizza);
+        // Crea un LinearLayout para organizar los TextView verticalmente
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-            txtIngredientesPizza = new TextView(this);
-            txtIngredientesPizza.setLayoutParams(layoutParams);
-            txtIngredientesPizza.setText("Ingredientes: "+value.getIngredientes().toString());
-            txtIngredientesPizza.setTextSize(20);
-            linearLayout.addView(txtIngredientesPizza);
+        // Itera sobre los valores del enum y crea un TextView para cada uno
+        for (tipoIngrediente ingredient : tipoIngrediente.values()) {
+            TextView textView = new TextView(this);
+
+            // Configuración del TextView
+            textView.setText(ingredient.toString()); // Muestra el nombre del ingrediente
+            textView.setTextSize(30); // Tamaño del texto en sp
+            textView.setPadding(8, 8, 8, 16); // Añadir relleno en píxeles
+
+            // Configuración de márgenes entre ingredientes
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            layoutParams.setMargins(10, 10, 10, 20); // Establecer márgenes en píxeles (arriba, izquierda, abajo, derecha)
+            textView.setLayoutParams(layoutParams);
+
+            // Agrega el TextView al LinearLayout
+            linearLayout.addView(textView);
         }
+
+        // Agrega el LinearLayout al ScrollView
+        scrollView.addView(linearLayout);
+
+        // Establece el ScrollView como el contenido de la actividad
+        setContentView(scrollView);
+
     }
 
+    /*
     @Override
     protected void onResume() {
         super.onResume();
@@ -88,5 +108,5 @@ public class PizzaPersonalizada extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
         }
     }
-
+    */
 }
