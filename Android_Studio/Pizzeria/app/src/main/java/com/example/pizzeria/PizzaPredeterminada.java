@@ -16,21 +16,18 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.AlignmentSpan;
 import android.text.style.ForegroundColorSpan;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pizzeria.POJO.Pizza;
-import com.example.pizzeria.POJO.tipoTamano;
+import com.example.pizzeria.POJO.TipoTamano;
 import com.example.pizzeria.Servicio.Servicio;
 
 import java.util.ArrayList;
@@ -43,6 +40,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
     private Servicio servicio;
     private Map<Pizza, Pizza> pizzas;
     private String pizzaSeleccionada, tamañoSeleccionado;
+    private int cantIngredientes;
     private String[] tamanos;
     private Spinner spinner;
     private ListView listView;
@@ -69,12 +67,14 @@ public class PizzaPredeterminada extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                tamañoSeleccionado = (String) spinner.getSelectedItem();
-
                 if(pizzaSeleccionada != null){
+                    tamañoSeleccionado = (String) spinner.getSelectedItem();
+                    cantIngredientes = cantIngrediente(pizzaSeleccionada);
+
                     Intent i = new Intent(PizzaPredeterminada.this, ConfirmacionPedido.class);
                     i.putExtra("pizzaSeleccionada", pizzaSeleccionada);
                     i.putExtra("tamañoSeleccionado", tamañoSeleccionado);
+                    i.putExtra("cantIngredientes", cantIngredientes+"");
                     i.putExtra("fuente", "Predeterminada");
                     startActivity(i);
                 }
@@ -93,6 +93,26 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
     }
 
+    private Integer cantIngrediente(String nombrePizza){
+        Iterator<Map.Entry<Pizza, Pizza>> iterator = pizzas.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Pizza, Pizza> entry = iterator.next();
+            Pizza value = entry.getValue();
+
+            if(value.getNombre().equalsIgnoreCase(nombrePizza)){
+                return value.getIngredientes().size();
+            }
+        }
+
+        return 0;
+    }
+
+    private void spinnerTamanos(){
+        tamanos = new String[]{TipoTamano.PEQUENO.getTamano(), TipoTamano.MEDIANO.getTamano(), TipoTamano.GRANDE.getTamano()};
+        ArrayAdapter spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tamanos);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+    }
 
     public void mostrarPizzas(Map<Pizza, Pizza> pizzas){
 
@@ -203,14 +223,6 @@ public class PizzaPredeterminada extends AppCompatActivity {
             }
         }, 2000);
     }
-
-    private void spinnerTamanos(){
-        tamanos = new String[]{tipoTamano.PEQUENO.getTamano(),tipoTamano.MEDIANO.getTamano(),tipoTamano.GRANDE.getTamano()};
-        ArrayAdapter spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tamanos);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerAdapter);
-    }
-
 
     @Override
     protected void onResume() {

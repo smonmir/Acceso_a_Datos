@@ -31,4 +31,7 @@
     <string name="txtWeb">Web</string>
     <string name="txtVolver">Volver</string>
     <string name="txtRealizandoPedido">Realizando pedido</string>
+    <string name="txtIngredientes">Ingredientes:</string>
+    <string name="txtSeleccionarUnaPizza">Selecciona una pizza:</string>
+    <string name="txtCantidad">Cantidad:</string>
 </resources>

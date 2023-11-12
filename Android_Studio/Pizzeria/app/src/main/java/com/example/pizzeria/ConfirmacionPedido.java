@@ -15,16 +15,22 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.pizzeria.POJO.Pizza;
+import com.example.pizzeria.POJO.TipoTamano;
 import com.example.pizzeria.Servicio.Servicio;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class ConfirmacionPedido extends AppCompatActivity {
 
     private Servicio servicio;
     private Map<Pizza, Pizza> pizzas;
-    private String nombrePizza, tamano, precio;
+    private String nombrePizza, tamano, precio, ingredientes;
+    private int cantIngredientes;
+    private ArrayList<String> listaIngredientes;
+
     private Button btnAceptar, btnCancelar;
 
     private TextView txtPizza, txtTamano, txtPrecio, txtConfirmarPedido, txtPizzaSeleccionada, textViewTamano, txtViewPrecio;
@@ -56,6 +62,9 @@ public class ConfirmacionPedido extends AppCompatActivity {
             tamano = intent.getStringExtra("tamañoSeleccionado");
             txtTamano.setText(tamano);
 
+            ingredientes = intent.getStringExtra("cantIngredientes");
+            cantIngredientes = Integer.parseInt(ingredientes);
+
             precio = buscarPrecioPizza()+"€";
             txtPrecio.setText(precio);
         }
@@ -67,6 +76,20 @@ public class ConfirmacionPedido extends AppCompatActivity {
             txtTamano.setText(tamano);
 
             precio = intent.getStringExtra("precio");;
+            txtPrecio.setText(precio);
+        }
+        else if("PersoPizza".equals(fuente)){
+            nombrePizza = intent.getStringExtra("nombrePizza");
+            txtPizza.setText(nombrePizza);
+
+            tamano = intent.getStringExtra("tamano");
+            txtTamano.setText(tamano);
+
+            //listaIngredientes
+            ingredientes = intent.getStringExtra("cantIngredientes");
+            cantIngredientes = Integer.parseInt(ingredientes);
+
+            precio = buscarPrecioPizza()+"€";
             txtPrecio.setText(precio);
         }
 
@@ -111,7 +134,21 @@ public class ConfirmacionPedido extends AppCompatActivity {
             Pizza value = entry.getValue();
 
             if(pizza.equals(value.getNombre().toUpperCase())){
-                return value.getPrecio();
+
+                if(tamano.equalsIgnoreCase("Pequeño")){
+                    value.setTamano(TipoTamano.PEQUENO);
+                }
+                else{
+                    for (TipoTamano tipoTamano : TipoTamano.values()) {
+                        if (tipoTamano.name().equalsIgnoreCase(tamano)) {
+                            value.setTamano(tipoTamano);
+                        }
+                    }
+                }
+
+                //TODO
+                //cambiar el arrayList ingredientes por mapa de <ingredente,cantidad>
+                return value.getPrecio() + cantIngredientes*2;
             }
 
         }

@@ -1,6 +1,7 @@
 package com.example.pizzeria.Dao;
 
 import com.example.pizzeria.POJO.Pizza;
+import com.example.pizzeria.POJO.TipoIngrediente;
 import com.example.pizzeria.POJO.Usuario;
 
 import java.util.ArrayList;
@@ -14,18 +15,15 @@ public class DaoPizza {
 
     private DaoPizza(){
         Pizza pizza;
-        pizza = new Pizza("Barcaboa", new ArrayList<String>(){{add("Salsa barbacoa");add("Queso");add("Tomate");add("Bacon");}});
+        pizza = new Pizza("Barcaboa", new ArrayList<String>(){{add(TipoIngrediente.SALSA_BARBACOA.getIngrediente());add(TipoIngrediente.QUESO_ROQUEFORT.getIngrediente());add(TipoIngrediente.TOMATE.getIngrediente());add(TipoIngrediente.BACON.getIngrediente());}});
         pizzas.put(pizza, pizza);
-
-        pizza = new Pizza("Cuatro quesos", new ArrayList<String>(){{add("Queso1");add("Queso2");add("Queso3");add("Queso4");}});
+        pizza = new Pizza("Cuatro quesos", new ArrayList<String>(){{add(TipoIngrediente.QUESO_ROQUEFORT.getIngrediente());add(TipoIngrediente.QUESO1.getIngrediente());add(TipoIngrediente.QUESO2.getIngrediente());add(TipoIngrediente.QUESO3.getIngrediente());}});
         pizzas.put(pizza, pizza);
-
-        pizza = new Pizza("Jamon york", new ArrayList<String>(){{add("Queso");add("Tomate");add("Jamon york");}});
+        pizza = new Pizza("Jamon york", new ArrayList<String>(){{add(TipoIngrediente.QUESO_ROQUEFORT.getIngrediente());add(TipoIngrediente.TOMATE.getIngrediente());add(TipoIngrediente.JAMON_YORK.getIngrediente());}});
         pizzas.put(pizza, pizza);
-        pizza = new Pizza("Margarita", new ArrayList<String>(){{add("Queso");add("Tomate");add("mozzarella");add("Orégano");}});
+        pizza = new Pizza("Margarita", new ArrayList<String>(){{add(TipoIngrediente.QUESO_ROQUEFORT.getIngrediente());add(TipoIngrediente.TOMATE.getIngrediente());add(TipoIngrediente.MOZZARELLA.getIngrediente());add(TipoIngrediente.OREGANO.getIngrediente());}});
         pizzas.put(pizza, pizza);
-
-        pizza = new Pizza("Carbonara", new ArrayList<String>(){{add("Huevo");add("Tomate");add("Salsa carbonara");add("Parmesano");}});
+        pizza = new Pizza("Carbonara", new ArrayList<String>(){{add(TipoIngrediente.CHAMPINONES.getIngrediente());add(TipoIngrediente.MOZZARELLA.getIngrediente());add(TipoIngrediente.BACON.getIngrediente());add(TipoIngrediente.PARMESANO.getIngrediente());}});
         pizzas.put(pizza, pizza);
 
     }

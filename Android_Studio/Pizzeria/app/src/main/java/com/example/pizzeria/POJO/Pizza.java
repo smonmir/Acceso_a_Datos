@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Pizza {
 
     private String nombre;
-    private tipoTamano tamano;
+    private TipoTamano tamano;
     private double precio;
     private ArrayList<String> ingredientes;
     private boolean ingredienteExtra;
@@ -15,7 +15,6 @@ public class Pizza {
         this.nombre = nombre;
         this.ingredientes = ingredientes;
         this.ingredienteExtra = false;
-        this.precio = ingredientes.size()*2;
     }
 
     public Pizza(){
@@ -26,7 +25,7 @@ public class Pizza {
         return nombre;
     }
 
-    public tipoTamano getTamano() {
+    public TipoTamano getTamano() {
         return tamano;
     }
 
@@ -46,15 +45,15 @@ public class Pizza {
         this.nombre = nombre;
     }
 
-    public void setTamano(tipoTamano tamano) {
-        if(tamano == tipoTamano.PEQUENO){
-            this.precio = 4.5;
+    public void setTamano(TipoTamano tamano) {
+        if(tamano == TipoTamano.PEQUENO){
+            this.precio = 1.5;
         }
-        else if(tamano == tipoTamano.MEDIANO){
-            this.precio = 6.5;
+        else if(tamano == TipoTamano.MEDIANO){
+            this.precio = 2.5;
         }
-        else if(tamano == tipoTamano.GRANDE){
-            this.precio = 8.5;
+        else if(tamano == TipoTamano.GRANDE){
+            this.precio = 3.5;
         }
         this.tamano = tamano;
     }

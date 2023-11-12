@@ -6,5 +6,5 @@
     <color name="colorFondoOn">#333333</color>
     <color name="colorFondoOff">#FFFFFFFF</color>
     <color name="colorHint">#CCCCCC</color>
-    <color name="grisClaro">#BBBBBB</color>
+    <color name="grisClaro">#424242</color>
 </resources>
