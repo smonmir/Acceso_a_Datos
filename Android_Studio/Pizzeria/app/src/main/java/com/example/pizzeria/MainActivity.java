@@ -59,9 +59,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("https://www.dominospizza.es/"));
             startActivity(intent);
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
-            }
         }
         else if(view.getId() == R.id.btnSalir){
             alertaSalida();
