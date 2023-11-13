@@ -247,9 +247,6 @@ public class PizzaPersonalizada extends AppCompatActivity{
 
         int textColor = getResources().getColor(colorResId);
 
-        spinnerTamanos.setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
-        spinnerPizzas.setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
-        spinnerIngredientes.setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
         txtViewPizza.setTextColor(textColor);
         txtViewIngredientes.setTextColor(textColor);
         txtViewCantidad.setTextColor(textColor);

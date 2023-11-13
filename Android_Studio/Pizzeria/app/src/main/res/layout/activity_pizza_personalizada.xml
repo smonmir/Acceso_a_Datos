@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btnAceptar"
         app:layout_constraintTop_toBottomOf="@+id/spinnerTamanos"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.588" />
 
     <Button
         android:id="@+id/btnAceptar"
@@ -41,15 +41,16 @@
         app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerTamanos"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.588" />
 
     <Spinner
         android:id="@+id/spinnerTamanos"
         android:layout_width="280dp"
         android:layout_height="70dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/spinner_border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cantidadIngredienteTextView" />
 
@@ -58,6 +59,7 @@
         android:layout_width="280dp"
         android:layout_height="70dp"
         android:layout_marginTop="28dp"
+        android:background="@drawable/spinner_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +70,7 @@
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="112dp"
         android:backgroundTint="@color/material_dynamic_primary70"
         android:text="+"
         android:textSize="19sp"
@@ -79,7 +81,7 @@
         android:id="@+id/btnDecrementar"
         android:layout_width="60dp"
         android:layout_height="50dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="112dp"
         android:backgroundTint="@color/material_dynamic_primary70"
         android:text="-"
         android:textSize="19sp"
@@ -93,7 +95,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="112dp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="34sp"
@@ -106,6 +108,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/spinner_border"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtViewIngredientes" />
 
@@ -113,7 +116,7 @@
         android:id="@+id/txtViewIngredientes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:text="@string/txtIngredientes"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -136,7 +139,7 @@
         android:id="@+id/txtViewCantidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="44dp"
         android:text="@string/txtCantidad"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
