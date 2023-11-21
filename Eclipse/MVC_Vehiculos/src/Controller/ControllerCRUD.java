@@ -64,7 +64,6 @@ public class ControllerCRUD
 	Vehiculo vehiculo=new Vehiculo();
 	 
 	 
-	 
 	 vehiculo.setMarca(frmVehiculo.getTxtMarca().getText());
 
 	 vehiculo.setModelo(frmVehiculo.getTxtModelo().getText());

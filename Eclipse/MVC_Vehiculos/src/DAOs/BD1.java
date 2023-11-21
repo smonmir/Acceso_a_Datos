@@ -11,14 +11,17 @@ public class BD1 {
 	static ResultSet rs=null;
 	static String bd="dbvehiculo";
 	static String login="root";
-	static String password="";  
+	static String password="root";  
 	static String url="jdbc:mysql://localhost:3306/"+bd;
 	
 	
-	public static Connection enlace (Connection conn) {
+	public static Connection enlace () {
 	    try {
-	        Class.forName("com.mysql.jdbc.Driver");
-	        conn=DriverManager.getConnection(url,login,password);
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn=DriverManager.getConnection(url,login,password);
+			if (conn != null) {
+                System.out.println("Conexión exitosa a la base de datos.");
+            }
 	    } catch (SQLException ex) {
 	    	System.out.println("Excepicon en la conexión");
 	    } catch (ClassNotFoundException ex) {
@@ -27,41 +30,9 @@ public class BD1 {
 	    return conn;
 	}
 	    
-	static ResultSet consulta() {
-	         conn=enlace(conn);
-	        try {
-	            st=conn.createStatement();
-	        } catch (SQLException ex) {
-	            System.out.println("excepcion");
-	    }
-	    try {
-	        rs=st.executeQuery("select * from alumno");
-	    } catch (SQLException ex) {
-	       System.out.println("error en la query");
-	    }
-	    
-	    return rs;
-	}
-	
-	
-	 public static void imprimirConsulta(ResultSet rs){
-	    try {
-	        while (rs.next()){
-	            System.out.print(rs.getInt(1)+"    ");
-	            System.out.print(rs.getString("Nombre")+"     ");
-	            System.out.print(rs.getString("Apellido1")+"     ");
-	            System.out.println(rs.getString("Apellido2"));
-	        }
-	    } catch (SQLException ex) {
-	        System.out.println("Error en el resultset");
-	        ex.printStackTrace();
-	    }
-	 }
 	 
 	 public static void cerrarSesion() {
 	    try {
-	        rs.close();
-	        st.close();
 	        conn.close();
 	    } catch (SQLException ex) {
 	        Logger.getLogger(BD1.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,11 +40,8 @@ public class BD1 {
 	 }
 	public static void main(String[] args) {
 	    
-	    
-	    conn=enlace(conn);
-	    rs=consulta();
-	    imprimirConsulta(rs);
+	    conn=enlace();
 	    cerrarSesion();
 	    
-	    }
+	}
 }

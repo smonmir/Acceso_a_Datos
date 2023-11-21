@@ -1,6 +1,7 @@
 package DAOs;
 
 
+import java.sql.SQLException;
 import java.util.List;
 
 import Recursos.Vehiculo;
