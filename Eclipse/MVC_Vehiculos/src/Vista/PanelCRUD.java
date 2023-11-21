@@ -5,6 +5,11 @@ import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle;
 
 import Controller.ControllerCRUD;
+import javax.swing.JLabel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -84,11 +89,6 @@ public javax.swing.JTextField getTxtModelo() {
 public void setTxtModelo(javax.swing.JTextField txtModelo) {
 	this.txtModelo = txtModelo;
 }
-
-
-				
- 
-private javax.swing.JButton btLeer;
  
 private javax.swing.JButton btRegistrar;
  
@@ -122,17 +122,6 @@ private javax.swing.JTextField txtModelo;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
-        );
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -143,24 +132,30 @@ private javax.swing.JTextField txtModelo;
 private void inicializarPanel() {
 	
 	 jLabel1 = new javax.swing.JLabel();
+	 jLabel1.setBounds(10, 14, 29, 14);
  
 	 jScrollPane1 = new javax.swing.JScrollPane();
+	 jScrollPane1.setBounds(10, 122, 375, 181);
  
 	 tablaVehiculos = new javax.swing.JTable();
  
 	 txtMarca = new javax.swing.JTextField();
+	 txtMarca.setBounds(63, 11, 196, 20);
  
 	 txtModelo = new javax.swing.JTextField();
+	 txtModelo.setBounds(63, 40, 210, 25);
  
 	 jLabel2 = new javax.swing.JLabel();
+	 jLabel2.setBounds(10, 45, 34, 14);
  
 	 jLabelMatricula = new javax.swing.JLabel();
+	 jLabelMatricula.setBounds(10, 79, 43, 14);
  
 	 txtMatricula = new javax.swing.JTextField();
+	 txtMatricula.setBounds(63, 76, 196, 20);
  
 	 btRegistrar = new javax.swing.JButton();
- 
-	 btLeer = new javax.swing.JButton();
+	 btRegistrar.setBounds(437, 11, 77, 23);
  
 	 
 	 jLabel1.setText("Marca");
@@ -208,7 +203,7 @@ private void inicializarPanel() {
  
  
  
-	 jLabelMatricula.setText("Matricula");
+	 jLabelMatricula.setText("Matrícula");
  
 	 txtMatricula.setToolTipText("");
  
@@ -227,66 +222,56 @@ private void inicializarPanel() {
 		 }
  
 	 });
- 
- 
- 
-	 btLeer.setText("Leer");
- 
-	 btLeer.setToolTipText("");
- 
-	 btLeer.setName("btLeer"); // NOI18N
+	 setLayout(null);
+	 
+	 JButton btnNewButton = new JButton("Dar Alta Usuario");
+	 btnNewButton.setBounds(452, 75, 122, 23);
+	 add(btnNewButton);
  
  
  
 	 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
 	 layout.setHorizontalGroup(
-	 	layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+	 	layout.createParallelGroup(Alignment.LEADING)
 	 		.addGroup(layout.createSequentialGroup()
 	 			.addContainerGap()
-	 			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+	 			.addGroup(layout.createParallelGroup(Alignment.LEADING)
 	 				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 375, GroupLayout.PREFERRED_SIZE)
 	 				.addGroup(layout.createSequentialGroup()
-	 					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+	 					.addGroup(layout.createParallelGroup(Alignment.LEADING)
 	 						.addComponent(jLabel1)
 	 						.addComponent(jLabel2)
 	 						.addComponent(jLabelMatricula))
-	 					.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-	 					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-	 						.addComponent(txtModelo)
-	 						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+	 					.addPreferredGap(ComponentPlacement.UNRELATED)
+	 					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+	 						.addComponent(txtModelo, 210, 210, 210)
+	 						.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
 	 							.addComponent(txtMarca)
 	 							.addComponent(txtMatricula, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)))
-	 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-	 					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-	 						.addComponent(btRegistrar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-	 						.addComponent(btLeer, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-	 			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	 					.addPreferredGap(ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+	 					.addComponent(btRegistrar)))
+	 			.addContainerGap(139, Short.MAX_VALUE))
 	 );
 	 layout.setVerticalGroup(
-	 	layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+	 	layout.createParallelGroup(Alignment.LEADING)
 	 		.addGroup(layout.createSequentialGroup()
 	 			.addContainerGap()
-	 			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-	 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+	 			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+	 				.addGroup(layout.createParallelGroup(Alignment.BASELINE)
 	 					.addComponent(jLabel1)
 	 					.addComponent(txtMarca, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 	 				.addComponent(btRegistrar))
-	 			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-	 				.addGroup(layout.createSequentialGroup()
-	 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-	 					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-	 						.addComponent(jLabel2)
-	 						.addComponent(txtModelo, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-	 					.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-	 					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-	 						.addComponent(jLabelMatricula)
-	 						.addComponent(txtMatricula, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-	 				.addGroup(layout.createSequentialGroup()
-	 					.addGap(15)
-	 					.addComponent(btLeer)))
+	 			.addPreferredGap(ComponentPlacement.RELATED)
+	 			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+	 				.addComponent(jLabel2)
+	 				.addComponent(txtModelo, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+	 			.addPreferredGap(ComponentPlacement.UNRELATED)
+	 			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+	 				.addComponent(jLabelMatricula)
+	 				.addComponent(txtMatricula, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 	 			.addGap(26)
 	 			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
-	 			.addContainerGap(32, Short.MAX_VALUE))
+	 			.addContainerGap(139, Short.MAX_VALUE))
 	 );
  
 	 this.setLayout(layout);
@@ -296,7 +281,4 @@ private void inicializarPanel() {
 	 
  
 }// </editor-fold>	
-
-
-
 }
