@@ -29,6 +29,16 @@ public class PanelCRUD extends javax.swing.JPanel {
         initComponents();
         this.inicializarPanel();
         ControllerCRUD.cargarTabla(tablaVehiculos);
+        setLayout(null);
+        add(btnNewButton);
+        add(jScrollPane1);
+        add(jLabel1);
+        add(jLabel2);
+        add(jLabelMatricula);
+        add(txtModelo);
+        add(txtMarca);
+        add(txtMatricula);
+        add(btRegistrar);
         
     }
 
@@ -107,6 +117,7 @@ private javax.swing.JTextField txtMatricula;
 private javax.swing.JTextField txtMarca;
  
 private javax.swing.JTextField txtModelo;
+private JButton btnNewButton;
     /**
      * Creates new form PanelCRUD
      */
@@ -155,7 +166,7 @@ private void inicializarPanel() {
 	 txtMatricula.setBounds(63, 76, 196, 20);
  
 	 btRegistrar = new javax.swing.JButton();
-	 btRegistrar.setBounds(437, 11, 77, 23);
+	 btRegistrar.setBounds(430, 41, 77, 23);
  
 	 
 	 jLabel1.setText("Marca");
@@ -224,57 +235,9 @@ private void inicializarPanel() {
 	 });
 	 setLayout(null);
 	 
-	 JButton btnNewButton = new JButton("Dar Alta Usuario");
-	 btnNewButton.setBounds(452, 75, 122, 23);
+	 btnNewButton = new JButton("Dar Alta Usuario");
+	 btnNewButton.setBounds(410, 85, 122, 23);
 	 add(btnNewButton);
- 
- 
- 
-	 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-	 layout.setHorizontalGroup(
-	 	layout.createParallelGroup(Alignment.LEADING)
-	 		.addGroup(layout.createSequentialGroup()
-	 			.addContainerGap()
-	 			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-	 				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 375, GroupLayout.PREFERRED_SIZE)
-	 				.addGroup(layout.createSequentialGroup()
-	 					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-	 						.addComponent(jLabel1)
-	 						.addComponent(jLabel2)
-	 						.addComponent(jLabelMatricula))
-	 					.addPreferredGap(ComponentPlacement.UNRELATED)
-	 					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-	 						.addComponent(txtModelo, 210, 210, 210)
-	 						.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-	 							.addComponent(txtMarca)
-	 							.addComponent(txtMatricula, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)))
-	 					.addPreferredGap(ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
-	 					.addComponent(btRegistrar)))
-	 			.addContainerGap(139, Short.MAX_VALUE))
-	 );
-	 layout.setVerticalGroup(
-	 	layout.createParallelGroup(Alignment.LEADING)
-	 		.addGroup(layout.createSequentialGroup()
-	 			.addContainerGap()
-	 			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-	 				.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-	 					.addComponent(jLabel1)
-	 					.addComponent(txtMarca, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-	 				.addComponent(btRegistrar))
-	 			.addPreferredGap(ComponentPlacement.RELATED)
-	 			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-	 				.addComponent(jLabel2)
-	 				.addComponent(txtModelo, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-	 			.addPreferredGap(ComponentPlacement.UNRELATED)
-	 			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-	 				.addComponent(jLabelMatricula)
-	 				.addComponent(txtMatricula, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-	 			.addGap(26)
-	 			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
-	 			.addContainerGap(139, Short.MAX_VALUE))
-	 );
- 
-	 this.setLayout(layout);
  
  
  
