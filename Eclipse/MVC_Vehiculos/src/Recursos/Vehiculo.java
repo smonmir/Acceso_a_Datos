@@ -11,12 +11,14 @@ private String modelo;
 
 private String matricula;
 
+private int usuarioid;
+
 public Vehiculo() {
 	
 
 }
 
-public Vehiculo(String marca, String modelo, String matricula) {
+public Vehiculo(String marca, String modelo, String matricula, int idUsuario) {
 	
 	this.marca = marca;
 	this.modelo = modelo;
@@ -46,6 +48,15 @@ public String getMatricula() {
 public void setMatricula(String matricula) {
 	this.matricula = matricula;
 }
+
+public int getUsuarioid() {
+	return usuarioid;
+}
+
+public void setUsuarioid(int idUsuario) {
+	this.usuarioid = idUsuario;
+}
+
 
 @Override
 public String toString() {

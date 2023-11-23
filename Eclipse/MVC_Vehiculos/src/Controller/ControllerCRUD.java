@@ -8,7 +8,9 @@ import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import DAOs.DAOUsuario;
 import DAOs.DAOVehiculoImpl;
+import Recursos.Usuario;
 import Recursos.Vehiculo;
 import Vista.PanelCRUD;
 
@@ -32,6 +34,8 @@ public class ControllerCRUD
 	 modelo.addColumn("Modelo");
 
 	 modelo.addColumn("Matricula");
+	 
+	 modelo.addColumn("usuarioid");
 
 	
     
@@ -46,9 +50,9 @@ public class ControllerCRUD
 
 			registroLeido[1]= vehiculo.getModelo();
 
-			registroLeido[2]=  vehiculo.getMatricula();
+			registroLeido[2]= vehiculo.getMatricula();
 	 
-
+			registroLeido[3]= vehiculo.getUsuarioid();
 
 
 		 modelo.addRow(registroLeido);
@@ -70,6 +74,8 @@ public class ControllerCRUD
 
 	 vehiculo.setMatricula(frmVehiculo.getTxtMatricula().getText());
 	 
+	 vehiculo.setUsuarioid(Integer.parseInt(frmVehiculo.getTxtIdUsuario().getText()));
+	 
 		if (DAOVehiculoImpl.getInstance().insertarVehiculo(vehiculo)!=0)
 		{insertado=true;
 		cargarTabla( tablaVehiculos);
@@ -77,6 +83,30 @@ public class ControllerCRUD
      return insertado;		
 	}
 	
+	public static boolean insertarUsuario(String nombre, String apellido) {
+		
+		boolean insertado = false;
+		
+		Usuario usuario = new Usuario(nombre, apellido);
+		
+		if(DAOUsuario.getInstance().insertarUsuario(usuario)!=0) {
+			insertado=true;
+		}
+		
+		
+		
+		return insertado;
+		
+	}
+	
+	public static List<Usuario> obtenerUsuarios() {
+		
+		List<Usuario> usuarios = DAOUsuario.getInstance().getUsuarios();
+		
+		
+		return usuarios;
+		
+	}
 	
 	
 

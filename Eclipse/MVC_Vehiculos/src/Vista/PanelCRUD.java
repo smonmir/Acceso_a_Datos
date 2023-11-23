@@ -5,11 +5,21 @@ import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle;
 
 import Controller.ControllerCRUD;
+import Recursos.Usuario;
+
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,10 +34,12 @@ import javax.swing.JButton;
 public class PanelCRUD extends javax.swing.JPanel {
 
     private ControllerCRUD controller;
+    private JComboBox cmBoxClientes;
     
-       public PanelCRUD() {
+    public PanelCRUD() {
         initComponents();
         this.inicializarPanel();
+        
         ControllerCRUD.cargarTabla(tablaVehiculos);
         setLayout(null);
         add(btnNewButton);
@@ -39,6 +51,44 @@ public class PanelCRUD extends javax.swing.JPanel {
         add(txtMarca);
         add(txtMatricula);
         add(btRegistrar);
+        
+        JLabel lblNewLabel = new JLabel("Nombre:");
+        lblNewLabel.setBounds(430, 144, 46, 14);
+        add(lblNewLabel);
+        
+        txtNombre = new JTextField();
+        txtNombre.setBounds(430, 169, 86, 20);
+        add(txtNombre);
+        txtNombre.setColumns(10);
+        
+        lblNewLabel_1 = new JLabel("Apellido:");
+        lblNewLabel_1.setBounds(430, 200, 46, 14);
+        add(lblNewLabel_1);
+        
+        txtApellido = new JTextField();
+        txtApellido.setBounds(430, 225, 86, 20);
+        add(txtApellido);
+        txtApellido.setColumns(10);
+       
+        
+        JLabel lblNewLabel_2 = new JLabel("Usuarios:");
+        lblNewLabel_2.setBounds(430, 289, 46, 14);
+        add(lblNewLabel_2);
+        
+        cmBoxClientes = new JComboBox();
+        cmBoxClientes.setBounds(430, 314, 111, 22);
+        add(cmBoxClientes);
+        
+        JLabel lblNewLabel_3 = new JLabel("ID Usuario: ");
+        lblNewLabel_3.setBounds(10, 119, 46, 14);
+        add(lblNewLabel_3);
+        
+        txtIdUsuario = new JTextField();
+        txtIdUsuario.setBounds(63, 114, 86, 20);
+        add(txtIdUsuario);
+        txtIdUsuario.setColumns(10);
+        
+        addComboBox();
         
     }
 
@@ -99,6 +149,17 @@ public javax.swing.JTextField getTxtModelo() {
 public void setTxtModelo(javax.swing.JTextField txtModelo) {
 	this.txtModelo = txtModelo;
 }
+
+
+public javax.swing.JTextField getTxtIdUsuario() {
+	return txtIdUsuario;
+}
+
+
+
+public void setIdUsuario(javax.swing.JTextField txtIdUsuario) {
+	this.txtIdUsuario = txtIdUsuario;
+}
  
 private javax.swing.JButton btRegistrar;
  
@@ -118,12 +179,15 @@ private javax.swing.JTextField txtMarca;
  
 private javax.swing.JTextField txtModelo;
 private JButton btnNewButton;
+private JTextField txtNombre;
+private JLabel lblNewLabel_1;
+private JTextField txtApellido;
+private JTextField txtIdUsuario;
     /**
      * Creates new form PanelCRUD
      */
  
-    
-    
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -146,7 +210,7 @@ private void inicializarPanel() {
 	 jLabel1.setBounds(10, 14, 29, 14);
  
 	 jScrollPane1 = new javax.swing.JScrollPane();
-	 jScrollPane1.setBounds(10, 122, 375, 181);
+	 jScrollPane1.setBounds(10, 171, 375, 181);
  
 	 tablaVehiculos = new javax.swing.JTable();
  
@@ -176,19 +240,19 @@ private void inicializarPanel() {
  
 		 new Object [][] {
  
-			 {null, null, null, null},
+			 {null, null, null, null, null},
  
-			 {null, null, null, null},
+			 {null, null, null, null, null},
  
-			 {null, null, null, null},
+			 {null, null, null, null, null},
  
-			 {null, null, null, null}
+			 {null, null, null, null, null}
  
 		 },
  
 		 new String [] {
  
-			 "Title 1", "Title 2", "Title 3", "Title 4"
+			 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5" 
  
 		 }
 	 ));
@@ -236,12 +300,37 @@ private void inicializarPanel() {
 	 setLayout(null);
 	 
 	 btnNewButton = new JButton("Dar Alta Usuario");
-	 btnNewButton.setBounds(410, 85, 122, 23);
+	 btnNewButton.addActionListener(new ActionListener() {
+	 	public void actionPerformed(ActionEvent e) {
+	 		
+	 		controller.insertarUsuario(txtNombre.getText(), txtApellido.getText());
+	 		
+
+	 		addComboBox();
+	 		
+	 	}
+	 });
+	 btnNewButton.setBounds(410, 110, 122, 23);
 	 add(btnNewButton);
- 
- 
- 
+
 	 
  
 }// </editor-fold>	
+
+
+private void addComboBox() {
+	cmBoxClientes.removeAllItems();
+	
+	List<Usuario> listaUsuarios = controller.obtenerUsuarios();
+	
+	List<String> nombreUsuarios = new ArrayList<String>();
+	
+	for (Usuario usuario: listaUsuarios) {
+		nombreUsuarios.add(usuario.getNombre());
+	}
+	
+    for (String nombre : nombreUsuarios) {
+    	cmBoxClientes.addItem(nombre);
+    }
+}
 }

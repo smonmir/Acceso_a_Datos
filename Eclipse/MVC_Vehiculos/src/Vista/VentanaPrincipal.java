@@ -24,7 +24,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	 */
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 615, 404);
+		setBounds(100, 100, 800, 500);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
