@@ -35,24 +35,23 @@ public class ControllerCRUD
 
 	 modelo.addColumn("Matricula");
 	 
-	 modelo.addColumn("usuarioid");
+	 modelo.addColumn("idusuario");
 
 	
     
    
-	 Object[] registroLeido = new Object [3];
+	 Object[] registroLeido = new Object [4];
 	 
 	 for(Vehiculo vehiculo:lstVehiculos)
 
 	 {	 
-
 			registroLeido[0]= vehiculo.getMarca();
 
 			registroLeido[1]= vehiculo.getModelo();
 
 			registroLeido[2]= vehiculo.getMatricula();
 	 
-			registroLeido[3]= vehiculo.getUsuarioid();
+			registroLeido[3]= vehiculo.getIdUsuario();
 
 
 		 modelo.addRow(registroLeido);
@@ -74,7 +73,9 @@ public class ControllerCRUD
 
 	 vehiculo.setMatricula(frmVehiculo.getTxtMatricula().getText());
 	 
-	 vehiculo.setUsuarioid(Integer.parseInt(frmVehiculo.getTxtIdUsuario().getText()));
+	 vehiculo.setIdUsuario(Integer.parseInt(frmVehiculo.getTxtIdUsuario().getText()));
+	 
+	 
 	 
 		if (DAOVehiculoImpl.getInstance().insertarVehiculo(vehiculo)!=0)
 		{insertado=true;

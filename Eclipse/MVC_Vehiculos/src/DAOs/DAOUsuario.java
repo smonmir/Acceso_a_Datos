@@ -44,7 +44,7 @@ public class DAOUsuario {
         List<Usuario> listaUsuarios = new ArrayList<>();
 
         try {
-            String sql = "SELECT idUsuario, nombre, apellido FROM usuarios";
+            String sql = "SELECT idusuario, nombre, apellido FROM usuarios";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
 

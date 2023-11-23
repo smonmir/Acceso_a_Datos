@@ -33,13 +33,13 @@ public class DAOVehiculoImpl implements IDAOVehiculo {
 
 	@Override
 	public int insertarVehiculo(Vehiculo vehiculo) {
-		String sqlQuery = "INSERT INTO vehiculos (marca, modelo, matricula, idUsuario) VALUES (?, ?, ?, ?)";
+		String sqlQuery = "INSERT INTO vehiculos (marca, modelo, matricula, idusuario) VALUES (?, ?, ?, ?)";
 		
         try (PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
             statement.setString(1, vehiculo.getMarca());
             statement.setString(2, vehiculo.getModelo());
             statement.setString(3, vehiculo.getMatricula());
-            statement.setInt(4, vehiculo.getUsuarioid());
+            statement.setInt(4, vehiculo.getIdUsuario());
 
             if (statement.executeUpdate() > 0) {
                 return 1;
@@ -77,7 +77,7 @@ public class DAOVehiculoImpl implements IDAOVehiculo {
         List<Vehiculo> listaVehiculos = new ArrayList<>();
 
         try {
-            String sql = "SELECT marca, modelo, matricula, idUsuario usuarioid FROM vehiculos";
+            String sql = "SELECT marca, modelo, matricula, idusuario FROM vehiculos";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
 
@@ -85,9 +85,11 @@ public class DAOVehiculoImpl implements IDAOVehiculo {
                 String marca = resultSet.getString("marca");
                 String modelo = resultSet.getString("modelo");
                 String matricula = resultSet.getString("matricula");
-                int idUsuario = resultSet.getInt("idUsuario");
+                int idUsuario = resultSet.getInt("idusuario");
                 
                 Vehiculo vehiculo = new Vehiculo(marca, modelo, matricula, idUsuario);
+                
+                
                 listaVehiculos.add(vehiculo);
             }
 

@@ -11,7 +11,7 @@ private String modelo;
 
 private String matricula;
 
-private int usuarioid;
+private int idUsuario;
 
 public Vehiculo() {
 	
@@ -23,6 +23,7 @@ public Vehiculo(String marca, String modelo, String matricula, int idUsuario) {
 	this.marca = marca;
 	this.modelo = modelo;
 	this.matricula = matricula;
+	this.idUsuario = idUsuario;
 }
 
 public String getMarca() {
@@ -49,12 +50,12 @@ public void setMatricula(String matricula) {
 	this.matricula = matricula;
 }
 
-public int getUsuarioid() {
-	return usuarioid;
+public int getIdUsuario() {
+	return idUsuario;
 }
 
-public void setUsuarioid(int idUsuario) {
-	this.usuarioid = idUsuario;
+public void setIdUsuario(int idUsuario) {
+	this.idUsuario = idUsuario;
 }
 
 
