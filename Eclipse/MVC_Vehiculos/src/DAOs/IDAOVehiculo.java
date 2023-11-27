@@ -15,6 +15,7 @@ import Recursos.Vehiculo;
 	  public int eliminarVehiculos(List<Vehiculo> lstVehiculos);
 	  public Vehiculo getVehiculo(String matricula);
 	  public  List<Vehiculo> getVehiculos();
+	  public int eliminarVehiculo(int idUsuario);
  
 
 

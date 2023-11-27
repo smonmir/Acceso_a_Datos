@@ -33,7 +33,7 @@ public class DAOVehiculoImpl implements IDAOVehiculo {
 
 	@Override
 	public int insertarVehiculo(Vehiculo vehiculo) {
-		String sqlQuery = "INSERT INTO vehiculos (marca, modelo, matricula, idusuario) VALUES (?, ?, ?, ?)";
+		String sqlQuery = "INSERT INTO vehiculos (marca, modelo, matricula, idUsuario) VALUES (?, ?, ?, ?)";
 		
         try (PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
             statement.setString(1, vehiculo.getMarca());
@@ -50,7 +50,24 @@ public class DAOVehiculoImpl implements IDAOVehiculo {
         
         return 0;
 	}
-
+	
+	@Override
+	public int eliminarVehiculo(int idUsuario) {
+		String sqlQuery = "DELETE FROM vehiculos WHERE idUsuario = ?";
+		
+		try(PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
+			statement.setInt(1, idUsuario);
+			
+	        if (statement.executeUpdate() > 0) {
+	            System.out.println("Vehiculos eliminado exitosamente.");
+	            return 1;
+	        }
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
 
 	@Override
@@ -77,7 +94,7 @@ public class DAOVehiculoImpl implements IDAOVehiculo {
         List<Vehiculo> listaVehiculos = new ArrayList<>();
 
         try {
-            String sql = "SELECT marca, modelo, matricula, idusuario FROM vehiculos";
+            String sql = "SELECT marca, modelo, matricula, idUsuario FROM vehiculos";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
 
@@ -85,10 +102,9 @@ public class DAOVehiculoImpl implements IDAOVehiculo {
                 String marca = resultSet.getString("marca");
                 String modelo = resultSet.getString("modelo");
                 String matricula = resultSet.getString("matricula");
-                int idUsuario = resultSet.getInt("idusuario");
+                int idUsuario = resultSet.getInt("idUsuario");
                 
                 Vehiculo vehiculo = new Vehiculo(marca, modelo, matricula, idUsuario);
-                
                 
                 listaVehiculos.add(vehiculo);
             }

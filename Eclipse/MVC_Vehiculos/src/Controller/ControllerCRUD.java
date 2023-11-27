@@ -94,8 +94,6 @@ public class ControllerCRUD
 			insertado=true;
 		}
 		
-		
-		
 		return insertado;
 		
 	}
@@ -104,11 +102,39 @@ public class ControllerCRUD
 		
 		List<Usuario> usuarios = DAOUsuario.getInstance().getUsuarios();
 		
-		
 		return usuarios;
 		
 	}
 	
+	
+	public static boolean eliminarUsuario(String nombre) {
+	
+		boolean eliminado = false;
+		
+		List<Usuario> usuarios = DAOUsuario.getInstance().getUsuarios();
+		List<Vehiculo> vehiculos = DAOVehiculoImpl.getInstance().getVehiculos();
+		
+		int idUsuario = -1;
+		for(int i=0; i<usuarios.size(); i++) {
+			if(usuarios.get(i).getNombre().equals(nombre)) {
+				idUsuario = usuarios.get(i).getId();
+			}
+		}
+		if(idUsuario == -1) {
+			System.out.println("Usuario no encontrado");
+		}
+		else {
+			if(DAOVehiculoImpl.getInstance().eliminarVehiculo(idUsuario)!=0) {
+				System.out.println("Vehiculos eliminados");
+				
+				if(DAOUsuario.getInstance().eliminarUsuario(nombre)!=0) {
+					System.out.println("Usuario eliminado");
+					eliminado=true;
+				}
+			}
+		}
+		return eliminado;
+	}
 	
 
 }

@@ -38,18 +38,35 @@ public class DAOUsuario {
         return 0;
 	}
 	
+	public int eliminarUsuario(String nombre) {
+		
+		String sqlQuery = "DELETE FROM usuarios WHERE nombre = ?";
+		
+		try(PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
+			statement.setString(1, nombre);
+			
+	        if (statement.executeUpdate() > 0) {
+	            System.out.println("Usuario eliminado exitosamente.");
+	            return 1;
+	        }
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
 	public List<Usuario> getUsuarios(){
 		
         List<Usuario> listaUsuarios = new ArrayList<>();
 
         try {
-            String sql = "SELECT idusuario, nombre, apellido FROM usuarios";
+            String sql = "SELECT idUsuario, nombre, apellido FROM usuarios";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-            	int id = resultSet.getInt("idusuario");
+            	int id = resultSet.getInt("idUsuario");
             	String nombre = resultSet.getString("nombre");
                 String apellido = resultSet.getString("apellido");
 
@@ -65,6 +82,9 @@ public class DAOUsuario {
         return listaUsuarios;
         
 	}
+	
+	
+
 	
 	public static DAOUsuario getInstance() {
 		if(dao==null) {

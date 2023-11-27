@@ -88,6 +88,21 @@ public class PanelCRUD extends javax.swing.JPanel {
         add(txtIdUsuario);
         txtIdUsuario.setColumns(10);
         
+        JButton btnEliminarUsuario = new JButton("Eliminar usuario");
+        btnEliminarUsuario.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		//cmBoxClientes
+        		
+        		String nombre = (String) cmBoxClientes.getSelectedItem();
+        		
+        		ControllerCRUD.eliminarUsuario(nombre);
+        		
+        	}
+        });
+        btnEliminarUsuario.setBounds(430, 394, 111, 23);
+        add(btnEliminarUsuario);
+        
         addComboBox();
         
     }
