@@ -1,5 +1,6 @@
 package com.example.pizzeria.Dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,32 +17,12 @@ import java.util.Map;
 
 public class DaoPizza {
 
-    private DatabaseHelper dbHelper;
+    public static Map<Pizza, Pizza> pizzas(Context context) {
 
-    private static DaoPizza daoPizza = null;
-    private Map<Pizza, Pizza> pizzas = new LinkedHashMap<Pizza, Pizza>();
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
 
-    private DaoPizza(Context context){
-        dbHelper = new DatabaseHelper(context);
-
-        Pizza pizza;
-        pizza = new Pizza("Barcaboa", new ArrayList<String>(){{add(TipoIngrediente.SALSA_BARBACOA.getIngrediente());add(TipoIngrediente.QUESO_ROQUEFORT.getIngrediente());add(TipoIngrediente.TOMATE.getIngrediente());add(TipoIngrediente.BACON.getIngrediente());}});
-        pizzas.put(pizza, pizza);
-        pizza = new Pizza("Cuatro quesos", new ArrayList<String>(){{add(TipoIngrediente.QUESO_ROQUEFORT.getIngrediente());add(TipoIngrediente.QUESO1.getIngrediente());add(TipoIngrediente.QUESO2.getIngrediente());add(TipoIngrediente.QUESO3.getIngrediente());}});
-        pizzas.put(pizza, pizza);
-        pizza = new Pizza("Jamon york", new ArrayList<String>(){{add(TipoIngrediente.QUESO_ROQUEFORT.getIngrediente());add(TipoIngrediente.TOMATE.getIngrediente());add(TipoIngrediente.JAMON_YORK.getIngrediente());}});
-        pizzas.put(pizza, pizza);
-        pizza = new Pizza("Margarita", new ArrayList<String>(){{add(TipoIngrediente.QUESO_ROQUEFORT.getIngrediente());add(TipoIngrediente.TOMATE.getIngrediente());add(TipoIngrediente.MOZZARELLA.getIngrediente());add(TipoIngrediente.OREGANO.getIngrediente());}});
-        pizzas.put(pizza, pizza);
-        pizza = new Pizza("Carbonara", new ArrayList<String>(){{add(TipoIngrediente.CHAMPINONES.getIngrediente());add(TipoIngrediente.MOZZARELLA.getIngrediente());add(TipoIngrediente.BACON.getIngrediente());add(TipoIngrediente.PARMESANO.getIngrediente());}});
-        pizzas.put(pizza, pizza);
-
-    }
-
-
-    public Map<Pizza, Pizza> pizzas() {
         Map<Pizza, Pizza> mapaPizzas = new LinkedHashMap<>();
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM pizzas", null);
 
         if (cursor.moveToFirst()) {
@@ -64,25 +45,18 @@ public class DaoPizza {
         return mapaPizzas;
     }
 
+    public void insertarPizza(Context context, String nombre, String tamano, String precio, String ingrediente) {
 
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
 
-
-
-    /*
-    public Map<Pizza, Pizza> pizzas(){
-        return this.pizzas;
+        SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        ContentValues valores = new ContentValues();
+        valores.put("nombre", nombre);
+        valores.put("tamano", tamano);
+        valores.put("precio", precio);
+        valores.put("ingrediente", ingrediente);
+        db.insert("pizzas", null, valores);
+        db.close();
     }
-    */
-
-    public static DaoPizza getInstance(Context context){
-        if(daoPizza == null){
-            return daoPizza = new DaoPizza(context);
-        }
-        else{
-            return daoPizza;
-        }
-    }
-
-
 
 }

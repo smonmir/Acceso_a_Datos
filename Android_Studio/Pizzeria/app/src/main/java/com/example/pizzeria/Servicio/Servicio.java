@@ -14,12 +14,13 @@ import java.util.Map;
 
 public class Servicio {
 
+    //MODIFICAR EL SERVICIO PARA AÑADIR, COGER, ETC... DATOS A LA BASE DE DATOS
     private static Servicio servicio = null;
     private Map<Pizza, Pizza> pizzas;
     private Map<Usuario, Usuario> usuarios;
     private Servicio(Context context){
-        pizzas = DaoPizza.getInstance(context).pizzas();
-        usuarios = DaoUsuario.getInstance().getUsuarios();
+        pizzas = DaoPizza.pizzas(context);
+        usuarios = DaoUsuario.getUsuarios(context);
     }
 
     public Map<Pizza, Pizza> getPizzas(){

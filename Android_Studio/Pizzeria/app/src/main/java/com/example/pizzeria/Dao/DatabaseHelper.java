@@ -1,5 +1,6 @@
 package com.example.pizzeria.Dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,9 +10,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String NOMBRE_BASE_DE_DATOS = "BDPizzeria";
     private static final int VERSION_BASE_DE_DATOS = 1;
 
-    private static DatabaseHelper bdHelper = null;
+    private static DatabaseHelper databaseHelper = null;
 
-    public DatabaseHelper(Context context) {
+    private DatabaseHelper(Context context) {
         super(context, NOMBRE_BASE_DE_DATOS, null, VERSION_BASE_DE_DATOS);
     }
 
@@ -25,12 +26,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "ingrediente TEXT);";
         db.execSQL(queryCrearTablaPizza);
 
+        // Inserción de datos por defecto en la tabla pizzas
+        insertarPizzaDefault(db, "Pizza Margarita", "Mediana", "10.99", "Tomate, Queso, Albahaca");
+        insertarPizzaDefault(db, "Pizza Pepperoni", "Grande", "12.99", "Tomate, Queso, Pepperoni");
+
         String queryCrearTablaUsuario = "CREATE TABLE IF NOT EXISTS usuarios(" +
                 "id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                 "nombre TEXT NOT NULL," +
                 "contrasena TEXT NOT NULL);";
-
         db.execSQL(queryCrearTablaUsuario);
+
+        // Inserción de datos por defecto en la tabla usuarios
+        insertarUsuarioDefault(db, "admin", "admin");
     }
 
     @Override
@@ -38,11 +45,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public static DatabaseHelper getInstance(Context context){
-        if(bdHelper == null){
-            return bdHelper = new DatabaseHelper(context);
+    public static synchronized DatabaseHelper getInstance(Context context) {
+        if (databaseHelper == null) {
+            databaseHelper = new DatabaseHelper(context.getApplicationContext());
         }
-        return bdHelper;
+        return databaseHelper;
+    }
+
+    private void insertarPizzaDefault(SQLiteDatabase db, String nombre, String tamano, String precio, String ingredientes) {
+        ContentValues valores = new ContentValues();
+        valores.put("nombre", nombre);
+        valores.put("tamano", tamano);
+        valores.put("precio", precio);
+        valores.put("ingrediente", ingredientes);
+        db.insert("pizzas", null, valores);
+    }
+
+    private void insertarUsuarioDefault(SQLiteDatabase db, String nombre, String contrasena) {
+        ContentValues valores = new ContentValues();
+        valores.put("nombre", nombre);
+        valores.put("contrasena", contrasena);
+        db.insert("usuarios", null, valores);
     }
 
 
