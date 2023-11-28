@@ -97,6 +97,7 @@ public class PanelCRUD extends javax.swing.JPanel {
         		String nombre = (String) cmBoxClientes.getSelectedItem();
         		
         		ControllerCRUD.eliminarUsuario(nombre);
+        		ControllerCRUD.cargarTabla(tablaVehiculos);
         		
         	}
         });

@@ -52,7 +52,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pizza_predeterminada);
 
-        servicio = Servicio.getInstance();
+        servicio = Servicio.getInstance(this);
         pizzas = servicio.getPizzas();
 
         spinner = findViewById(R.id.spinnerPredeterminada);

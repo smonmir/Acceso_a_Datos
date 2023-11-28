@@ -42,7 +42,7 @@ public class PizzaPersonalizada extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pizza_personalizada);
 
-        servicio = Servicio.getInstance();
+        servicio = Servicio.getInstance(this);
         pizzas = servicio.getPizzas();
 
         spinnerTamanos = findViewById(R.id.spinnerTamanos);

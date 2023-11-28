@@ -9,12 +9,10 @@ public class Pizza {
     private TipoTamano tamano;
     private double precio;
     private ArrayList<String> ingredientes;
-    private boolean ingredienteExtra;
 
     public Pizza(String nombre, ArrayList<String> ingredientes){
         this.nombre = nombre;
         this.ingredientes = ingredientes;
-        this.ingredienteExtra = false;
     }
 
     public Pizza(){
@@ -37,9 +35,6 @@ public class Pizza {
         return ingredientes;
     }
 
-    public boolean isIngredienteExtra() {
-        return ingredienteExtra;
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -66,10 +61,6 @@ public class Pizza {
         this.ingredientes = ingredientes;
     }
 
-    public void setIngredienteExtra(boolean ingredienteExtra) {
-        this.ingredienteExtra = ingredienteExtra;
-    }
-
     @Override
     public String toString() {
         return "Pizza= " + nombre +"\nIngredientes= " + ingredientes.toString()+"\nPrecio= "+precio+"\n";
@@ -80,12 +71,12 @@ public class Pizza {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pizza pizza = (Pizza) o;
-        return Double.compare(pizza.precio, precio) == 0 && ingredienteExtra == pizza.ingredienteExtra && Objects.equals(nombre, pizza.nombre) && tamano == pizza.tamano && Objects.equals(ingredientes, pizza.ingredientes);
+        return Double.compare(pizza.precio, precio) == 0 && Objects.equals(nombre, pizza.nombre) && tamano == pizza.tamano && Objects.equals(ingredientes, pizza.ingredientes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nombre, tamano, precio, ingredientes, ingredienteExtra);
+        return Objects.hash(nombre, tamano, precio, ingredientes);
     }
 
 }

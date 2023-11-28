@@ -50,7 +50,7 @@ public class Loggin extends AppCompatActivity {
 
         recordar = findViewById(R.id.chBoxRecuerdame);
 
-        servicio = Servicio.getInstance();
+        servicio = Servicio.getInstance(this);
 
         recordarUsuario();
 

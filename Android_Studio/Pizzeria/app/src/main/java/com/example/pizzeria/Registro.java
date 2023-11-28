@@ -24,7 +24,7 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        servicio = Servicio.getInstance();
+        servicio = Servicio.getInstance(this);
 
         btnAceptar = findViewById(R.id.btnAceptarRegistro);
         btnCancelar = findViewById(R.id.btnCancelarRegistro);

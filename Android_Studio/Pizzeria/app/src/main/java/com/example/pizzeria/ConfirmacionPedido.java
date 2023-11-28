@@ -40,7 +40,7 @@ public class ConfirmacionPedido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmacion_pedido);
 
-        servicio = Servicio.getInstance();
+        servicio = Servicio.getInstance(this);
         pizzas = servicio.getPizzas();
 
         btnAceptar = findViewById(R.id.btnAceptarConfirmacion);

@@ -1,5 +1,6 @@
 package com.example.pizzeria.Servicio;
 
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.example.pizzeria.Dao.DaoPizza;
@@ -16,8 +17,8 @@ public class Servicio {
     private static Servicio servicio = null;
     private Map<Pizza, Pizza> pizzas;
     private Map<Usuario, Usuario> usuarios;
-    private Servicio(){
-        pizzas = DaoPizza.getInstance().pizzas();
+    private Servicio(Context context){
+        pizzas = DaoPizza.getInstance(context).pizzas();
         usuarios = DaoUsuario.getInstance().getUsuarios();
     }
 
@@ -47,9 +48,9 @@ public class Servicio {
         }
         return existe;
     }
-    public static Servicio getInstance(){
+    public static Servicio getInstance(Context context){
         if(servicio == null){
-            return servicio = new Servicio();
+            return servicio = new Servicio(context);
         }
         else{
             return servicio;
