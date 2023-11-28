@@ -40,6 +40,7 @@ public class DaoPizza {
             } while (cursor.moveToNext());
         }
 
+
         cursor.close();
         db.close();
         return mapaPizzas;

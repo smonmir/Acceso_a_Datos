@@ -14,13 +14,14 @@ import java.util.Map;
 
 public class Servicio {
 
-    //MODIFICAR EL SERVICIO PARA AÑADIR, COGER, ETC... DATOS A LA BASE DE DATOS
     private static Servicio servicio = null;
     private Map<Pizza, Pizza> pizzas;
     private Map<Usuario, Usuario> usuarios;
+
+    private Context context;
     private Servicio(Context context){
+        this.context = context;
         pizzas = DaoPizza.pizzas(context);
-        usuarios = DaoUsuario.getUsuarios(context);
     }
 
     public Map<Pizza, Pizza> getPizzas(){
@@ -31,11 +32,11 @@ public class Servicio {
 
 
     public void anadirUsuario(String usuario, String contrasena){
-        Usuario usu = new Usuario(usuario, contrasena);
-        usuarios.put(usu, usu);
+        DaoUsuario.insertarUsuario(context, usuario, contrasena);
     }
 
     public boolean comprobarUsuario(String nombre, String contrasena){
+        usuarios = DaoUsuario.getUsuarios(context);
         boolean existe = false;
         Iterator<Map.Entry<Usuario, Usuario>> iterator = usuarios.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -49,11 +50,16 @@ public class Servicio {
         }
         return existe;
     }
+
+    public void setContext(Context context){
+        this.context = context;
+    }
     public static Servicio getInstance(Context context){
         if(servicio == null){
             return servicio = new Servicio(context);
         }
         else{
+            servicio.setContext(context);
             return servicio;
         }
     }

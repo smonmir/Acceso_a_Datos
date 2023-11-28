@@ -44,7 +44,7 @@ public class DaoUsuario {
         return mapaUsuarios;
     }
 
-    public void insertarUsuario(Context context, String nombre, String contrasena) {
+    public static void insertarUsuario(Context context, String nombre, String contrasena) {
 
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
 

@@ -16,7 +16,7 @@ public class Pizza {
     }
 
     public Pizza(){
-
+        this.tamano = TipoTamano.PEQUENO;
     }
 
     public String getNombre() {
