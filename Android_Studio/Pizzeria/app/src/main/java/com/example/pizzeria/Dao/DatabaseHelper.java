@@ -12,7 +12,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String NOMBRE_BASE_DE_DATOS = "BDPizzeria";
     private static final int VERSION_BASE_DE_DATOS = 1;
-
     private static DatabaseHelper databaseHelper = null;
 
     private DatabaseHelper(Context context) {
