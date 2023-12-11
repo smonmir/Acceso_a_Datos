@@ -3,12 +3,13 @@ package POJO;
 import Interfaces.OperacionDAO;
 
 public class OperacionesMatematicas {
-
-    private OperacionDAO operacionDAO;
+	
+	private OperacionDAO operacionDAO;
 
     public OperacionesMatematicas(OperacionDAO operacionDAO) {
         this.operacionDAO = operacionDAO;
     }
+    
 
     public int sumar(int a, int b) {
         int resultado = a + b;
@@ -36,4 +37,5 @@ public class OperacionesMatematicas {
         operacionDAO.guardarOperacion("División: " + a + " / " + b + " = " + resultado);
         return resultado;
     }
+    
 }
