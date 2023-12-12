@@ -9,7 +9,7 @@ public class BD1 {
 	static Connection conn=null;
 	static Statement st=null;
 	static ResultSet rs=null;
-	static String bd="dbvehiculo";
+	static String bd="dbvehiculos";
 	static String login="root";
 	static String password="root";  
 	static String url="jdbc:mysql://localhost:3306/"+bd;
@@ -38,10 +38,13 @@ public class BD1 {
 	        Logger.getLogger(BD1.class.getName()).log(Level.SEVERE, null, ex);
 	    }
 	 }
+	 
+	 
 	public static void main(String[] args) {
 	    
 	    conn=enlace();
 	    cerrarSesion();
 	    
 	}
+	
 }

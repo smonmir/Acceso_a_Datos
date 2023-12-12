@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 
 /**
  *
- * @author dam
+ * @author santi
  */
 public class OperacionesMatematicasTest {
     
@@ -45,11 +45,25 @@ public class OperacionesMatematicasTest {
      */
     @Test
     public void testSumar() {
-        System.out.println("sumar");
         // Crear un mock para la clase OperacionesMatematicas
-        
         OperacionesMatematicas operacionesMock = mock(OperacionesMatematicas.class);
-        
+
+        // Configurar el comportamiento esperado del mock
+        when(operacionesMock.sumar(3, 4)).thenReturn(7);
+
+        // Verificar que el método sumar se llama con los argumentos esperados
+        int resultado = operacionesMock.sumar(3, 4);
+        assertEquals(7, resultado);
+
+        // Verificar que el método sumar se llamó exactamente una vez con los argumentos esperados
+        verify(operacionesMock, times(1)).sumar(3, 4);
+    }
+
+    @Test
+    public void testRestar() {
+        // Crear un mock para la clase OperacionesMatematicas
+        OperacionesMatematicas operacionesMock = mock(OperacionesMatematicas.class);
+
         // Configurar el comportamiento esperado del mock
         when(operacionesMock.restar(8, 5)).thenReturn(3);
 
@@ -59,22 +73,6 @@ public class OperacionesMatematicasTest {
 
         // Verificar que el método restar se llamó exactamente una vez con los argumentos esperados
         verify(operacionesMock, times(1)).restar(8, 5);
-    }
-
-    /**
-     * Test of restar method, of class OperacionesMatematicas.
-     */
-    @Test
-    public void testRestar() {
-        System.out.println("restar");
-        int a = 3;
-        int b = 3;
-        OperacionesMatematicas instance = new OperacionesMatematicas();
-        int expResult = 0;
-        int result = instance.restar(a, b);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
     
 }

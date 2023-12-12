@@ -19,7 +19,6 @@ public class Caja<T> {
 	
 	
 	//METODO GENERICO
-	
 	public <M> void imprimirDato(M dato){
 		System.out.println(dato);
 	}

@@ -191,8 +191,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnLlenar.setVisible(true);
         btnVaciar.setVisible(true);
         jTextArea1.setVisible(true);
-        
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLlenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlenarActionPerformed

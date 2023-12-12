@@ -13,7 +13,6 @@ import java.security.MessageDigest;
  */
 public class Piscina {
 
-
     private int nivel;
     public final double MAX_NIVEL;
     
@@ -34,6 +33,7 @@ public class Piscina {
         else{
             nivel=nivel-cantidad;
         }
+        
     }
     
     public void llenar(int cantidad) throws IOException{
