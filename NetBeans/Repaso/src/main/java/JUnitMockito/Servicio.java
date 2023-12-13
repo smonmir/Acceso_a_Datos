@@ -2,19 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.pruebasunitarias;
+package JUnitMockito;
 
 /**
  *
  * @author dam
  */
-public class OperacionesMatematicas {
-    
-    private Servicio servicio;
-    
-    public OperacionesMatematicas(Servicio servicio){
-        
-    }
+public class Servicio {
     
     public int sumar(int a, int b){
         return a+b;
@@ -23,7 +17,5 @@ public class OperacionesMatematicas {
     public int restar(int a, int b){
         return a-b;
     }
-    
-    
     
 }

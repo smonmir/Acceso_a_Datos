@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package JUnit;
+package JUnit.Mock;
 
 /**
  *
- * @author santi
+ * @author dam
  */
-public interface CalculadoraExterna {
-    int multiplicar(int a, int b);
+public interface IServicio {
+    public int multiplicar(int a, int b);
+    public int dividir(int a, int b);
 }

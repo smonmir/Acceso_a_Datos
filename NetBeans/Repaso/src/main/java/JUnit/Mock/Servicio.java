@@ -2,21 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package JUnit;
+package JUnit.Mock;
 
 /**
  *
- * @author santi
+ * @author dam
  */
-public class ServicioFalse implements CalculadoraExterna{
+public class Servicio implements IServicio{
 
-    public ServicioFalse(){
+    public Servicio(){
         
     }
     
     @Override
     public int multiplicar(int a, int b) {
-        return 6;
+        return a*b;
+    }
+
+    @Override
+    public int dividir(int a, int b) {
+        return a/b;
     }
     
 }
