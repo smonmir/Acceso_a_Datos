@@ -225,6 +225,7 @@ public class Streams {
                 .max(Comparator.comparingInt(Curso::getVideos));
 
     
+    
         // Ejemplo 16: Filtrar cursos con duración menor al promedio general
     
         double promedioDuracionGeneral = listaCursos.stream()
