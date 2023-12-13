@@ -120,4 +120,149 @@ public class Streams {
             return resultado;
     }
 
+    
+    /*
+    // Ejemplo 1: Filtrar cursos con duración entre 5 y 10 horas
+    
+        List<Curso> cursosEntre5y10Horas = listaCursos.stream()
+                .filter(c -> c.getDuracion() >= 5 && c.getDuracion() <= 10)
+                .collect(Collectors.toList());
+
+    
+        // Ejemplo 2: Obtener la cantidad total de videos en todos los cursos
+    
+        int totalVideos = listaCursos.stream()
+                .mapToInt(Curso::getVideos)
+                .sum();
+
+    
+        // Ejemplo 3: Contar la cantidad de cursos por cantidad de alumnos
+    
+        Map<Integer, Long> cursosPorAlumnos = listaCursos.stream()
+                .collect(Collectors.groupingBy(Curso::getAlumnos, Collectors.counting()));
+
+    
+        // Ejemplo 4: Encontrar el curso con la duración más corta
+    
+        Optional<Curso> cursoDuracionMasCorta = listaCursos.stream()
+                .min(Comparator.comparingDouble(Curso::getDuracion));
+
+    
+        // Ejemplo 5: Concatenar los títulos de los cursos con duración mayor a 8 horas
+    
+        String titulosCursosMayorA8Horas = listaCursos.stream()
+                .filter(c -> c.getDuracion() > 8)
+                .map(Curso::getTitulo)
+                .collect(Collectors.joining(", "));
+
+    
+        // Ejemplo 6: Obtener el promedio de alumnos por curso
+    
+        double promedioAlumnosPorCurso = listaCursos.stream()
+                .mapToInt(Curso::getAlumnos)
+                .average()
+                .orElse(0);
+
+    
+        // Ejemplo 7: Dividir cursos en dos listas, una para cursos cortos y otra para cursos largos
+    
+        Map<Boolean, List<Curso>> cursosCortosYlargos = listaCursos.stream()
+                .collect(Collectors.partitioningBy(c -> c.getDuracion() <= 5));
+
+    
+        // Ejemplo 8: Convertir la lista de cursos a un mapa usando el título como clave
+    
+        Map<String, Curso> mapaCursosPorTitulo = listaCursos.stream()
+                .collect(Collectors.toMap(Curso::getTitulo, curso -> curso));
+
+    
+        // Ejemplo 9: Calcular el total de duración de cursos con más de 100 alumnos
+    
+        double totalDuracionCursosConMasDe100Alumnos = listaCursos.stream()
+                .filter(c -> c.getAlumnos() > 100)
+                .mapToDouble(Curso::getDuracion)
+                .sum();
+
+    
+        // Ejemplo 10: Encontrar el curso más popular (con más alumnos inscritos)
+    
+        Optional<Curso> cursoMasPopular = listaCursos.stream()
+                .max(Comparator.comparingInt(Curso::getAlumnos));
+
+    
+        // Ejemplo 11: Obtener la lista de cursos ordenados por cantidad de alumnos
+    
+        List<Curso> cursosOrdenadosPorAlumnos = listaCursos.stream()
+                .sorted(Comparator.comparingInt(Curso::getAlumnos))
+                .collect(Collectors.toList());
+
+    
+        // Ejemplo 12: Verificar si hay cursos con duración mayor a 20 horas
+    
+        boolean hayCursosMayorA20Horas = listaCursos.stream()
+                .anyMatch(c -> c.getDuracion() > 20);
+
+    
+        // Ejemplo 13: Sumar la duración de cursos con más de 50 videos
+    
+        double duracionTotalCursosConMasDe50Videos = listaCursos.stream()
+                .filter(c -> c.getVideos() > 50)
+                .mapToDouble(Curso::getDuracion)
+                .sum();
+
+    
+        // Ejemplo 14: Obtener la lista de títulos de cursos distintos
+    
+        List<String> titulosCursosDistintos = listaCursos.stream()
+                .map(Curso::getTitulo)
+                .distinct()
+                .collect(Collectors.toList());
+
+    
+        // Ejemplo 15: Obtener el curso con la mayor cantidad de videos
+    
+        Optional<Curso> cursoConMasVideos = listaCursos.stream()
+                .max(Comparator.comparingInt(Curso::getVideos));
+
+    
+        // Ejemplo 16: Filtrar cursos con duración menor al promedio general
+    
+        double promedioDuracionGeneral = listaCursos.stream()
+                .mapToDouble(Curso::getDuracion)
+                .average()
+                .orElse(0);
+        List<Curso> cursosDuracionMenorAlPromedio = listaCursos.stream()
+                .filter(c -> c.getDuracion() < promedioDuracionGeneral)
+                .collect(Collectors.toList());
+
+    
+        // Ejemplo 17: Contar la cantidad de cursos con títulos que contienen la palabra "Java"
+    
+        long cantidadCursosConJavaEnElTitulo = listaCursos.stream()
+                .filter(c -> c.getTitulo().contains("Java"))
+                .count();
+
+    
+        // Ejemplo 18: Obtener la duración total de cursos con al menos 200 alumnos
+    
+        double duracionTotalCursosConMasDe200Alumnos = listaCursos.stream()
+                .filter(c -> c.getAlumnos() > 200)
+                .mapToDouble(Curso::getDuracion)
+                .sum();
+
+    
+        // Ejemplo 19: Dividir cursos en grupos según la duración
+    
+        Map<Integer, List<Curso>> cursosPorDuracion = listaCursos.stream()
+                .collect(Collectors.groupingBy(c -> (int) c.getDuracion()));
+
+    
+        // Ejemplo 20: Obtener la cantidad total de alumnos en todos los cursos
+    
+        long totalAlumnos = listaCursos.stream()
+                .mapToLong(Curso::getAlumnos)
+                .sum();
+        
+        */
+        
 }
