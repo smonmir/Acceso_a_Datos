@@ -26,10 +26,28 @@ public class Connecion {
     static String password="root";  
     static String url="jdbc:mysql://localhost:3306/"+bd;
 
-
-    public static Connection enlace () {
+    /*
+    public Connecion() throws SQLException{
+        conn=DriverManager.getConnection(url,login,password);
+    }
+    
+    public Connection getConnexion(){
+        return conn;
+    }
+    
+    public void disconect() throws SQLException{
+        if(conn != null){
+            System.out.println("Cerrando bd");
+            conn.close();
+            System.out.println("bd cerrado");
+        }
+    }
+*/
+    
+    public static Connection enlace (){
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("com.mysql.cj.jdbc.Driver");
             conn=DriverManager.getConnection(url,login,password);
             if (conn != null) {
             System.out.println("Conexión exitosa a la base de datos.");
@@ -56,4 +74,5 @@ public class Connecion {
         cerrarSesion();
 
     }
+
 }
