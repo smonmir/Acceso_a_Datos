@@ -35,6 +35,7 @@ public class CargarPedido extends AppCompatActivity {
 
         handler = new Handler();
 
+
         cargaTask = new SimularCargaTask();
 
         cargaTask.execute();
@@ -45,6 +46,22 @@ public class CargarPedido extends AppCompatActivity {
                 cargaTask.cancel(true);
             }
         });
+
+
+        //SIN ASYNCTASK
+        /*
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(CargarPedido.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
+                finishAffinity();
+            }
+        }, 2000);
+        */
+
     }
 
     private class SimularCargaTask extends AsyncTask<Void, Void, Void>{
@@ -108,4 +125,7 @@ public class CargarPedido extends AppCompatActivity {
         txtRealizandoPedido.setTextColor(textColor);
         progressBar.getIndeterminateDrawable().setColorFilter(textColor, PorterDuff.Mode.SRC_IN);
     }
+
+
+
 }
