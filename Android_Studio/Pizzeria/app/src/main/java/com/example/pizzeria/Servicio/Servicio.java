@@ -54,6 +54,7 @@ public class Servicio {
     public void setContext(Context context){
         this.context = context;
     }
+
     public static Servicio getInstance(Context context){
         if(servicio == null){
             return servicio = new Servicio(context);

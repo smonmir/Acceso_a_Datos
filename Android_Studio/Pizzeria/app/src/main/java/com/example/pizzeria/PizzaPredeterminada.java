@@ -62,6 +62,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
         btnCancelar = findViewById(R.id.btnCancelarPredeterminada);
 
         mostrarPizzas(pizzas);
+
         spinnerTamanos();
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +104,6 @@ public class PizzaPredeterminada extends AppCompatActivity {
                 return value.getIngredientes().size();
             }
         }
-
         return 0;
     }
 
@@ -120,6 +120,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
         ArrayList<String> listaIngredientePizzas = new ArrayList<>();
 
         Iterator<Map.Entry<Pizza, Pizza>> iterator = pizzas.entrySet().iterator();
+
         while (iterator.hasNext()) {
             Map.Entry<Pizza, Pizza> entry = iterator.next();
             Pizza value = entry.getValue();
@@ -132,7 +133,6 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
             String strNombrePizza = value.getNombre().toUpperCase(); //+ ".\nIngredientes: " + ingredientesString+".\n";
             listaNombrePizzas.add(strNombrePizza);
-
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaNombrePizzas) {
@@ -153,7 +153,6 @@ public class PizzaPredeterminada extends AppCompatActivity {
                     txtLista.setTextColor(Color.BLACK);
                     txtLista.setBackgroundColor(getResources().getColor(R.color.colorFondoOff));
                 }
-
                 return view;
             }
         };

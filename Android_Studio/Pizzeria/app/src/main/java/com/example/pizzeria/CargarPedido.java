@@ -61,7 +61,6 @@ public class CargarPedido extends AppCompatActivity {
                     else{
                         Thread.sleep(500);
                     }
-
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
