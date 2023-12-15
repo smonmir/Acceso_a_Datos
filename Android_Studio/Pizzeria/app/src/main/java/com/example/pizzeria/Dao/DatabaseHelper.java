@@ -26,6 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "tamano TEXT, " +
                 "precio TEXT, " +
                 "ingredientes TEXT);";
+        //FOREIGN KEY (id_padre) REFERENCES tabla_padre(id)
         db.execSQL(queryCrearTablaPizza);
 
         insertarPizzaDefault(db, "Margarita", "Mediana", "10.99", "Tomate, Queso, Albahaca");

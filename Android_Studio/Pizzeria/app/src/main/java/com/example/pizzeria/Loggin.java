@@ -76,7 +76,6 @@ public class Loggin extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void alertaIncorrecto(){

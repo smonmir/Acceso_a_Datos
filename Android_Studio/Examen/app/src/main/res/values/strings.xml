@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Examen</string>
+    <string name="txtJugar">Jugar</string>
+    <string name="txtPuntuaciones">Puntuaciones</string>
+    <string name="txtConfigurar">Configurar</string>
+    <string name="txtSalir">Salir</string>
+    <string name="txtValidar">Validar</string>
+    <string name="txtVolver">Volver</string>
+    <string name="txtPuntuacion">Puntuación</string>
+    <string name="txtDificultad">Elegir Dificultad</string>
+    <string name="txtListarPalabras">Listar palabras</string>
+</resources>
