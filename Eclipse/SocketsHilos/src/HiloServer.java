@@ -24,6 +24,8 @@ public class HiloServer extends Thread {
 
             String cadena = entrada.readLine();
             
+            System.out.println(cadena);
+            
             if (cadena != null && cadena.startsWith("GET ")) {
                 
             	String[] requestParts = cadena.split(" ");

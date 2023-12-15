@@ -59,7 +59,11 @@ public class ServidorChat extends JFrame implements ActionListener{
 	}
 	
 	public static void main(String[] args) throws IOException {
-		servidor = new ServerSocket(PUERTO);
+		
+		
+		servidor = new ServerSocket(PUERTO);//44444
+		
+		
 		System.out.println("Servidor iniciado...");
 		ServidorChat pantalla = new ServidorChat();
 		pantalla.setBounds(0, 0, 540, 400);
