@@ -20,10 +20,29 @@ public class HiloPintar extends Thread{
     }
 
     public void run(){
-        Canvas canvas = null;
+        Canvas canvas;
 
-        view.draw(canvas);
+        while(run){
+            canvas = null;
+            try {
+                canvas = sh.lockCanvas(null);
+                if(canvas != null){
+                    synchronized (sh){
+                        //view.postInvalidate();
+                        view.draw(canvas);
+                    }
+                }
+            }
+            finally {
+                if(canvas != null){
+                    sh.unlockCanvasAndPost(canvas);
+                }
 
+            }
+        }
     }
+
+
+
 
 }

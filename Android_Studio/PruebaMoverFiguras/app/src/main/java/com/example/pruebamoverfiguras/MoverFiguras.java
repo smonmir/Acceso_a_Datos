@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -14,19 +15,67 @@ import androidx.annotation.NonNull;
 public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback{
 
     private HiloPintar hiloPintar;
+    private Paint paint;
+    private Rectangulo rectangulo;
+    private Circulo circulo;
+    private boolean encimaRectangulo = false;
+    private boolean encimaCirculo= false;
+
     public MoverFiguras(Context context){
         super(context);
-        getHolder().addCallback(this);
+
+        rectangulo = new Rectangulo(100, 100, 200, 300);
+        circulo = new Circulo(500, 500, 80);
+        paint = new Paint();
+
+        //getHolder().addCallback(this);
         setBackgroundColor(Color.BLACK);
+
     }
 
     @Override
     public void onDraw(Canvas canvas){
+        paint.setAntiAlias(true);
+        canvas.drawColor(Color.WHITE);
 
+        paint.setColor(Color.BLUE);
+        canvas.drawCircle(circulo.getX(), circulo.getY(), circulo.getRadio(), paint);
+
+        paint.setColor(Color.RED);
+        canvas.drawRect(rectangulo.getX(), rectangulo.getY(), rectangulo.getX()+rectangulo.getAncho(), rectangulo.getY()+rectangulo.getAncho(), paint);
+        invalidate();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event){
+
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                if(rectangulo.hovered(event.getX(), event.getY())){
+                    encimaRectangulo = true;
+                }
+                if(circulo.hovered(event.getX(), event.getY())){
+                    encimaCirculo = true;
+                }
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if(encimaRectangulo){
+                    rectangulo.setX(event.getX());
+                    rectangulo.setY(event.getY());
+                }
+                if(encimaCirculo){
+                    circulo.setX(event.getX());
+                    circulo.setY(event.getY());
+                }
+                break;
+            case MotionEvent.ACTION_CANCEL:
+
+                break;
+            case MotionEvent.ACTION_UP:
+                encimaRectangulo = false;
+                encimaCirculo = false;
+                break;
+        }
         return true;
     }
 
@@ -45,7 +94,19 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback{
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
+        boolean retry = true;
 
+        hiloPintar.setRunning(false);
+
+        while(retry){
+            try{
+                hiloPintar.join();
+                retry = false;
+            }
+            catch (InterruptedException e){
+
+            }
+        }
     }
 
 }
