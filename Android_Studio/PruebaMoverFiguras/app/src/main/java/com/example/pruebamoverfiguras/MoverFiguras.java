@@ -20,6 +20,7 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback{
     private Circulo circulo;
     private boolean encimaRectangulo = false;
     private boolean encimaCirculo= false;
+    private float iniX, iniY;
 
     public MoverFiguras(Context context){
         super(context);
@@ -53,6 +54,8 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback{
             case MotionEvent.ACTION_DOWN:
                 if(rectangulo.hovered(event.getX(), event.getY())){
                     encimaRectangulo = true;
+                    iniX = event.getX();
+                    iniY = event.getY();
                 }
                 if(circulo.hovered(event.getX(), event.getY())){
                     encimaCirculo = true;
@@ -60,8 +63,10 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback{
                 break;
             case MotionEvent.ACTION_MOVE:
                 if(encimaRectangulo){
-                    rectangulo.setX(event.getX());
-                    rectangulo.setY(event.getY());
+                    rectangulo.setX(rectangulo.getX()-iniX+event.getX());
+                    rectangulo.setY(rectangulo.getY()-iniY+event.getY());
+                    iniX = event.getX();
+                    iniY = event.getY();
                 }
                 if(encimaCirculo){
                     circulo.setX(event.getX());

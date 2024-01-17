@@ -18,6 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, NOMBRE_BASE_DE_DATOS, null, VERSION_BASE_DE_DATOS);
     }
 
+    //CREAR LAS TABLAS
     @Override
     public void onCreate(SQLiteDatabase db) {
         String queryCrearTablaPizza = "CREATE TABLE IF NOT EXISTS pizzas (" +
@@ -51,6 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    //METODOS PARA INSERTAR AL CREAR LAS TABLAS
     private void insertarPizzaDefault(SQLiteDatabase db, String nombre, String tamano, String precio, String ingredientes) {
         ContentValues valores = new ContentValues();
         valores.put("nombre", nombre);
@@ -67,6 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert("usuarios", null, valores);
     }
 
+    //PATRON SINGLETON
     public static synchronized DatabaseHelper getInstance(Context context) {
         if (databaseHelper == null) {
             databaseHelper = new DatabaseHelper(context.getApplicationContext());
