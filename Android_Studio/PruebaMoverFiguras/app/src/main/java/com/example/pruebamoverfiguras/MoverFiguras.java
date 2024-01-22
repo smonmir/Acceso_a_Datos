@@ -12,6 +12,8 @@ import android.view.SurfaceView;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+
 public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback{
 
     private HiloPintar hiloPintar;
@@ -21,12 +23,15 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback{
     private boolean encimaRectangulo = false;
     private boolean encimaCirculo= false;
     private float iniX, iniY;
+    private ArrayList<Figura> figura;
 
     public MoverFiguras(Context context){
         super(context);
-
+        figura = new ArrayList<Figura>();
         rectangulo = new Rectangulo(100, 100, 200, 300);
+        figura.add(rectangulo);
         circulo = new Circulo(500, 500, 80);
+        figura.add(circulo);
         paint = new Paint();
 
         //getHolder().addCallback(this);
