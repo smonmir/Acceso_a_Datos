@@ -105,9 +105,7 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback{
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
         boolean retry = true;
-
         hiloPintar.setRunning(false);
-
         while(retry){
             try{
                 hiloPintar.join();
