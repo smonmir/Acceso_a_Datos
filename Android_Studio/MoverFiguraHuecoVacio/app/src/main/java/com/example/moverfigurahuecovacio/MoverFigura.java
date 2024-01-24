@@ -4,16 +4,21 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
 public class MoverFigura extends SurfaceView implements SurfaceHolder.Callback {
-
     private Paint paint;
     private HiloPintar hiloPintar;
     private ArrayList<Figura> figuras;
@@ -29,6 +34,8 @@ public class MoverFigura extends SurfaceView implements SurfaceHolder.Callback {
         figuras.add(circulo);
 
         setBackgroundColor(Color.BLACK);
+
+
     }
     @Override
     public void onDraw(Canvas canvas){
@@ -70,7 +77,8 @@ public class MoverFigura extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
         hiloPintar = new HiloPintar(getHolder(), this);
         hiloPintar.setRunning(true);
-        hiloPintar.run();
+        hiloPintar.start();
+
     }
 
     @Override
