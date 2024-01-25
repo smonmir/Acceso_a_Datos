@@ -23,15 +23,19 @@ public class MoverFigura extends SurfaceView implements SurfaceHolder.Callback {
     private HiloPintar hiloPintar;
     private ArrayList<Figura> figuras;
     private Circulo circulo, circuloVacio;
+    private Rectangulo rectangulo, rectanguloVacio;
 
     public MoverFigura(Context context){
         super(context);
         paint = new Paint();
         figuras = new ArrayList<Figura>();
 
-        circulo = new Circulo(200, 500, 150);
-        circuloVacio = new Circulo(900, 500, 150);
+        circulo = new Circulo(200, 300, 150);
+        circuloVacio = new Circulo(900, 300, 150);
         figuras.add(circulo);
+
+        rectangulo = new Rectangulo(350, 700, 50, 900);
+        rectanguloVacio = new Rectangulo(1050, 700, 750, 900);
 
         setBackgroundColor(Color.BLACK);
 
@@ -47,6 +51,12 @@ public class MoverFigura extends SurfaceView implements SurfaceHolder.Callback {
 
         paint.setColor(Color.BLUE);
         canvas.drawCircle(circulo.getX(), circulo.getY(), circulo.getRadio(), paint);
+
+        paint.setColor(Color.BLUE);
+        canvas.drawRect(rectangulo.getX(), rectangulo.getY(), rectangulo.getAncho(), rectangulo.getAlto(), paint);
+
+        paint.setColor(Color.BLUE);
+        canvas.drawRect(rectanguloVacio.getX(), rectanguloVacio.getY(), rectanguloVacio.getAncho(), rectanguloVacio.getAlto(), paint);
 
         invalidate();
     }
