@@ -2,6 +2,8 @@ package com.example.pruebamoverfiguras;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -94,6 +96,7 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback{
         hiloPintar = new HiloPintar(getHolder(), this);
         hiloPintar.setRunning(true);
         hiloPintar.run();
+
 
     }
 

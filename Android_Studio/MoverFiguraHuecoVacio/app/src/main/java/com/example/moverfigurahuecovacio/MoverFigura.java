@@ -24,6 +24,7 @@ public class MoverFigura extends SurfaceView implements SurfaceHolder.Callback {
     private ArrayList<Figura> figuras;
     private Circulo circulo, circuloVacio;
     private Rectangulo rectangulo, rectanguloVacio;
+    private Button boton;
 
     public MoverFigura(Context context){
         super(context);
@@ -37,15 +38,22 @@ public class MoverFigura extends SurfaceView implements SurfaceHolder.Callback {
         rectangulo = new Rectangulo(350, 700, 50, 900);
         rectanguloVacio = new Rectangulo(1050, 700, 750, 900);
 
+        boton = new Button(context);
+        boton.setText("Pulsar");
+        boton.setX(100);
+        boton.setY(100);
+
         setBackgroundColor(Color.BLACK);
 
 
     }
     @Override
     public void onDraw(Canvas canvas){
+
         paint.setAntiAlias(true);
         canvas.drawColor(Color.WHITE);
 
+        
         paint.setColor(Color.BLACK);
         canvas.drawCircle(circuloVacio.getX(), circuloVacio.getY(), circuloVacio.getRadio(), paint);
 
@@ -57,6 +65,8 @@ public class MoverFigura extends SurfaceView implements SurfaceHolder.Callback {
 
         paint.setColor(Color.BLUE);
         canvas.drawRect(rectanguloVacio.getX(), rectanguloVacio.getY(), rectanguloVacio.getAncho(), rectanguloVacio.getAlto(), paint);
+
+
 
         invalidate();
     }
@@ -89,6 +99,11 @@ public class MoverFigura extends SurfaceView implements SurfaceHolder.Callback {
         hiloPintar.setRunning(true);
         hiloPintar.start();
 
+        /*
+        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.imagen);
+        Bitmap img = bmp.createScaledBitmap(bmp, getWidth() * 0.2, getHeight() * 0.2, true);
+        Canvas.drawBitmap(img, posx, posy, null);
+        */
     }
 
     @Override
