@@ -15,6 +15,12 @@ public class Sprite {
     }
 
     private void update(){
+        if(x > gameView.getWidth() - bitmap.getWidth() - xSpeed){
+            xSpeed = -5;
+        }
+        if(x + xSpeed < 0){
+            xSpeed = 5;
+        }
         x = x + xSpeed;
     }
 

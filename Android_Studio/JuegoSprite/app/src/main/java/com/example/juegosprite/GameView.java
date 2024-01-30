@@ -1,6 +1,8 @@
 package com.example.juegosprite;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
@@ -13,19 +15,22 @@ import androidx.annotation.NonNull;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 
     private GameThread gameThread;
+    private Bitmap bitmap;
+    private Sprite sprite;
 
 
     public GameView(Context context){
         super(context);
 
-        //getHolder().addCallback(this);
         setBackgroundColor(Color.BLACK);
-
+        getHolder().addCallback(this);
     }
 
     @Override
     public void onDraw(Canvas canvas){
-
+        super.onDraw(canvas);
+        canvas.drawColor(Color.BLACK);
+        sprite.onDraw(canvas);
         invalidate();
     }
 
@@ -52,8 +57,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
         gameThread = new GameThread(getHolder(), this);
         gameThread.setRunning(true);
-        gameThread.run();
-
+        gameThread.start();
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bad4);
+        sprite = new Sprite(this, bitmap);
 
     }
 

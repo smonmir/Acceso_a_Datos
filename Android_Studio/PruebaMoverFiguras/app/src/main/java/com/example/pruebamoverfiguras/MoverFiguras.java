@@ -36,7 +36,7 @@ public class MoverFiguras extends SurfaceView implements SurfaceHolder.Callback{
         figura.add(circulo);
         paint = new Paint();
 
-        //getHolder().addCallback(this);
+        getHolder().addCallback(this);
         setBackgroundColor(Color.BLACK);
 
     }

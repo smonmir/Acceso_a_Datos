@@ -32,8 +32,10 @@ public class GameThread extends Thread{
             startTime = System.currentTimeMillis();
             try {
                 canvas = gameView.getHolder().lockCanvas();
-                synchronized (sh){
-                    gameView.draw(canvas);
+                if(canvas != null){
+                    synchronized (sh){
+                        gameView.draw(canvas);
+                    }
                 }
             }
             finally {
