@@ -21,6 +21,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
     private Bitmap bitmap;
     private Sprite sprite;
     private List<Sprite> sprites = new ArrayList<Sprite>();
+    private List<TempSprite> temps = new ArrayList<TempSprite>();
+    private long lastClick;
+    private Bitmap bmpBlood;
 
     private void createSprites(){
         sprites.add(createSprite(R.drawable.bad1));
@@ -58,11 +61,29 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
         for (Sprite sprite: sprites){
             sprite.onDraw(canvas);
         }
+        for(int i = temps.size() - 1; i >= 0; i--){
+            temps.get(i).onDraw(canvas);
+        }
         invalidate();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event){
+        boolean muerto = false;
+        if(System.currentTimeMillis() - lastClick > 500){
+            lastClick = System.currentTimeMillis();
+
+            synchronized (getHolder()){
+                for(int i = sprites.size()-1; i>=0  && !muerto; i--){
+                    Sprite sprite = sprites.get(i);
+                    if(sprite.isCollition(event.getX(), event.getY())){
+                        sprites.remove(sprite);
+                        temps.add(new TempSprite(temps, this, x, y, bmpBlood));
+                        muerto = true;
+                    }
+                }
+            }
+        }
 
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
@@ -85,10 +106,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
         gameThread = new GameThread(getHolder(), this);
         gameThread.setRunning(true);
         gameThread.start();
-        /*
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bad4);
-        sprite = new Sprite(this, bitmap);
-         */
+
+        bmpBlood = BitmapFactory.decodeResource(getResources(), R.drawable.blood1);
     }
 
     @Override
