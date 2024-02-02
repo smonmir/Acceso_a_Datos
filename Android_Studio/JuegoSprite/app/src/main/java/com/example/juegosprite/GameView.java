@@ -78,7 +78,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
                     Sprite sprite = sprites.get(i);
                     if(sprite.isCollition(event.getX(), event.getY())){
                         sprites.remove(sprite);
-                        temps.add(new TempSprite(temps, this, x, y, bmpBlood));
+                        temps.add(new TempSprite(temps, this, event.getX(), event.getY(), bmpBlood));
                         muerto = true;
                     }
                 }
