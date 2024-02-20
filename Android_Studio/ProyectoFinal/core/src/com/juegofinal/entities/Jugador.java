@@ -95,7 +95,7 @@ public class Jugador extends Actor {
         }
     }
 
-    //Desacoplar el objeto del mundo
+    //Desacoplar el objeto del mundo (lo destruye)
     public void detach(){
         body.destroyFixture(fixture);
         world.destroyBody(body);

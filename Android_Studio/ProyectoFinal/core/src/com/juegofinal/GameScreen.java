@@ -40,7 +40,7 @@ public class GameScreen extends BaseScreen{
         muerteSonido = game.getManager().get("die.ogg");
         musica = game.getManager().get("song.ogg");
 
-        stage = new Stage(new FitViewport(640, 360));
+        stage = new Stage(new FitViewport(1000, 500));
         position = new Vector3(stage.getCamera().position);
         world = new World(new Vector2(0, -10), true); //Agregar gravedad
 
@@ -112,12 +112,17 @@ public class GameScreen extends BaseScreen{
         listaSuelos.add(new Suelo(world, floorTexture, overFloorTexture, 12, 10, 2));
         listaSuelos.add(new Suelo(world, floorTexture, overFloorTexture, 32, 10, 2));
         listaSuelos.add(new Suelo(world, floorTexture, overFloorTexture, 60, 10, 2));
+        listaSuelos.add(new Suelo(world, floorTexture, overFloorTexture, 80, 10, 2));
+        listaSuelos.add(new Suelo(world, floorTexture, overFloorTexture, 85, 10, 3));
+        listaSuelos.add(new Suelo(world, floorTexture, overFloorTexture, 85, 10, 2));
 
         listaPinchos.add(new Pincho(world, pinchoTexture, 18, 2));
         listaPinchos.add(new Pincho(world, pinchoTexture, 30, 1));
         listaPinchos.add(new Pincho(world, pinchoTexture, 50, 1));
         listaPinchos.add(new Pincho(world, pinchoTexture, 58, 1));
-        listaPinchos.add(new Pincho(world, pinchoTexture, 70, 2));
+        listaPinchos.add(new Pincho(world, pinchoTexture, 67, 2));
+        listaPinchos.add(new Pincho(world, pinchoTexture, 75, 1));
+        listaPinchos.add(new Pincho(world, pinchoTexture, 76, 1));
 
         stage.addActor(jugador);
 
@@ -132,8 +137,8 @@ public class GameScreen extends BaseScreen{
         stage.getCamera().position.set(position);
         stage.getCamera().update();
 
-        musica.setVolume(0.75f);
-        musica.play();
+        //musica.setVolume(0.75f);
+        //musica.play();
 
     }
 
