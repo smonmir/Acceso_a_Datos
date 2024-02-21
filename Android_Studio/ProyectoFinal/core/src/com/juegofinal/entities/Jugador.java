@@ -79,9 +79,16 @@ public class Jugador extends Actor {
 
         //Hacer avanzar al jugador si esta vivo
         if(vivo){
+
+            if(body.getPosition().x > 100){ //Meta
+                vivo = false;
+            }
+
             float velocidadY = body.getLinearVelocity().y;
             body.setLinearVelocity(Constantes.VELOCIDAD_JUGADOR, velocidadY);
         }
+
+
         if(saltando){
             body.applyForceToCenter(0, -Constantes.IMPULSO_SALTO * 1.15f, true);
         }

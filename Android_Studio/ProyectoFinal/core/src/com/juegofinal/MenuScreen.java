@@ -16,7 +16,7 @@ public class MenuScreen extends BaseScreen{
     private Stage stage;
     private Skin skin;
     private Image logo;
-    private TextButton jugar, credits;
+    private TextButton jugar;
 
     public MenuScreen(MainGame game) {
         super(game);

@@ -1,4 +1,4 @@
-package com.juegofinal;
+package com.juegofinal.scene2d;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -15,8 +15,10 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.juegofinal.BaseScreen;
+import com.juegofinal.MainGame;
 
-public class Box2DScreen extends BaseScreen{
+public class Box2DScreen extends BaseScreen {
 
     private World world;
     private Box2DDebugRenderer renderer;
