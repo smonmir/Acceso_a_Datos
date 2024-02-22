@@ -44,9 +44,5 @@ public class Rectangulo extends Figura{
         return false;
     }
 
-    @Override
-    public void dibujar(Canvas canvas, Paint paint) {
-        paint.setColor(Color.BLUE);
-        canvas.drawRect(x, y, x + ancho, y + alto, paint);
-    }
+
 }

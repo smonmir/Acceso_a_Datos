@@ -42,9 +42,4 @@ public class Circulo extends Figura{
         return false;
     }
 
-    @Override
-    public void dibujar(Canvas canvas, Paint paint) {
-        paint.setColor(Color.BLUE);
-        canvas.drawCircle(x, y, radio, paint);
-    }
 }

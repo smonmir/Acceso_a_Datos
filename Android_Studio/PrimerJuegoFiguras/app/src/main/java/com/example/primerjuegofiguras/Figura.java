@@ -29,6 +29,5 @@ public abstract class Figura {
 
     public abstract boolean hovered(float x, float y);
 
-    public abstract void dibujar(Canvas canvas, Paint paint);
 }
 
